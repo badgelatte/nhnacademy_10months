@@ -27,7 +27,7 @@ public class Main {
 
 
     // solution
-    public static String solution(String input) {   // for each문으로 작성 (내가 만든 거!)
+    public static String solution(String input) {   // for each문으로 작성 (내가 만든 거!!)
         int a;
         String output = "";
         // 문자열 문자로 나누기
