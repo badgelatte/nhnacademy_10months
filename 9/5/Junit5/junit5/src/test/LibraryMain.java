@@ -19,7 +19,6 @@ public class LibraryMain {
 
         library.add("해리포터");
         library.add("어린왕자");
-        //library.add("어린왕자");
         library.add("샬롯의 거미줄");
 
         assert 3 == library.getTotalBookCount();

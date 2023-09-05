@@ -49,6 +49,15 @@ public class LibraryJunitTest {
         library.getTotalBookCount();
     }
 
+    /* @Test
+    @DisplayName("도서관 최대 보관 수보다 많은가")
+    void addMoreThanMax_throwIllegalArgumentException() {
+        // int count =library.getTotalBookCount() + 1;
+        // 기존에 가진 library 속 maxBook에서 +1 해서 비교할라했다가 포기.. -> 아니 애초에 할 수 있는거야??
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> library.getTotalBookCount());
+        assertEquals(exception.getMessage(), NEGATIVE_LIBRARY_MESSAGE);
+    } */
+
     @ParameterizedTest
     @ValueSource(strings = { "어린왕자"})
     @DisplayName("도서관 책 찾기")
@@ -64,6 +73,7 @@ public class LibraryJunitTest {
         
         assertEquals(exception.getMessage(), DELETE_NOT_EXIST_BOOK_MESSAGE);
     }
+    
 
     /* @RepeatedTest(value = 10)   //10번 반복
     void repeat() {
