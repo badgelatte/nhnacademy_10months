@@ -3,12 +3,17 @@ package test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import main.Dice;
 import main.DiceCalculator;
@@ -60,6 +65,20 @@ class DiceJunitTest {   // Junit으로 Test 짜보기
         // () -> new Dice(-1) = Dice 생성자에 -1 넣는 것으로 lamda(람다식)으로 작성됨.
         assertEquals(exception.getMessage(), OUT_OF_RANGE_MESSAGE);
         // Dice.java의 생성자 속 " " 안의 문구가 달라지면 에러가 뜬다
+    }
+
+    // 
+    private static Stream<Arguments> provideAddParams(){
+        return Stream.of(   // 
+            Arguments.of(1, 2, 3)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideAddParams")
+    @DisplayName("여러번 더해보는?")
+    void add_success(int a, int b, int c) {
+        assertEquals(DiceCalculator.addDice(new Dice(a), new Dice(b)), c);
     }
 
     @AfterAll   // 테스트가 완전히 끝난 후 딱 한 번만 실행

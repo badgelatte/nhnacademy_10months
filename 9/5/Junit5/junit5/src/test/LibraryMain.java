@@ -19,6 +19,7 @@ public class LibraryMain {
 
         library.add("해리포터");
         library.add("어린왕자");
+        //library.add("어린왕자");
         library.add("샬롯의 거미줄");
 
         assert 3 == library.getTotalBookCount();
@@ -35,11 +36,12 @@ public class LibraryMain {
         }
 
         library.add("백설공주");
+
         
         try {
             library.add("백설공주");
         } catch (IllegalArgumentException e) {
-            assert e.getMessage().equals(ADD_DUPLICATE_BOOK_MESSAGE);
+            assert e.getMessage().equals(ADD_DUPLICATE_BOOK_MESSAGE);   
         }
 
         assert library.find("어린왕자");
