@@ -21,7 +21,12 @@ public class LibraryJunitTest {
     private static final String ADD_MORE_THAN_MAX_MESSAGE = "도서관 최대 용량을 초과해 책을 추가할 수 없습니다.";
     private static final String ADD_DUPLICATE_BOOK_MESSAGE = "도서관에 같은 이름의 책이 존재합니다.";
     private static final String DELETE_NOT_EXIST_BOOK_MESSAGE = "도서관에 존재하지 않는 책은 삭제할 수 없습니다.";
-    
+    private static Library library;
+
+    @BeforeEach
+    void setUp() {
+       library = new Library(2);
+    }
 
     @Test
     @DisplayName("음수 값의 도서관을 만들때, IllegalArgumentException 던짐")
@@ -29,23 +34,39 @@ public class LibraryJunitTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> new Library(-1));
         assertEquals(exception.getMessage(), NEGATIVE_LIBRARY_MESSAGE);
     }
-    @Test
-    @DisplayName("같은 이름의 책 도서관에서 삭제")
-    void delete() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> );
-        assertEquals(exception.getMessage(), NEGATIVE_LIBRARY_MESSAGE);
-    }
-
+    
     @ParameterizedTest
     @ValueSource(strings = { "어린왕자", "엄지공주" })  // strings -> string만 넣을 수 있다
+    @DisplayName("도서관에 책 넣기")
     void add_success(String bookName) {
-        Library library = new Library(5);
-
+        
         library.add(bookName);
     }
 
-    @RepeatedTest(value = 10)   //10번 반복
+    @Test
+    @DisplayName("도서관 책 총 갯수")
+    void getTotalBookCount() {
+        library.getTotalBookCount();
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = { "어린왕자"})
+    @DisplayName("도서관 책 찾기")
+    void find_success(String bookName) {
+        library.find(bookName);
+    }
+    
+    @ParameterizedTest
+    @ValueSource(strings = { "어린왕자", "엄지공주", "흥부와 놀부" })
+    @DisplayName("도서관에서 같은 이름의 책 삭제")
+    void delete_success_throwIllegalArgumentException(String bookName) {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->  library.delete(bookName));
+        
+        assertEquals(exception.getMessage(), DELETE_NOT_EXIST_BOOK_MESSAGE);
+    }
+
+    /* @RepeatedTest(value = 10)   //10번 반복
     void repeat() {
         System.out.println("dfdf");
-    }
+    } */
 }
