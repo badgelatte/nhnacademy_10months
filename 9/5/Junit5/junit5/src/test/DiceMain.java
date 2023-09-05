@@ -1,4 +1,7 @@
-package main;
+package test;
+
+import main.Dice;
+import main.DiceCalculator;
 
 public class DiceMain {
     public static void main(String[] args) {
