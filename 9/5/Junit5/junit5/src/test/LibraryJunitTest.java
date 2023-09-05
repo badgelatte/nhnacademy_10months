@@ -49,14 +49,27 @@ public class LibraryJunitTest {
         library.getTotalBookCount();
     }
 
-    /* @Test
-    @DisplayName("도서관 최대 보관 수보다 많은가")
-    void addMoreThanMax_throwIllegalArgumentException() {
-        // int count =library.getTotalBookCount() + 1;
-        // 기존에 가진 library 속 maxBook에서 +1 해서 비교할라했다가 포기.. -> 아니 애초에 할 수 있는거야??
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> library.getTotalBookCount());
-        assertEquals(exception.getMessage(), NEGATIVE_LIBRARY_MESSAGE);
-    } */
+    // @ParameterizedTest
+    // @ValueSource(strings = { "어린왕자", "백설공주" })
+    // @DisplayName("도서관 최대 보관 수보다 많은가")
+    // void addMoreThanMax_throwIllegalArgumentException(String bookName) {
+    //     // int count =library.getTotalBookCount() + 1;
+    //     // 기존에 가진 library 속 maxBook에서 +1 해서 비교할라했다가 포기.. -> 아니 애초에 할 수 있는거야??
+    //     Library library2 = new Library(2);
+    //     library2.add("어린왕자");
+    //     Exception exception = assertThrows(IllegalArgumentException.class, () -> library2.add(bookName));
+    //     assertEquals(exception.getMessage(), NEGATIVE_LIBRARY_MESSAGE);
+    // }
+
+    // @ParameterizedTest
+    // @ValueSource(strings = { "어린왕자" })
+    // @DisplayName("도서관 동일한 책 거절")
+    // void duplicateBook_throwIllegalArgumentException(String bookName) {
+    //     Library library2 = new Library(2);
+    //     library2.add("어린왕자");
+    //     Exception exception = assertThrows(IllegalArgumentException.class, () ->  library.add(bookName));
+    //     assertEquals(exception.getMessage(), ADD_DUPLICATE_BOOK_MESSAGE);
+    // }
 
     @ParameterizedTest
     @ValueSource(strings = { "어린왕자"})
