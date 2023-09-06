@@ -1,5 +1,5 @@
 <configuration>
-    <!-- 파일로 출력 -->
+    <!-- 파일로 출력 --> 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>myApp.log</file>
         <encoder>
