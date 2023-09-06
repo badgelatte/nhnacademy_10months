@@ -17,7 +17,7 @@ public class MyLogback {
             logger.warn("덧셈 연산 실패 .. 0으로 나눌 수 없음");
             throw new ArithmeticException("0으로 나눌 수 없습니다.");
         }
-        return a / b;
+        return a / b;  
     }
 
     public static void main(String[] args) {
@@ -25,6 +25,6 @@ public class MyLogback {
         int b = 2;
 
         System.out.println(sum(a, b));
-        System.out.println(divide(a, b));
+        System.out.println(divide(a, 0));
     }
 }

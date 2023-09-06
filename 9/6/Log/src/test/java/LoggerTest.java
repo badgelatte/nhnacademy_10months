@@ -7,12 +7,13 @@ public class LoggerTest {
         MyLogger.getLogger().info("덧셈 수행 : " + a + " + " + b);
         return a + b;
     }
+ 
 
     public static double divide(int a, int b) {
         if (b == 0) {
             MyLogger.getLogger().warning("나눗셈 에러 발생!");
             throw new ArithmeticException("0으로 나눌 수 없습니다.");
-        }
+        } 
         return a / b;
     }
 

@@ -8,7 +8,7 @@ public class MyLogger {
     private final static Logger logger = Logger.getLogger("myLogger");
 
     public static Logger getLogger() {
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.INFO); 
         return logger;
-    }
+    } 
 }
