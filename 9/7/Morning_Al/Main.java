@@ -49,7 +49,7 @@ public class Main {
         return false;
     }
 
-    private static int[][] solution(int input) {    // made by me
+    private static int[][] solution(int input) {    // made by me -> 실패
         int a [][];
         a = new int [input][input];
         int number = 0;
@@ -74,6 +74,7 @@ public class Main {
         } */
         return a;
     }
+
     public static int[][] solution2(int n){ // made by T.A
         int[][] answer = new int[n][n];
         int number = 1;
@@ -93,8 +94,6 @@ public class Main {
                 answer[y][x] = number++;
             }   // 두째줄 완성
             direction*=-1;
-            
-            
 
         }
         return answer;
