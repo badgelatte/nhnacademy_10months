@@ -52,18 +52,19 @@ public class Main {
     private static int[][] solution(int input) {    // made by me
         int a [][];
         a = new int [input][input];
+        int number = 0;
 
         for(int i = 0; i< input ; i++) {
-            a[0][i] = i+1;
+            a[0][i] = ++number;
         }
         for(int i = 0; i< input ; i++) {
-            a[i][input] = i+input;
+            a[i][input] = ++number;
         }
         for(int i = input; i >= 0; i--) {
-            a[input][i] = i+input*2-1;
+            a[input][i] = ++number;
         }
         for(int i = input-1; i >= 0; i--) {
-            a[input][i] = i+input*3-2;
+            a[input][i] = ++number;
         }
         /* for(int i = 0; i < input ; i++) {
             if() {
