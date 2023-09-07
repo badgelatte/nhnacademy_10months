@@ -4,11 +4,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.nhnacademy.app</groupId>
-  <artifactId>random</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <groupId>rd</groupId>
+  <artifactId>demo</artifactId>
+  <version>1.4</version>
 
-  <name>random</name>
+  <name>demo</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -20,84 +20,54 @@
 
   <dependencies>
     <dependency>
-        <groupId>org.junit.platform</groupId>
-        <artifactId>junit-platform-launcher</artifactId>
-        <scope>test</scope>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
     </dependency>
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.junit.vintage</groupId>
-        <artifactId>junit-vintage-engine</artifactId>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
+        <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-math3</artifactId>
-        
         <version>3.6.1</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>3.13.0</version>
     </dependency>
   </dependencies>
 
-
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.junit</groupId>
-            <artifactId>junit-bom</artifactId>
-            <version>5.10.0</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-
   <build>
   <plugins>
-  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
+    <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+            <execution>
+                <id>copy-dependencies</id>
+                <phase>prepare-package</phase>
+                <goals>
+                <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                <outputDirectory>
+                    ${project.build.directory}/libs
+                </outputDirectory>
+                </configuration>
+            </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
             <configuration>
-              <outputDirectory>
-                ${project.build.directory}/libs
-              </outputDirectory>
+            <archive>
+                <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>libs/</classpathPrefix>
+                <mainClass>
+                    rd.random
+                </mainClass>
+                </manifest>
+            </archive>
             </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>libs/</classpathPrefix>
-              <mainClass>
-                com.nhnacademy.app.App
-              </mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-      
+        </plugin>
+  </plugins>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
