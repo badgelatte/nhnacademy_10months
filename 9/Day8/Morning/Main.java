@@ -40,7 +40,6 @@ public class Main {
         return 0;
     }
 
-
     // solution
     public static int solution2(int first, int second) {    // int 형 사용
         int result = 0;
