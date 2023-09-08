@@ -48,6 +48,7 @@ public class Main {
         int reversedResult = 0;
         int output = 0;
 
+        // 첫번째 수 뒤집기
         int reversedFirst = first % 10;     // first = 123, reversedFirst = 3
         first /= 10;                        // first = 12
         result1 += reversedFirst;            // result = 3
@@ -59,9 +60,10 @@ public class Main {
             result1 *= 10;                   // result = 30
             result1 += reversedFirst;        //  result = 32
         }
-
         System.out.println("first : " + result1);
 
+
+        // 두번째 수 뒤집기
         int reversedSecond = second % 10;
         second /= 10;
         result2 += reversedSecond;
@@ -75,8 +77,10 @@ public class Main {
 
         System.out.println("second : " + result2);
 
+        // 뒤집은 수 더하기
         result = result1 + result2;     // 321 + 321 = 642
 
+        // 더한 수를 다시 뒤집기
         while(result > 0) {
             reversedResult = result % 10;     // result = 642, reversedResult = 2 // result = 64, reversedResult = 4
             result /= 10;                        // result = 64                     // result = 6
