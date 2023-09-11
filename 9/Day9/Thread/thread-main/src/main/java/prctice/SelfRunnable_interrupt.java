@@ -31,9 +31,9 @@ public class SelfRunnable_interrupt implements Runnable{ // made by teacher
         running = true;     // 상태가 시작으로 바꿈
         thread = Thread.currentThread();
 
-                                                           // Thread.currentThread().isInterrupted() - interrupted가 떳나 안떳나만 확인하고 초기화는 하지 않는다
-        while(!Thread.interrupted() && (count < maxCount)) { // Thread.interrupted() - interrupted 초기화하지만 관계없다
-        // !Thread.currentThread().isInterrupted() && 과 동일
+        // Thread.currentThread().isInterrupted() - interrupted가 떳나 안떳나만 확인하고 초기화는 하지 않는다
+        while(!Thread.currentThread().isInterrupted() && (count < maxCount)) { 
+            // Thread.interrupted() && 과 동일   // Thread.interrupted() - interrupted 초기화하지만 관계없다
             try {
                 count++;
                 System.out.println(name + " : " + count);
