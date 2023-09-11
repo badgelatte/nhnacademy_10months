@@ -19,7 +19,7 @@ public class SharedCounter implements Runnable{
     public void start() {
         //내가 가진 스레드를 실행
         thread.start();
-    }
+    } 
 
     public void stop() {
         thread.interrupt();
