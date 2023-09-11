@@ -44,6 +44,7 @@ public class SelfRunnable_interrupt implements Runnable{ // made by teacher
                 // Thread에 interrupt가 발생하였다고, 과정을 종료할 필요는 없다. Interrupt 발생 후 처리 과정은 다양하게 활용할 수 있다
                 // -> flag를 넣을 수도 있고 다른 방법도 많다
                 System.out.println(Thread.currentThread().isInterrupted()); // waiting 상태일때 flase로 나온다
+                // System.out.println("Current Thread: " + Thread.currentThread());
                 Thread.currentThread().interrupt();
                 // interrupt에 setting을 해준다
             }
