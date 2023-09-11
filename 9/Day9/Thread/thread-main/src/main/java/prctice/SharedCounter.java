@@ -6,7 +6,7 @@ public class SharedCounter implements Runnable{
     int maxCount;
     SharedCount sharedCount;    // 공유 카운터
 
-    public void SharedCounter(String name, int maxCount, SharedCount sharedCount){
+    public SharedCounter(String name, int maxCount, SharedCount sharedCount){
         thread = new Thread(this, name);
         this.maxCount = maxCount;
         this.sharedCount = sharedCount;
