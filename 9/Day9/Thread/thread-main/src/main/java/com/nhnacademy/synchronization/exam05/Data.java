@@ -19,7 +19,7 @@ public class Data {
         transfer = true;
 
         String returnPacket = packet;
-        notifyAll();
+        notifyAll();        // send 쪽 깨우는 거임
         return returnPacket;
     }
 
@@ -35,6 +35,6 @@ public class Data {
         transfer = false;
 
         this.packet = packet;
-        notifyAll();
+        notifyAll();    // 가져가라고 깨움
     }
 }
