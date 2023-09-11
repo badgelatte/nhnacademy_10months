@@ -30,7 +30,7 @@ public class SharedCounter implements Runnable{
         while(!Thread.currentThread().isInterrupted() && (count < maxCount)) {
             // !Thread.currentThread().isInterrupted() -> 
             count++;
-            sharedCount.increment();    // 여기를 마킹만 잘하면 안 막힌다.
+            sharedCount.increment();    // 여기를 마킹만 잘하면 안 막힌다. -> 여기만 잘 막으면 괜찮다
         }
     }
 
