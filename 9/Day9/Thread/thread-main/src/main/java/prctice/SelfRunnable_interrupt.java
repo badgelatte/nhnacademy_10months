@@ -19,7 +19,7 @@ public class SelfRunnable_interrupt implements Runnable{ // made by teacher
     }
 
     public void stop() {
-        thread.interrupt();     // 스레드에다가 알려줄거ㅓ다 --> ????
+        thread.interrupt();     // 스레드를 멈춘다. -> wait 상태로
     }
 
     public boolean isRunning() {    // 상태 알려주기
@@ -30,8 +30,10 @@ public class SelfRunnable_interrupt implements Runnable{ // made by teacher
     public void run() {
         thread = Thread.currentThread();
 
+        // interrupted -> sleep, wait일때 그때 작업을 한다.
         // Thread.currentThread().isInterrupted() - interrupted가 떳나 안떳나만 확인하고 초기화는 하지 않는다
-        while(!Thread.currentThread().isInterrupted() && (count < maxCount)) { 
+        while(!Thread.currentThread().isInterrupted() && (count < maxCount)) { // isInterrupted = true -> 중단된 상태이다. 
+            // => 그래서 중단된 상태가 아니라면 while문을 쓴다
             // Thread.interrupted() && 과 동일   // Thread.interrupted() - interrupted 초기화하지만 관계없다
             try {
                 count++;

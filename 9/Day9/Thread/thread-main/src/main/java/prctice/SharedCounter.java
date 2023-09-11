@@ -28,7 +28,8 @@ public class SharedCounter implements Runnable{
     @Override
     public void run() {
         while(!Thread.currentThread().isInterrupted() && (count < maxCount)) {
-            // !Thread.currentThread().isInterrupted() -> 
+            // !Thread.currentThread().isInterrupted() -> 현재 thread의 상태가 isInterrupted()인가 => 현재 thread 상태가 중단된 상태가 맞는가? 
+            // - true라면 중단된 상태 = wait, false라면 돌아가는 상태
             count++;
             synchronized(sharedCount) {     // code block 이전(SharedCount에서 synchronized 한 것)은 클래스 자체에 막는거고 
                 //이거는 만일 Sharedcouunt가 남이 만든거고 건들면 안되면 외부에서 synchronized해야할 때 사용 -> 사용성이 좋아졌다

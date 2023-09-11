@@ -6,7 +6,7 @@ public class SelfRunnable implements Runnable{ // made by teacher
     int maxCount;
 
     Thread thread;
-    boolean running = false;    // 상태를 알리고 제어하는데 사용
+    boolean running = false;    // 상태를 알리고 제어하는데 사용 -> 동작 가능의 여부를 표시
 
     public SelfRunnable(String name, int maxCount) {
         this.name = name;
