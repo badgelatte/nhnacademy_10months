@@ -30,7 +30,11 @@ public class SharedCounter implements Runnable{
         while(!Thread.currentThread().isInterrupted() && (count < maxCount)) {
             // !Thread.currentThread().isInterrupted() -> 
             count++;
-            sharedCount.increment();    // 여기를 마킹만 잘하면 안 막힌다. -> 여기만 잘 막으면 괜찮다
+            synchronized(sharedCount) {     // code block 이전(SharedCount에서 synchronized 한 것)은 클래스 자체에 막는거고 
+                //이거는 만일 Sharedcouunt가 남이 만든거고 건들면 안되면 외부에서 synchronized해야할 때 사용 -> 사용성이 좋아졌다
+                sharedCount.increment();    // 여기를 마킹만 잘하면 안 막힌다. -> 여기만 잘 막으면 괜찮다
+                // reference type만 들어올 수 있다.
+            }
         }
     }
 
