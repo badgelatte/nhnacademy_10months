@@ -26,8 +26,8 @@ public class RunnableCounter implements Runnable{ // made by teacher
     }
 
     public static void main(String[] args) {
-        RunnableCounter counter1 = new RunnableCounter("counter", 5);
-        RunnableCounter counter2 = new RunnableCounter("counter", 5);
+        RunnableCounter counter1 = new RunnableCounter("runnableCounter", 5);
+        RunnableCounter counter2 = new RunnableCounter("runnableCounter", 5);
         Thread t1 = new Thread(counter1);
         Thread t2 = new Thread(counter2);
 

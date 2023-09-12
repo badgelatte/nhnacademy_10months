@@ -4,6 +4,7 @@ public class RunnableCounter_Exam02 implements Runnable{ // made by teacher
     int count;  // 여기서 초기화 해도 된다
     String name;
     int maxCount;
+    
     Thread thread;
 
     public RunnableCounter_Exam02(String name, int maxCount) {

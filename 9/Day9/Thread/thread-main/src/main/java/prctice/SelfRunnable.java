@@ -51,13 +51,13 @@ public class SelfRunnable implements Runnable{ // made by teacher
     }
 
     public static void main(String[] args) throws InterruptedException{
-        SelfRunnable counter1 = new SelfRunnable("counter1", 5);
-        SelfRunnable counter2 = new SelfRunnable("counter2", 5);
+        SelfRunnable runnableCounter1 = new SelfRunnable("runnableCounter1", 5);
+        SelfRunnable runnableCounter2 = new SelfRunnable("runnableCounter2", 5);
 
-        counter1.start();
-        counter2.start();
+        runnableCounter1.start();
+        runnableCounter2.start();
 
         Thread.sleep(3000);
-        counter1.stop();
+        runnableCounter1.stop();
     }
 }
