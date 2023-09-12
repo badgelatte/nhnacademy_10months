@@ -44,7 +44,7 @@ public class RunnableCounter implements Runnable {
         try {
             while (count < maxCount) {
                 increment();
-                System.out.println(thread.getName() + " : " + getCount());
+                System.out.println(thread.getName() + " : " + getCount() + " : " + thread.getState());  // runnable 찍기
                 Thread.sleep(interval);
             }
         } catch (InterruptedException ignore) {
