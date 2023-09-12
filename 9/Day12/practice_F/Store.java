@@ -8,16 +8,17 @@ public class Store {
     }
 
     public void enter() {
-        System.out.println("1");
+        System.out.println("소비자가 입장합니다.");
     }
 
     public void exit() {
-        System.out.println("2");
+        System.out.println("소비자가 퇴장합니다.");
     }
 
     public synchronized void buy() {
+        System.out.println("소비자가 물건을 구매합니다.");
         box.release();  // 채워진 상자 비우기
-
+        
     }
 
     public synchronized void sell() throws InterruptedException{
