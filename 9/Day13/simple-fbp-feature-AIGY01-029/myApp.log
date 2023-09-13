@@ -1,0 +1,158 @@
+2023-09-13 16:24:15,634 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:24:15,636 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:24:33,861 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:24:33,865 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:27:34,550 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:27:34,552 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:32:05,981 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:32:05,983 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:32:28,702 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:32:28,705 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:32:45,500 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:32:45,502 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:33:10,382 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:33:10,385 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:33:55,590 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:33:55,592 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:35:38,550 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : com.nhnacademy.port.Port@41740532
+2023-09-13 16:37:05,962 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:37:05,969 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:37:10,161 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : com.nhnacademy.port.Port@50a0d315
+2023-09-13 16:44:28,372 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 16:44:28,383 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:44:31,000 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:31,384 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:32,922 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:33,383 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:35,982 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:36,383 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:39,109 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:39,383 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:39,844 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:40,385 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:40,845 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:41,384 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:42,929 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:43,384 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:43,516 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:44,384 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:44:44,780 [TerminalInNode-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:44:45,384 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:39] - Message : 0
+2023-09-13 16:56:52,659 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 16:56:52,662 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 16:56:52,662 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:56:53,662 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 16:56:53,663 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:56:54,664 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:56:55,663 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:56:56,664 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 16:56:57,663 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:54,787 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 17:01:54,789 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 17:01:54,790 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:55,790 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:01:55,791 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:56,790 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:56,792 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:01:57,790 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:01:57,791 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:58,790 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:01:58,791 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:59,790 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:01:59,790 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:02:00,790 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:02:00,790 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:02:01,791 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:02:01,793 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:02:02,789 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:02:02,790 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:48,148 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 17:03:48,151 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 17:03:48,152 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:49,152 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:49,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:50,154 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:50,155 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:51,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:51,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:52,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:52,154 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:53,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:53,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:54,152 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:54,152 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:55,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:55,154 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:56,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:56,154 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:57,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:57,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:58,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:03:58,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:59,153 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:03:59,153 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:04:00,154 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:04:00,155 [Ticker-00] TRACE c.n.n.InputNode [InputNode.java:46] - input node : {}
+2023-09-13 17:44:54,815 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 17:44:54,817 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 17:45:00,818 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:45:01,824 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:45:03,818 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:45:07,776 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalInNode-00
+2023-09-13 17:45:07,778 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 17:45:10,780 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:45:11,784 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:45:13,780 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:10,490 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 17:55:10,492 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-01
+2023-09-13 17:55:10,492 [main] TRACE c.n.n.Node [Node.java:14] - create node : AddNode-02
+2023-09-13 17:55:10,492 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-03
+2023-09-13 17:55:12,493 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:13,500 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:14,494 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:15,495 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:16,494 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:17,494 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:18,494 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:19,495 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:55:20,494 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:56:00,469 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 17:56:00,472 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-01
+2023-09-13 17:56:00,472 [main] TRACE c.n.n.Node [Node.java:14] - create node : AddNode-02
+2023-09-13 17:56:00,473 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-03
+2023-09-13 17:56:02,474 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:56:03,478 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 17:56:04,474 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:04:47,353 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 18:04:47,355 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 18:04:48,356 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:04:49,362 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:04:50,357 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:04:51,357 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:04:52,357 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:04:53,357 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:34,038 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 18:07:34,042 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-01
+2023-09-13 18:07:35,043 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:36,048 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:37,044 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:38,043 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:39,043 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:40,043 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:41,043 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:07:42,044 [TerminalOutNode-01] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:08:32,349 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-00
+2023-09-13 18:08:32,351 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-01
+2023-09-13 18:08:32,351 [main] TRACE c.n.n.Node [Node.java:14] - create node : AddNode-02
+2023-09-13 18:08:32,352 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-03
+2023-09-13 18:08:34,353 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:08:35,358 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:08:36,354 [TerminalOutNode-03] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:09:52,850 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-01
+2023-09-13 18:09:52,852 [main] TRACE c.n.n.Node [Node.java:14] - create node : Ticker-02
+2023-09-13 18:09:52,852 [main] TRACE c.n.n.Node [Node.java:14] - create node : AddNode-03
+2023-09-13 18:09:52,852 [main] TRACE c.n.n.Node [Node.java:14] - create node : TerminalOutNode-04
+2023-09-13 18:09:53,853 [TerminalOutNode-04] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:09:54,856 [TerminalOutNode-04] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:09:56,854 [TerminalOutNode-04] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
+2023-09-13 18:09:57,853 [TerminalOutNode-04] TRACE c.n.n.TerminalOutNode [TerminalOutNode.java:40] - Message : 0
