@@ -11,8 +11,11 @@ public class BasicMovieParser implements MovieParser {
     // private BufferedReader movieList;
   @Override
   public List<Movie> parse(String fileName) throws IOException {
-    BufferedReader movieList = new BufferedReader(new FileReader("src/main/java/com/nhnacademy/resources/movies.csv"));
+    // BufferedReader movieList = new BufferedReader(new FileReader("src/main/movies.csv"));
+    InputStreamReader movieLists = new InputStreamReader(getMovieFileAsStream());
+    BufferedReader movieList = new BufferedReader(movieLists);
 
+    
     String data = "";
     String [] slist;
     long movieId = 0;

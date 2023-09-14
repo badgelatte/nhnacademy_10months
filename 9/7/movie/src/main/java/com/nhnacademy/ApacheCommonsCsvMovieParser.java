@@ -14,7 +14,7 @@ public class ApacheCommonsCsvMovieParser implements MovieParser {
 
     @Override
     public List<Movie> parse(String fileName) throws IOException {
-        CSVParser parser = new CSVParser(new InputStreamReader(getMovieFileAsStream()), CSVFormat.EXCEL);
+        CSVParser parser = new CSVParser(new InputStreamReader(getMovieFileAsStream()), CSVFormat.DEFAULT);
         long movieId=  0;
         String title = "";
         String genre = "";
