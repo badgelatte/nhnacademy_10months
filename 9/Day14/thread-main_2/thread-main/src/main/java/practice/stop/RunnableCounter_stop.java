@@ -1,6 +1,7 @@
 package practice.stop;
 
 public class RunnableCounter_stop implements Runnable{  // Runnable로 만드는데 Thread와 일체화 시키기
+    Thread thread;
     String name;
     int maxCount;
     int count;
