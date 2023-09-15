@@ -11,7 +11,7 @@ public class Customer {
     private final String name;
     
     private int money;
-
+    
     private final List<Coupon> couponList = new ArrayList<>();
 
     private Customer(long id, String name, int money) {
@@ -29,6 +29,9 @@ public class Customer {
         couponList.add(coupon);
     }
 
+    public List<Coupon> getCouponList() {
+        return couponList;
+    }
 
     public long getId() {
         return id;
@@ -41,4 +44,10 @@ public class Customer {
     public int getMoney() {
         return money;
     }
+
+    @Override
+    public String toString() {
+        return "Customer [id=" + id + ", name=" + name + ", money=" + money + ", couponList=" + couponList + "]";
+    }
+
 }

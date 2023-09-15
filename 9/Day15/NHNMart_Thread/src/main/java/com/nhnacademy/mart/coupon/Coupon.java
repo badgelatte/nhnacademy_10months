@@ -33,4 +33,5 @@ public class Coupon {
         DISCOUNT,
         PERCENT;
     }
+
 }

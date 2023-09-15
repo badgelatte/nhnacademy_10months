@@ -1,5 +1,7 @@
 package com.nhnacademy.mart.employee;
 
+import com.nhnacademy.mart.coupon.Coupon;
+
 public class Employee {
     private final long id;
 
@@ -17,4 +19,5 @@ public class Employee {
     public String getName() {
         return name;
     }
+
 }
