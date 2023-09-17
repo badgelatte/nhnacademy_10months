@@ -22,7 +22,7 @@ public class Customer {
 
     // of라는 메소드를 쓰면 가지고 있는 돈을 100만원으로 지정해서 생성해준다.
     public static Customer of(long id, String name) {
-        return new Customer(id, name, 1000000);
+        return new Customer(id, name, 100_0000);
     }
 
     public void addCoupon(Coupon coupon) {
@@ -50,4 +50,5 @@ public class Customer {
         return "Customer [id=" + id + ", name=" + name + ", money=" + money + ", couponList=" + couponList + "]";
     }
 
+    
 }

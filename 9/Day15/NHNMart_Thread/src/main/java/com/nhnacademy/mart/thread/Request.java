@@ -1,4 +1,4 @@
-package com.nhnacademy.thread;
+package com.nhnacademy.mart.thread;
 
 import java.util.concurrent.atomic.AtomicLong;
 

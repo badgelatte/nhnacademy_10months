@@ -26,7 +26,7 @@ public class Main_I
         while(true) {
             int i = 1;
             Customer customer = Customer.of(i++, "customer");
-            customer.start();
+            // customer.start();
         }
     }
 }

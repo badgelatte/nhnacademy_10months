@@ -10,7 +10,8 @@ public class CustomerGenerator implements Iterator<Customer>{
     // static -> heap에 올라감 => 공유해서 쓸라고 올림
     private static final CustomerGenerator INSTANCE = new CustomerGenerator();
     
-    // Atomic이 들어가면 synchronized를 안하면 더하기가 엉망이 되는데 이를 방지하기 위해 하나씩 증가시키는 것도 메소드로 제공해준다
+    // Atomic이 들어가면 synchronized 직접적으로 안 써도 사용된다
+    // synchronized를 안하면 더하기가 엉망이 되는데 이를 방지하기 위해 하나씩 증가시키는 것도 메소드로 제공해준다
     private static final AtomicLong ID_GENERATOR = new AtomicLong();
     
     // 외부에서 접근 못하는 INSTANCE를 외부에서 가져다 써야할 때 static으로 하나 만들어서 

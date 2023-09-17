@@ -1,4 +1,4 @@
-package com.nhnacademy.thread;
+package com.nhnacademy.mart.thread;
 
 import com.nhnacademy.mart.coupon.CouponGenerator;
 import com.nhnacademy.mart.customer.Customer;

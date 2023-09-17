@@ -9,7 +9,7 @@ public class EmployeeGenerator implements Iterator<Employee>{
 
     private static final EmployeeGenerator INSTANCE = new EmployeeGenerator();
 
-    public EmployeeGenerator getEmployeeGenerator(){
+    public static EmployeeGenerator getEmployeeGenerator(){
         return INSTANCE;
     }
 
