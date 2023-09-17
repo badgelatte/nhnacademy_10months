@@ -25,7 +25,7 @@ public class CouponGenerator implements Iterator<Coupon>{
 
 
     @Override
-    public Coupon next() {
+    public synchronized Coupon next() {
         // 쿠폰                            
         if(!hasNext()) {
             throw new NoSuchElementException();

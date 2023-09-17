@@ -25,7 +25,6 @@ public class CouponRequest extends Request {    // Request 클래스 확장해�
             Thread.currentThread().getId(), customer.getId(), customer.getCouponList().get(0).getId());
         }
         else {
-
             log.info("there-id:{}, customer-id:{}, coupon-id:{}", 
             Thread.currentThread().getId(), customer.getId(), "Empty");
         }

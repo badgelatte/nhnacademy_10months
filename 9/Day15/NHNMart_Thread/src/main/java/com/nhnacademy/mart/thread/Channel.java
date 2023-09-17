@@ -27,15 +27,15 @@ public class Channel {  // 채널을 통해 request를 공유함
         return queue.poll();
     }
 
-    public void addRequest(Request requeset) {
+    public synchronized void addRequest(Request requeset) {
         while(queue.size() >= queueMaxSize){
             try {
                 wait();
             } catch (InterruptedException e) {
                 log.error("add queue", e);
             }
+        }
             queue.add(requeset);
             notifyAll();
-        }
     }
 }

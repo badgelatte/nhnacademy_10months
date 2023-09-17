@@ -32,7 +32,7 @@ public class SharedUserContext implements Runnable{
         String username = userStore.getUserNameForUserId(userId);
         userContext.set(new Session(username));
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
             
         } catch (InterruptedException e) {
             throw new RuntimeException();
