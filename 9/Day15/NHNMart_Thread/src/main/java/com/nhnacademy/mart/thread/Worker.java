@@ -30,9 +30,12 @@ public class Worker implements Runnable{
             Request request = channel.takeRequeset();
 
             // 쿠폰 발급해야함
-            request.execute();
+            if(request != null) {
+                // request가 null이 뜨면  예외 처리됨
+                request.execute();
+                log.info("직원:{}이 쿠폰을 발급했습니다.", employee.getName());
+            }
 
-            log.info("직원:{}이 쿠폰을 발급했습니다.", employee.getName());
 
         }
     }

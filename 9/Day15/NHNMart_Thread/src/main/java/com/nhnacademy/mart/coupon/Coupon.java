@@ -7,7 +7,7 @@ public class Coupon {
 
     private final CouponType couponType;
 
-    public Coupon(long id, int amount, CouponType couponType) {
+    private Coupon(long id, int amount, CouponType couponType) {
         this.id =id;
         this.amount = amount;
         this.couponType = couponType;
