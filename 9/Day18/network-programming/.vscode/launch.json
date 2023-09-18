@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Quiz05_ClientSocketData",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Quiz05_ClientSocketData",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
             "name": "Exam02_ClientSocketServerData",
             "request": "launch",
             "mainClass": "com.nhnacademy.Exam02_ClientSocketServerData",

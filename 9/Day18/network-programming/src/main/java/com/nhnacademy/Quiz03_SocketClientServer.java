@@ -19,8 +19,11 @@ public class Quiz03_SocketClientServer {
                 Socket socket = new Socket("localhost", port);
                 System.out.println(port +"가 열려있습니다.");
                 System.out.println("local address" + socket.getLocalAddress());
+                // loccal address : 내 주소
                 System.out.println("local port" +socket.getLocalPort());
+                // local port : 내 포트
                 System.out.println("remote address" + socket.getRemoteSocketAddress());
+                // remote address : 원격 저장소 -> 내꺼 제외한 모든 저장소
                 System.out.println();
                 
                 // 소켓 닫기 필수!
