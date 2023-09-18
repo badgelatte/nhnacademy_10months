@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class Quiz02_tryWithResources {
+public class Quiz01_tryWithResources {
     /* public static void main(String[] args) {
         try {
             Socket socket = new Socket("Port",);
