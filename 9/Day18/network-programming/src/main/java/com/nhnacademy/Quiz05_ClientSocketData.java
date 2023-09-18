@@ -21,7 +21,16 @@ public class Quiz05_ClientSocketData {
                 // 입력한 값 길이 찍기
                 // System.out.println("Read Length" + length);
                 // buffer에서 0부터 length까지만 줘라 => 입력한 값 그대로 찍기
-                System.out.println("Read : " +new String(buffer, 0, length));
+                System.out.println("Read : " + new String(buffer, 0, length));
+
+                String line = new String(buffer, 0, length).trim();
+                // offset -> 공백 없애기
+
+                // exit라 쓰면 종료하기
+                if(line.equals("exit")) {
+                    break;
+                }
+                System.out.println("Read : " + line);
             }
         } catch (IOException e) {
             System.out.println(e);
