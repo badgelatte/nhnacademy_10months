@@ -15,7 +15,7 @@ public abstract class Request {
     }
 
     // abstract로 확장한 메소드는 이렇게 적어야함 -> ...?
-    protected abstract void execute();
+    public abstract void execute();
 
     public String toString() {
         return "requestId= " + requesetId;

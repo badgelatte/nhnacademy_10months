@@ -3,7 +3,7 @@ package com.nhnacademy.mart.customer;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nhnacademy.mart.coupon.Coupon;
+import com.nhnacademy.mart.mart.coupon.Coupon;
 
 public class Customer {
     private final long id;

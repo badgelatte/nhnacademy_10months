@@ -1,6 +1,6 @@
 package com.nhnacademy.mart.thread;
 
-import com.nhnacademy.mart.employee.Employee;
+import com.nhnacademy.mart.mart.employee.Employee;
 
 import lombok.extern.slf4j.Slf4j;
 

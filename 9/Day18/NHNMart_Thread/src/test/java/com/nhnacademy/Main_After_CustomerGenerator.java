@@ -1,8 +1,8 @@
 package com.nhnacademy;
 
-import com.nhnacademy.mart.coupon.Coupon;
 import com.nhnacademy.mart.customer.Customer;
 import com.nhnacademy.mart.customer.CustomerGenerator;
+import com.nhnacademy.mart.mart.coupon.Coupon;
 /**
  * Hello world!
  *

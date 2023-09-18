@@ -1,7 +1,7 @@
 package com.nhnacademy.mart.thread;
 
-import com.nhnacademy.mart.employee.Employee;
-import com.nhnacademy.mart.employee.EmployeeGenerator;
+import com.nhnacademy.mart.mart.employee.Employee;
+import com.nhnacademy.mart.mart.employee.EmployeeGenerator;
 
 
 public class WorkerPool {

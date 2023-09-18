@@ -1,4 +1,4 @@
-package com.nhnacademy.mart.coupon;
+package com.nhnacademy.mart.mart.coupon;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

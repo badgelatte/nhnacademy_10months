@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Quiz07_InputThread",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Quiz07_InputThread",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Quiz07_InputOutput",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Quiz07_InputOutput",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Quiz06_EchoServerInputOutput",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Quiz06_EchoServerInputOutput",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
             "name": "Quiz05_ClientSocketData",
             "request": "launch",
             "mainClass": "com.nhnacademy.Quiz05_ClientSocketData",

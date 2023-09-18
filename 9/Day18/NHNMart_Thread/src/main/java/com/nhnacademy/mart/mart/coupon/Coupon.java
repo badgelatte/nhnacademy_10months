@@ -1,4 +1,4 @@
-package com.nhnacademy.mart.coupon;
+package com.nhnacademy.mart.mart.coupon;
 
 public class Coupon {
     private final long id;

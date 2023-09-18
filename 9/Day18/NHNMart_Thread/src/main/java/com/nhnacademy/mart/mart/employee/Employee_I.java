@@ -1,6 +1,6 @@
-package com.nhnacademy.mart.employee;
+package com.nhnacademy.mart.mart.employee;
 
-import com.nhnacademy.mart.coupon.Coupon;
+import com.nhnacademy.mart.mart.coupon.Coupon;
 
 public class Employee_I implements Runnable{
     private final long id;

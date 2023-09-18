@@ -1,7 +1,9 @@
 package com.nhnacademy.mart.thread;
 
-import com.nhnacademy.mart.coupon.CouponGenerator;
 import com.nhnacademy.mart.customer.Customer;
+import com.nhnacademy.mart.mart.coupon.CouponGenerator;
+import com.nhnacademy.mart.mart.thread.ShoppingChannel;
+import com.nhnacademy.mart.mart.thread.ShoppingRequest;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,14 +11,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CouponRequest extends Request {    // Request 클래스 확장해서 사용하는 거라 Request에 있는 거 무조건 구현해야함
     private final Customer customer;
+    private final ShoppingChannel shoppingChannel;
 
     
-    public CouponRequest(Customer customer) {
+    public CouponRequest(Customer customer, ShoppingChannel shoppingChannel) {
         this.customer = customer;
+        this.shoppingChannel = shoppingChannel;
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         // 쿠폰 발급 로직
 
         if(CouponGenerator.getCouponGenerator().hasNext()) {
@@ -33,6 +37,7 @@ public class CouponRequest extends Request {    // Request 클래스 확장해�
         } catch (InterruptedException e) {
             log.error("sleep", e);
         }
+        shoppingChannel.addRequest(new ShoppingRequest(customer));
         
             // 쿠폰을 발급받기 위해 손님들이 줄을 선다 (1번 요청)
             // 물건을 결제하려고 쿠폰을 줄라고 줄을 선다 (2번 요청)

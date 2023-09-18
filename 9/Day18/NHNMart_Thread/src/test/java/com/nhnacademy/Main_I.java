@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.nhnacademy.mart.coupon.Coupon;
 import com.nhnacademy.mart.customer.Customer;
-import com.nhnacademy.mart.employee.Employee;
+import com.nhnacademy.mart.mart.coupon.Coupon;
+import com.nhnacademy.mart.mart.employee.Employee;
 
 /**
  * Hello world!

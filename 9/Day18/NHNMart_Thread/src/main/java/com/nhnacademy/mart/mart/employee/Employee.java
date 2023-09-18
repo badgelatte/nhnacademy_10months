@@ -1,8 +1,8 @@
-package com.nhnacademy.mart.employee;
+package com.nhnacademy.mart.mart.employee;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import com.nhnacademy.mart.coupon.Coupon;
+import com.nhnacademy.mart.mart.coupon.Coupon;
 
 public class Employee {
     private final long id;
