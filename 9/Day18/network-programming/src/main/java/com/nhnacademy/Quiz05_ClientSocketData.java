@@ -24,7 +24,8 @@ public class Quiz05_ClientSocketData {
                 System.out.println("Read : " + new String(buffer, 0, length));
 
                 String line = new String(buffer, 0, length).trim();
-                // offset -> 공백 없애기
+                // offset -> 시작 위치
+                // trim -> 문자열 공백 제거
 
                 // exit라 쓰면 종료하기
                 if(line.equals("exit")) {
