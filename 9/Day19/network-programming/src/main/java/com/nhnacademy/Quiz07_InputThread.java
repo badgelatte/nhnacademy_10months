@@ -42,7 +42,7 @@ public class Quiz07_InputThread {
 
         try ( BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             // socket 열기    
-            Socket socket = new Socket("ems.nhnacademy.com", 12345);
+            Socket socket = new Socket("localhost", 12345);
             //     
             BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
             BufferedInputStream inputStream = new BufferedInputStream(socket.getInputStream())

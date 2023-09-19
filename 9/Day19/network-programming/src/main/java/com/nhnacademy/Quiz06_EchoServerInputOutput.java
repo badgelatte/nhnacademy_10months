@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 
+// 보내고 받음
 public class Quiz06_EchoServerInputOutput {
     public static void main(String[] args) {
         byte[] buffer = new byte[2048];

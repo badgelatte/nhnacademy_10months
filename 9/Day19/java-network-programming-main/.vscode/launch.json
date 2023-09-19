@@ -1,0 +1,98 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Exam01",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.example.Exam01",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Exam02",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.example.Exam02",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Exam03",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.example.Exam03",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Exam04",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.example.Exam04",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Exam05",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.example.Exam05",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "ClientSocket",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.practice.ClientSocket",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "TryWithResource",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.practice.TryWithResource",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "TryWithResources2",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.practice.TryWithResources2",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Quiz01",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.quiz.Quiz01",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Quiz02",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.quiz.Quiz02",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Quiz03",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.quiz.Quiz03",
+            "projectName": "network-programming"
+        },
+        {
+            "type": "java",
+            "name": "Quiz04",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.quiz.Quiz04",
+            "projectName": "network-programming"
+        }
+    ]
+}
