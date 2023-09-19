@@ -39,7 +39,7 @@ public class Quiz07_InputThread {
 
     public static void main(String[] args) {
         byte[] buffer = new byte[2048];
-
+              // input 역할 - reader
         try ( BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             // socket 열기    
             Socket socket = new Socket("localhost", 12345);
@@ -66,7 +66,7 @@ public class Quiz07_InputThread {
                 // 하나가 무조건 나간다
                 outputStream.flush();
 
-
+                // output(sysout) 역할
                int length = inputStream.read(buffer);
                // 하나 죽고 하나 받고라는 뜻 = 보내면 나간다는 말
                System.out.println(new String(buffer, 0, length));
