@@ -1,5 +1,3 @@
-package com.nhnacademy.dkjf;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,13 +8,21 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 
-// EchoServer 서비스 돌림
-public class EchoServer extends Thread{
+public class EchoServer2 extends Thread {
+    static List<EchoServer2> serverList = new LinkedList<>();
     Socket socket;
+    BufferedWriter writer;
 
     //socket을 주면 동작을 하겠다
-    public EchoServer(Socket socket) {
+    public EchoServer2(Socket socket) {
         this.socket = socket;
+        serverList.add(this);
+    }
+
+    // 받은 메세지 전달하기
+    public void send(String line) throws IOException {
+        writer.write(line + "\n");
+        writer.flush();
     }
 
     @Override
@@ -25,8 +31,10 @@ public class EchoServer extends Thread{
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         ) {
             while(!Thread.currentThread().isInterrupted()) {
-                writer.write(reader.readLine() + "\n");
-                writer.flush();
+                String line = reader.readLine() + "\n";
+                for(EchoServer2 server : serverList) {
+                    server.send(line);
+                }
             }
         } catch (IOException ignore) {
             //
@@ -42,16 +50,15 @@ public class EchoServer extends Thread{
     public static void main(String[] args) {
         // server socket고정
         int port = 1234;
-        List<EchoServer> serverList = new LinkedList<>();
 
         try (
             ServerSocket serverSocket = new ServerSocket(port)
         ) {
-            while(!Thread.currentThread().isInterrupted()){
+            while(Thread.currentThread().isInterrupted()){
                 Socket socket = serverSocket.accept();
 
                 // socket땜에 멈추지 않음
-                EchoServer server = new EchoServer(socket);
+                EchoServer2 server = new EchoServer2(socket);
                 server.start();
 
                 serverList.add(server);
@@ -61,7 +68,7 @@ public class EchoServer extends Thread{
             // TODO: handle exception
         }
 
-        for(EchoServer server : serverList) {
+        for(EchoServer2 server : serverList) {
             server.interrupt(); // server 멈춤
             try{
                 server.join();      // 다 끝날때까지 server가 기다림

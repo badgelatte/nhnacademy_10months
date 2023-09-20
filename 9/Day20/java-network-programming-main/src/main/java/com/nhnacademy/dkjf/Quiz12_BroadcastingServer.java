@@ -10,23 +10,32 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 
-// EchoServer 서비스 돌림
-public class EchoServer extends Thread{
+public class Quiz12_BroadcastingServer extends Thread {
     Socket socket;
-
+    static List<Quiz12_BroadcastingServer> serverList = new LinkedList<>();
+    BufferedWriter writer;
+    
     //socket을 주면 동작을 하겠다
-    public EchoServer(Socket socket) {
+    public Quiz12_BroadcastingServer(Socket socket) {
         this.socket = socket;
     }
-
+    
+    public void write(String line) throws IOException{
+        writer.write(line);
+        writer.flush();
+    }
+    
     @Override
     public void run() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         ) {
             while(!Thread.currentThread().isInterrupted()) {
-                writer.write(reader.readLine() + "\n");
-                writer.flush();
+                String line = reader.readLine() + "\n";
+                for (Quiz12_BroadcastingServer server : Quiz12_BroadcastingServer.serverList) {
+                    server.write(line);
+                    
+                }
             }
         } catch (IOException ignore) {
             //
@@ -42,32 +51,22 @@ public class EchoServer extends Thread{
     public static void main(String[] args) {
         // server socket고정
         int port = 1234;
-        List<EchoServer> serverList = new LinkedList<>();
 
         try (
             ServerSocket serverSocket = new ServerSocket(port)
         ) {
-            while(!Thread.currentThread().isInterrupted()){
+            while(Thread.currentThread().isInterrupted()){
                 Socket socket = serverSocket.accept();
 
                 // socket땜에 멈추지 않음
                 EchoServer server = new EchoServer(socket);
                 server.start();
 
-                serverList.add(server);
             }
             
         } catch (IOException e) {
             // TODO: handle exception
         }
 
-        for(EchoServer server : serverList) {
-            server.interrupt(); // server 멈춤
-            try{
-                server.join();      // 다 끝날때까지 server가 기다림
-            } catch(InterruptedException ignore) {
-                Thread.currentThread().interrupt();
-            }
-        }
     }
 }

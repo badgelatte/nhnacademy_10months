@@ -1,5 +1,3 @@
-package com.nhnacademy.dkjf;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -10,13 +8,14 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 
-// EchoServer 서비스 돌림
-public class EchoServer extends Thread{
+public class EchoServers extends Thread {
+    static List<EchoServers> serverList = new LinkedList<>();
     Socket socket;
 
     //socket을 주면 동작을 하겠다
-    public EchoServer(Socket socket) {
+    public EchoServers(Socket socket) {
         this.socket = socket;
+        serverList.add(this);
     }
 
     @Override
@@ -25,8 +24,11 @@ public class EchoServer extends Thread{
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         ) {
             while(!Thread.currentThread().isInterrupted()) {
-                writer.write(reader.readLine() + "\n");
-                writer.flush();
+
+                for(EchoServers server : serverList) {
+                    writer.write(reader.readLine() + "\n");
+                    writer.flush();
+                }
             }
         } catch (IOException ignore) {
             //
@@ -42,7 +44,6 @@ public class EchoServer extends Thread{
     public static void main(String[] args) {
         // server socket고정
         int port = 1234;
-        List<EchoServer> serverList = new LinkedList<>();
 
         try (
             ServerSocket serverSocket = new ServerSocket(port)
@@ -51,7 +52,7 @@ public class EchoServer extends Thread{
                 Socket socket = serverSocket.accept();
 
                 // socket땜에 멈추지 않음
-                EchoServer server = new EchoServer(socket);
+                EchoServers server = new EchoServers(socket);
                 server.start();
 
                 serverList.add(server);
@@ -61,7 +62,7 @@ public class EchoServer extends Thread{
             // TODO: handle exception
         }
 
-        for(EchoServer server : serverList) {
+        for(EchoServers server : serverList) {
             server.interrupt(); // server 멈춤
             try{
                 server.join();      // 다 끝날때까지 server가 기다림
