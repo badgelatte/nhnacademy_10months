@@ -48,16 +48,18 @@ public class MultiConnectionEchoServer extends Thread{
                     else if(tokens[0].equalsIgnoreCase("who")) {
                         writer.write(getName() + "\n");
                         writer.flush();
-                        // tokens[1].charAt(0) == '@'tokens[1].equals("@*")
+
                     } else if(tokens[0].charAt(0) == '@' && (tokens[0].length() > 1)) {    // @B:Hello! => tokens의 0번째의 1번째 거가 @인가
                         // tokens[0].length() > 1 -> tokens[0]이 @만 있을 때를 거를라고
                         String targetId = tokens[0].substring(1, tokens[0].length());       // substring 0부터 세는데 1번부터 length까지 - ex.Hello -> e부터 o까지이다. (1~4) length = 5
+                        // targetId ; ex.@AB -> AB가 targetId가 된다.
                         if(targetId.equals("@")) {  // 모두에게 보내기
                             for(MultiConnectionEchoServer server: MultiConnectionEchoServer.serverList ){
                                 server.send("#" + getName() + ":" + tokens[1]);                 // tokens[1] = Hello!
                             }
                         }else {
-                            for(MultiConnectionEchoServer server : serverList) {
+                            for(MultiConnectionEchoServer server : MultiConnectionEchoServer.serverList) {
+                                // targetId가 serverList에 있는지 검색
                                 if(server.getName().equals(targetId)) {
                                     server.send("#" + getName() + ":" + tokens[1]);                 // tokens[1]
                                     break;
@@ -110,6 +112,4 @@ public class MultiConnectionEchoServer extends Thread{
         }
     }
 
-    public void write(String line) {
-    }
 }
