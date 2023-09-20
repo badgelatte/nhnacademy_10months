@@ -64,6 +64,7 @@ public class MultiConnectionEchoServer extends Thread{
                                 }
                             }
                         }
+                        // serverList.stream().filter(server -> server.getName().equals(targetId)).forEach(server -> server.send("tokens[1]"));
                     }
 
                 }
