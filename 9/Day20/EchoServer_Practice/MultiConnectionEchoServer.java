@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 // EchoServer 서비스 돌림
 public class MultiConnectionEchoServer extends Thread{
@@ -40,16 +39,18 @@ public class MultiConnectionEchoServer extends Thread{
                 // 아이디 등록 과정
                 System.out.println(getName() + " - " + line);
                 String[] tokens = line.trim().split(":");       // ID, A로 나눔
-                if(tokens.length > 1) {
+                if(tokens.length == 1) {
+                    if(tokens[0].equalsIgnoreCase("who")) {
+                        writer.write(getName() + "\n");
+                        writer.flush();
+                    }
+                }
+                else if(tokens.length > 1) {
                     // equasIgnoreCase - 같은 영어일까 ? 근데 소문자 대문자 상관없이 비교해줌
                     if(tokens[0].equalsIgnoreCase("ID")) {
                         setName(tokens[1]);                     // A를 이름으로 지정
                     }
-                    else if(tokens[0].equalsIgnoreCase("who")) {
-                        writer.write(getName() + "\n");
-                        writer.flush();
-
-                    } else if(tokens[0].charAt(0) == '@' && (tokens[0].length() > 1)) {    // @B:Hello! => tokens의 0번째의 1번째 거가 @인가
+                    else if(tokens[0].charAt(0) == '@' && (tokens[0].length() > 1)) {    // @B:Hello! => tokens의 0번째의 1번째 거가 @인가
                         // tokens[0].length() > 1 -> tokens[0]이 @만 있을 때를 거를라고
                         String targetId = tokens[0].substring(1, tokens[0].length());       // substring 0부터 세는데 1번부터 length까지 - ex.Hello -> e부터 o까지이다. (1~4) length = 5
                         // targetId ; ex.@AB -> AB가 targetId가 된다.
@@ -89,7 +90,7 @@ public class MultiConnectionEchoServer extends Thread{
         try (
             ServerSocket serverSocket = new ServerSocket(port)
         ) {
-            while(Thread.currentThread().isInterrupted()){
+            while(!Thread.currentThread().isInterrupted()){
                 Socket socket = serverSocket.accept();
 
                 // socket땜에 멈추지 않음
