@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.List;
 
 // EchoServer 서비스 돌림
 public class EchoServer extends Thread{
@@ -40,17 +42,32 @@ public class EchoServer extends Thread{
     public static void main(String[] args) {
         // server socket고정
         int port = 1234;
+        List<EchoServer> serverList = new LinkedList<>();
+
         try (
             ServerSocket serverSocket = new ServerSocket(port)
         ) {
             while(Thread.currentThread().isInterrupted()){
                 Socket socket = serverSocket.accept();
+
+                // socket땜에 멈추지 않음
                 EchoServer server = new EchoServer(socket);
                 server.start();
+
+                serverList.add(server);
             }
             
         } catch (IOException e) {
             // TODO: handle exception
+        }
+
+        for(EchoServer server : serverList) {
+            server.interrupt(); // server 멈춤
+            try{
+                server.join();      // 다 끝날때까지 server가 기다림
+            } catch(InterruptedException ignore) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 }
