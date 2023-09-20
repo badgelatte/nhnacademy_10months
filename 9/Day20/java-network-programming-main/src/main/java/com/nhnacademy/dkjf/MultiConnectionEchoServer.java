@@ -49,6 +49,19 @@ public class MultiConnectionEchoServer extends Thread{
                     else if(tokens[0].equalsIgnoreCase("who")) {
                         writer.write(getName() + "\n");
                         writer.flush();
+                    } else if(tokens[0].charAt(0) == '@'&& (tokens[0].length() > 1)) {
+                        String targetId = tokens[0].substring(1, tokens[0].length());
+                        if(targetId.equals("@")) {  // 모두에게 보내기
+                            for(MultiConnectionEchoServer server : MultiConnectionEchoServer.serverList) {  // MultiConnectionEchoServer.serverList : class variale인지 알기 쉽게 표기한것
+                                server.send("#" + getName() + ":" + tokens[1]);
+                            }
+                        }else {
+                            for (MultiConnectionEchoServer server : MultiConnectionEchoServer.serverList) {
+                                if(server.getName().equals(targetId)) {     // server = target
+                                    server.send("#" + getName() + ":" + tokens[1]);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -93,6 +106,4 @@ public class MultiConnectionEchoServer extends Thread{
         }
     }
 
-    public void write(String line) {
-    }
 }
