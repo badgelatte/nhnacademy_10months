@@ -41,7 +41,7 @@ public class Quiz07_InputThread {
         byte[] buffer = new byte[2048];
               // input 역할 - reader
         try ( BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            // socket 열기    
+            // socket 열기    -> 원래 ems.nhnacademy.com 주소로 받는데 내가 해본다고 localhost로 바꿔봤다
             Socket socket = new Socket("localhost", 12345);
             //     
             BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());

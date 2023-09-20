@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class Quiz08_ServerSocketIp {
     public static void main(String[] args) {
-        int port = 1234;
+        int port = 1236;
 
         try(ServerSocket serverSocket = new ServerSocket(port)) {
             // socket을 만드는 과정까지만 다르고 다 똑같다

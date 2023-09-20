@@ -12,7 +12,7 @@ import java.net.Socket;
 // 상대방이 입력한 것을 이쪽으로 보내면 그대로 다시 되돌려준다.
 public class Quiz09_EchoServer {
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(1234);
+        try (ServerSocket serverSocket = new ServerSocket(1235);
             Socket socket = serverSocket.accept();
             // -> 이거(Buffered 줄)만 바뀌면 파일이냐 버퍼냐 다른 거 정할 수 있다.
             BufferedReader socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
