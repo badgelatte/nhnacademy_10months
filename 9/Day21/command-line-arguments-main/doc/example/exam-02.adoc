@@ -13,9 +13,9 @@
 +
 [source,java]
 ----
-include::../../src/main/java/com/nhnacademy/example/Exam02.java[lines=4, indent=0]
+public static void main(String[] args) {
     ...
-include::../../src/main/java/com/nhnacademy/example/Exam02.java[lines=8, indent=0]
+}
 ----
 +
 2. 문자열 배열로 넘어온 args를 하니씩 읽어, type별 parse를 이용해 타입을 확인한다.
@@ -23,7 +23,14 @@ include::../../src/main/java/com/nhnacademy/example/Exam02.java[lines=8, indent=
 --
 [source,java]
 ----
-include::../../src/main/java/com/nhnacademy/example/Exam02.java[lines=5..12, indent=0]
+for (String arg : args) {
+    try {
+        int value = Integer.parseInt(arg);
+        System.out.println("int : " + value);
+    } catch (NumberFormatException ignore) {
+        System.out.println("String : " + arg);
+    }
+}
 ----
 * 출력시 type : value 형식으로 출력한다.
 * 인수 중 정수로 표시 가능할 경우, int type으로 처리한다.

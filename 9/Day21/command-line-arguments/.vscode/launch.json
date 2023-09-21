@@ -1,0 +1,113 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "BooleanOption_OptionBuilder",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.BooleanOption_OptionBuilder",
+            "projectName": "command-line-arguments",
+            "args" : [
+                "-l", "man", "tf"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "BooleanOption_OptionHelp",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.BooleanOption_OptionHelp",
+            "projectName": "command-line-arguments",
+            "args": [
+                "-b",
+                "man",
+                "xtra"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Quiz01_CommandLine",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Quiz01_CommandLine",
+            "projectName": "command-line-arguments",
+            "args": [
+                "-ac",
+                "--path"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "BooleanOption_Option",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.BooleanOption_Option",
+            "projectName": "command-line-arguments",
+            "args": [
+                "--i",
+                "xtra"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "BooleanOption",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.BooleanOption",
+            "projectName": "command-line-arguments",
+            "args": [
+                "v",
+                "--version"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Quiz01",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Quiz01",
+            "projectName": "command-line-arguments",
+            "args": [
+                "arg",
+                "-l",
+                "hello! world"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Exam01",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Exam01",
+            "projectName": "command-line-arguments",
+            "args": [
+                "arg",
+                "-l",
+                "hello! world"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Exam02",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Exam02",
+            "projectName": "command-line-arguments",
+            "args": [
+                "2023",
+                "nhnacademy",
+                "AIOT",
+                "1기"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.Main",
+            "projectName": "command-line-arguments"
+        }
+    ]
+}

@@ -10,16 +10,18 @@
 +
 [source,java]
 ----
-include::../../src/main/java/com/nhnacademy/example/Exam01.java[lines=4, indent=0]
+public static void main(String[] args) {
     ...
-include::../../src/main/java/com/nhnacademy/example/Exam01.java[lines=8, indent=0]
+}
 ----
 +
 2. String array로 넘어온 argument를 하니씩 출력한다.
 +
 [source,java]
 ----
-include::../../src/main/java/com/nhnacademy/example/Exam01.java[lines=5..7, indent=0]
+for (String s : args) {
+    System.out.println(s);
+}
 ----
 +
 
