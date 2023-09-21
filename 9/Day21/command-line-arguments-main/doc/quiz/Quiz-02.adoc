@@ -1,0 +1,25 @@
+== Quiz-02. Argument가 있는 option을 처리하라.
+
+{empty} +
+
+=== 요구 사항
+
+* File을 추가하거나 삭제할 수 있는 프로그램을 만든다.
+* -a option은 파일 이름을 추가로 받아서 추가한다.
+* -r option은 파일 이름을 추가로 받아서 삭제한다.
+* -c option은 추가 인수 없이 모두 삭제한다.
+
+{empty} +
+
+=== 실행 결과
+[source,console]
+----
+~$ java -a file1
+file1이 추가되었습니다.
+~$ java -a file2
+file2이 추가되었습니다.
+~$ java -r file1
+file1이 삭제되었습니다.
+~$ java -c
+모든 파일이 삭제되었습니다.
+----

@@ -1,0 +1,34 @@
+== Quiz-03. ls 명령이 있다. 명령에 대한 옵션 처리를 구성하라.
+
+=== 요구 사항
+
+1. 다음은 ls에 대한 사용 설명이다.
++
+[source,sh]
+----
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuSUX nor --sort.
+
+-a, --all                  do not hide entries starting with .
+-A, --almost-all           do not list implied . and ..
+-b, --escape               print octal escapes for non-graphic characters
+    --block-size=SIZE      use SIZE-byte blocks
+-B, --ignore-backups       do not list implied entries ending with ~
+-c                         with -lt: sort by, and show, ctime (time of last
+                           modification of file status information)
+                           with -l: show ctime and sort by name
+                           otherwise: sort by ctime
+-C                         list entries by columns
+----
+2. ls의 옵션이 처리될 수 있도록 구현하라.
+
+
+=== 실행 결과
+
+[source,sh]
+----
+-c
+-a
+-SIZE : 10
+----

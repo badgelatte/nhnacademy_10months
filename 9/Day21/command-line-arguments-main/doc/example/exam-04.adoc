@@ -1,0 +1,39 @@
+:sourcedir: ../../src/main/java/com/nhnacademy/example
+
+== Exam-04. Exam-03에서 구현한 class에 usage와 help를 추가해 보자.
+
+본 예제에서는 command line parameter 적용시 잘못된 option이나 사용법 확인을 위해 help가 요청되었을 경우 처리할 수 있는 방법에 대해 알려 준다.
+
+{empty} +
+
+=== 과정
+
+아래의 과정을 따라서 usage 또는 help를 지원하도록 구현해 보자.
+
+1. Exam03class를 이용해 Exam04 class를 정의한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam03.java[indent=0]
+----
+2. 지정된 option 이외에는 ParseException이 발생하며, 여기서 HelpFormatter를 이용해 help를 구성한다.
++
+[source,java]
+----
+include::{sourcedir}/Exam04.java[lines=18,indent=0]
+...
+include::{sourcedir}/Exam04.java[lines=34..37,indent=0]
+----
+
+{empty} +
+
+=== 실행 결과
+
+[source,console]
+----
+~$ java Exam04 -?
+usage: Exam04
+ -a             Option a
+ -b             Option b
+ -v,--version   Version
+----

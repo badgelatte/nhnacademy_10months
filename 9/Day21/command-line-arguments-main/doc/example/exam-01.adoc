@@ -1,0 +1,46 @@
+== Exam-01. Command line arguments를 출력해 보자.
+
+본 예제는 command line arguments를 분리하여 한 줄씩 표시한다.
+
+=== 과정
+
+아래의 과정을 따라 command line에서 주어지는 argument들을 분리해서 출력해 보자.
+
+1. Command line argument는 실행시 문자열 배열 행태로 main()에 넘겨진다.
++
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/Exam01.java[lines=4, indent=0]
+    ...
+include::../../src/main/java/com/nhnacademy/example/Exam01.java[lines=8, indent=0]
+----
++
+2. String array로 넘어온 argument를 하니씩 출력한다.
++
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/Exam01.java[lines=5..7, indent=0]
+----
++
+
+{empty} + 
+
+=== 실행 결과
+[source,console]
+----
+~$ java Exam01 NHN Academy Back-End
+NHN
+Academy
+Back-End
+----
+
+* 응용 프로그램은 각 단어(NHN Academy 및 Back-End)를 한 줄에 하나씩 표시한다. 
+* 공백 문자로 명령줄 인수를 구분하기 때문이다. 
+* Hot Drink와 같이 두 단어 이상을 단일 인수로 처리하기 위해서는 따옴표로 묶어 결합해야 한다.
+
+[source,console]
+----
+~$ java Exam01 "NHN Academy Back-End"
+NHN Academy Back-End
+----
+

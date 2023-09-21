@@ -1,0 +1,74 @@
+== Exam-05. JCommander를 이용해 command line arguments를 분석하고 출력해 보자.
+
+=== 과정
+
+1. 다음의 옵션을 처리하도록 구성하라.
++
+[source,console]
+----
+Usage: Exam05 [options]
+  Options:
+    -debug
+      Debug mode
+      Default: false
+    -groups
+      Comma-separated list of group names to be run
+    -help
+      Help
+      Default: false
+    -log, -verbose
+      Level of verbosity
+      Default: 1
+----
++
+2. JCommander와 Annotation을 이용해 Options class를 구성한다.
++
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/exam05/Options.java[]
+----
++
+3. commander를 생성한다.
++
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/exam05/Exam05.java[lines=8..11,indent=0]
+----
++
+4.  구문 분석 결과는 어노테이션을 이용해 정의한 옵션 클래스 자체의 인스턴스에서 라이브러리에 의해 작성된다.
++
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/exam05/Exam05.java[lines=13,indent=0]
+----
++
+5. 결과를 출력한다.
++
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/exam05/Exam05.java[lines=19..21,indent=0]
+----
++
+
+{empty} + 
+
+=== 실행 결과
+
+[source,console]
+----
+~$ java Exam05 -groups unit
+log : 1
+groups : unit
+debug : false
+----
+
+{empty} + 
+
+=== Source Code
+
+==== Class Exam05
+
+[source,java]
+----
+include::../../src/main/java/com/nhnacademy/example/exam05/Exam05.java[]
+----
