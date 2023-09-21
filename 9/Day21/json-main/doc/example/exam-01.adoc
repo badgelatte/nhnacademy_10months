@@ -1,0 +1,63 @@
+== Exam-01. 기본 constructor를 이용해 JSON object를 생성하고, 설정해 보자
+
+{empty} +
+
+JSONObject를 이용해 JSON object를 구성할 수 있다. 기본 요소인 이름/값 쌍을 이용해 구성해 보자.
+
+1. JSONObject class를 이용해 JSON object를 생성한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam01.java[lines=11..11,indent=0]
+----
++
+2. JSONObject class를 이용하기 위해서는 JSONObject 모듈을 가져온다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam01.java[lines=4..5,indent=0]
+----
++
+3. 이름은 "name", 값은 "nhn"으로 설정한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam01.java[lines=12..12,indent=0]
+----
++
+4. 생성된 object를 문자열로 변환하여 출력한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam01.java[lines=14..14,indent=0]
+----
++
+5. JSON object생성에 실패할 경우, JSONException이 발생할 수 있어 try-catch로 처리한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam01.java[lines=3]
+...
+include::../../src/main/java/example/Exam01.java[lines=10]
+...
+include::../../src/main/java/example/Exam01.java[lines=15..17]
+----
++
+
+{empty} +
+
+=== 실행 결과
+
+[source,console]
+----
+{"name":"nhn"}
+----
+
+{empty} +
+
+//=== Source Code
+//
+//[source,java]
+//----
+//include::../../src/main/java/example/Exam01.java[]
+//----

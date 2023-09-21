@@ -1,0 +1,14 @@
+== Quiz-01. Exam-01을 참고하여 아래와 같은 결과가 출력되도록 수정하라.
+
+{empty} + 
+
+1. link:../example/exam-01.adoc[Exam-01]을 참고하라.
+
+2. 실행 결과가 아래와 같이 출력되어야 한다.
++
+[source,json]
+----
+{"address":{"code":13487,"city":"Seongnam"},"name":"nhn"}
+----
++
+

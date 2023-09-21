@@ -1,0 +1,14 @@
+== Quiz-03. Person class를 수정하여 더 많은 정보를 추가하라.
+
+{empty} + 
+
+1. link:../example/exam-03.adoc[Exam-03]을 참고하라.
+
+2. 실행 결과가 아래와 같이 출력되어야 한다.
++
+[source,json]
+----
+{"address":{"code":13487,"city":"Seongnam"},"name":"nhn"}
+----
++
+

@@ -1,0 +1,32 @@
+== Exam-06. JSON object의 value를 찾아 지정된 data type으로 요청해 확인해 보자
+
+아래의 과정을 따라 작성한다.
+
+1. 테스트를 위한 Exam06 class를 생성하고, 실행을 위한 main method를 정의한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam06.java[lines=1..7;24..,indent=0]
+----
++
+2. String type의 value를 추가하고, 결과를 확인한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam06.java[lines=9..12,indent=0]
+----
++
+3. customer object에서 "name"의 value를 String type으로 요청해 출력한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam06.java[lines=14..15,indent=0]
+----
++
+4. customer object에서 "age"의 value를 int type으로 요청해 출력한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam06.java[lines=17..18,indent=0]
+----
++

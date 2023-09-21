@@ -1,0 +1,25 @@
+== Quiz-04. JSON object의 값을 변경하라.
+
+아래의 조건을 만족하도록 작성하라.
+
+1. JSON object를 생성하고, 생성된 결과를 출력해 확인한다.
++
+[source,json]
+----
+{"address":{"code":13487,"city":"Seongnam"},"name":"nhn"}
+----
++
+2. put을 이용해 값을 변경하라
+** name : academy
+** code : 50948
+** city : Gimhae
+3. 출력하여 결과를 확인하라.
++
+[source,json]
+----
+{"address":{"code":50948,"city":"Gimhae"},"name":"academy"}
+----
++
+
+
+

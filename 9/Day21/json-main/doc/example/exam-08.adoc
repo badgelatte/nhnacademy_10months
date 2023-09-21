@@ -1,0 +1,48 @@
+== Exam-08.  JSON으로 국내 주요 도시를 나열하도록 하자.
+
+아래의 도시들을 JSON으로 묶어 나열해 보자.
+
+1. 나열할 도시는 아래와 같다.
+* 서울, 부산, 광중
+2. 테스트를 위한 Exam08 class를 생성하고, 실행을 위한 main method를 정의한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam08.java[lines=1..8;24..,indent=0]
+----
++
+3. 도시 이름이 포함되어 있는 배열을 정의한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam08.java[lines=10,indent=0]
+----
++
+4. JSONArray를 생성하고, 도시 이름을 요소로 추가한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam08.java[lines=11..14,indent=0]
+----
++
+5. JSONObject를 생성하고, 도시가 포함되어 있는 JSONArray object를 추가한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam08.java[lines=16..17,indent=0]
+----
++
+6. 결과를 출력한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam08.java[lines=19,indent=0]
+----
++
+
+=== 출력 결과
+
+[source,json]
+----
+{"도시" : ["서울", "부산", "광주"]}
+----

@@ -1,0 +1,53 @@
+== Exam-03. Java object를 이용해 JSON object를 생성하라.
+
+{empty} +
+
+JSONObject는 Java object를 인수로 받아서 생성 가능하다.
+
+1. name을 field로 갖는 Person class를 정의한다.
++
+[source,java]
+----
+include::../../src/main/java/example/exam03/Person.java[lines=2..]
+----
++
+2. Person object를 생성한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam03.java[lines=11,indent=0]
+----
++
+3. 생성된 person object를 JSONObject의 constructor 인수로 전달한다. 
++
+[source,java]
+----
+include::../../src/main/java/example/Exam03.java[lines=13,indent=0]
+----
++
+4. 생성된 JSON object를 출력하여 결과를 확인한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam03.java[lines=15,indent=0]
+----
++
+
+{empty} +
+
+=== 실행 결과
+
+[source,console]
+----
+{"name":"nhn"}
+----
+
+// {empty} +
+
+// === Source Code
+
+// [source,java]
+// ----
+// include::../../src/main/java/example/Exam03.java[]
+// ----
+

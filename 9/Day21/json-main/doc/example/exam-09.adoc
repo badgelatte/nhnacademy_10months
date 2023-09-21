@@ -1,0 +1,29 @@
+== Exam-09. 터미널 입력을 받아 JSONTokener를 이용해 JSON 형식을 검사하고 출력해 보자.
+
+1. JSONTokener는 각종 입력을 받아 JSON을 구성하는 요소들로 구분해서 반환한다.
+2. 터미널 입력은 InputStream으로 JSONTokener에 연결 가능하며, 아래와 같이 사용할 수 있다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam09.java[lines=10,indent=0]
+----
++
+3. tokener는 입력으로 JSON 형식이 맞는 동안은 계속해서 입력 받고, JSON object가 완성되면 출력한다.
++
+[source,console]
+----
+{"name":"nhn"} <= 입력
+{"name":"nhn"} <= 출력
+{"name":"nhn", <= 입력
+"age": 1234} <= 입력
+{"name":"nhn","age":1234} <= 출력
+----
++
+4. 입력 도중 형식에 맞지 않을 경우, 아래와 같이 exception을 발생시킨다.
++
+[source,console]
+----
+{"""}
+org.json.JSONException: Expected a ':' after a key at 7 [character 4 line 2]
+----
++

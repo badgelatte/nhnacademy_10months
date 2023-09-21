@@ -1,0 +1,28 @@
+== Exam-07. JSON object의 value type을 잘못 지정한 경우 처리방법에 대해 알아 보자
+
+아래의 과정을 따라 작성한다.
+
+1. 테스트를 위한 Exam06 class를 이용해 Exam07 class를 생성한다.
+2. 오류 발생시 발생할 수 있는 exeption 처리를 위해 try-catch를 추가한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam07.java[lines=8..9,indent=0]
+...
+include::../../src/main/java/example/Exam07.java[lines=17..21,indent=0]
+----
++
+3. 코드에서 age가 int type이지만, String type으로 요청해 보자.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam07.java[lines=16..17,indent=0]
+----
++
+4. 발생한 Exception의 메시지를 확인한다.
++
+[source,console]
+----
+org.json.JSONException: JSONObject["age"] is not a string (class java.lang.Integer : 20).
+----
++

@@ -1,0 +1,18 @@
+== Quiz-08. 코드를 완성하여 숫자 1의 인덱스를 찾아서 출력하도록 작성하라.
+
+아래의 코드와 실행 결과를 보고 코드를 완성하라.
+
+=== Source Code
+
+[source,java]
+----
+include::../../src/main/java/quiz/Quiz08.java[lines=1..13]
+...
+include::../../src/main/java/quiz/Quiz08.java[lines=25..]
+----
+
+=== 실행 결과
+[source,console]
+----
+1은 2번째에 위치합니다.
+----

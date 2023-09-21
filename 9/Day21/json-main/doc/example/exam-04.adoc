@@ -1,0 +1,61 @@
+== Exam-04. JSON object의 값을 변경해 보자.
+
+{empty} +
+
+아래의 과정을 따라 JSON object의 값을 변경해 보자.
+
+1. Exam-03에서 정의한 Person class를 이용해 Person object를 생성한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam04.java[lines=11,indent=0]
+----
++
+2. 생성된 person object를 JSONObject의 constructor 인수로 하여 JSON object를 생성한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam04.java[lines=13,indent=0]
+----
++
+3. 생성된 JSON object를 출력하여 결과를 확인한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam04.java[lines=14,indent=0]
+----
++
+4. put을 이용해 JSON object의 name 값을 "academy"로 변경한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam04.java[lines=16,indent=0]
+----
++
+5. JSON object가 변경되었는지 출력하여 결과를 확인한다.
++
+[source,java]
+----
+include::../../src/main/java/example/Exam04.java[lines=17,indent=0]
+----
++
+
+{empty} +
+
+=== 실행 결과
+
+[source,console]
+----
+{"name":"nhn"}
+{"name":"academy"}
+----
+
+// {empty} +
+
+// === Source Code
+
+// [source,java]
+// ----
+// include::../../src/main/java/example/Exam04.java[]
+// ----
+
