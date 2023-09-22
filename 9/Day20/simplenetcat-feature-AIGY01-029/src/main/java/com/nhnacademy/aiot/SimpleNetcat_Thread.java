@@ -10,6 +10,13 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+// 서버에 연결할때
+// cd target/classes 한 후
+// java com.nhnacademy.aiot.SimpleNetcat_Thread snc -l 1234 를 적어서 돌린다.
+
+// localhost 연결시엔
+// 다 동일하되
+// java com.nhnacademy.aiot.SimpleNetcat_Thread snc localhost 1234 를 적어서 돌린다.
 public class SimpleNetcat_Thread {
     static class Sender implements Runnable {
         BufferedReader terminalIn;
