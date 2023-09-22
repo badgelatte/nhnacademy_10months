@@ -15,7 +15,7 @@ public class Quiz11_EchoServerClient {
             socket.getOutputStream().write("Hello!".getBytes());
             socket.getOutputStream().flush();
 
-            // socket.close();
+            socket.close();
         
         }
             
