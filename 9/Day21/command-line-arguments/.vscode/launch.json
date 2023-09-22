@@ -44,8 +44,9 @@
             "mainClass": "com.nhnacademy.BooleanOption_Option",
             "projectName": "command-line-arguments",
             "args": [
-                "--i",
-                "xtra"
+                // "-fvi"
+                "-f",
+                "-v"
             ]
         },
         {

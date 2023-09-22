@@ -28,12 +28,20 @@ public class BooleanOption_Option{
             commandLine = parser.parse(options, args);
             if(commandLine.hasOption("v")) {
                 System.out.println("Version: " + version);
-                System.exit(0);
-            } else if(commandLine.hasOption("f")) {
+                // System.exit(0);
+                // exit에서 0 = 정상 종료, 0이 아닌 것은 비정상 종료
+            } 
+            
+            if(commandLine.hasOption("f")) {
                 booleanFlag = true;
-            } else if(commandLine.hasOption("i")){
+                System.out.println("flag :" + booleanFlag);
+       
+            } 
+            
+            if(commandLine.hasOption("i")){
                 System.out.println("ID: " + commandLine.getOptionValue("i"));
             }
+            
         } catch (Exception e) {
             // System.out.println("옵션이 잘못 입력되었습니다.");
             System.out.println(e.getMessage());
