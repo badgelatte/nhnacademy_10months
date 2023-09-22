@@ -61,10 +61,13 @@ public class EchoServer extends Thread{
             // TODO: handle exception
         }
 
+        // 서버 종료할 때
         for(EchoServer server : serverList) {
             server.interrupt(); // server 멈춤
             try{
                 server.join();      // 다 끝날때까지 server가 기다림
+                // join() -> 스레드가 죽을때까지 기다립니다.
+
             } catch(InterruptedException ignore) {
                 Thread.currentThread().interrupt();
             }
