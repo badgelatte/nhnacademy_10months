@@ -38,7 +38,6 @@ public class MultiConnectionEchoServer extends Thread{
             while(!Thread.currentThread().isInterrupted()) {
                 String line = reader.readLine() + "\n";
 
-                // 아이디 등록 과정
                 System.out.println(getName() + " - " + line);
                 String[] tokens = line.trim().split(":");
                 if(tokens.length == 1) {
@@ -48,7 +47,8 @@ public class MultiConnectionEchoServer extends Thread{
                     }
                 }
                 else if(tokens.length > 1) {
-                    // equasIgnoreCase - 같은 영어일까 ? 근데 소문자 대문자 상관없이 비교해줌
+                    // equasIgnoreCase - 같은 영어일까? 근데 소문자 대문자 상관없이 비교해줌
+                    // 아이디 등록 과정
                     if(tokens[0].equalsIgnoreCase("ID")) {
                         setName(tokens[1]);
                     
@@ -86,7 +86,7 @@ public class MultiConnectionEchoServer extends Thread{
         try (
             ServerSocket serverSocket = new ServerSocket(port)
         ) {
-            while(Thread.currentThread().isInterrupted()){
+            while(!Thread.currentThread().isInterrupted()){
                 Socket socket = serverSocket.accept();
 
                 // socket땜에 멈추지 않음
