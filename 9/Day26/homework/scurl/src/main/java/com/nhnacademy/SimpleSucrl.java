@@ -15,7 +15,7 @@ public class SimpleSucrl {
     String url = "";
     String host = "localhost";
     int port = 80;
-    String version = ";"
+    String version = "HTTP/1.1";
     static String method = "GET";  // 아무것도 안하면 GET 출력
     public SimpleSucrl() {
         options = new Options();        
