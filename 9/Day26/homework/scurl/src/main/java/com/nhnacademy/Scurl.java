@@ -13,9 +13,11 @@ public class Scurl
 {
 
     public static void main( String[] args ){
-        int port = 3000;
+        String hostname = args[0];
+        int port = Integer.parseInt(args[1]);
         String host = "http://httpbin.org/get";
 
+        String b = "GET";
 
         Options options = new Options();
 
