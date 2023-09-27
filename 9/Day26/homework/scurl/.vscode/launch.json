@@ -6,6 +6,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SimpleSucrl_Me",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.SimpleSucrl_Me",
+            "projectName": "scurl",
+            "args" : [
+                "-v",
+                "-X",
+                "GET",
+                "http://httpbin.org/get"
+            ]
+        },
+        {
+            "type": "java",
             "name": "SimpleSucrl",
             "request": "launch",
             "mainClass": "com.nhnacademy.SimpleSucrl",

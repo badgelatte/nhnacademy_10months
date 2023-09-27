@@ -49,39 +49,52 @@ public class SimpleSucrl {
     public CommandLine setOption(String[] args) throws ParseException{
             CommandLineParser parser = new DefaultParser();
             CommandLine commandLine = parser.parse(options, args);
+             
+            
 
+            // option에 ?를 가지고 있다면
             if(commandLine.hasOption("?")){
                     showHelp();
                     System.exit(0);
-                }
+            }
+            // option에 X를 가지고 있다면 
             if(commandLine.hasOption("X")) {
-                    method = commandLine.getOptionValue("X");
-        
-                    if(!(method.equalsIgnoreCase("GET")) || !(method.equalsIgnoreCase("POST")) || !(method.equalsIgnoreCase(""))){
-                        throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
-                    }
-        
+                method = commandLine.getOptionValue("X");
+    
+                if(!(method.equalsIgnoreCase("GET")) || !(method.equalsIgnoreCase("POST")) || !(method.equalsIgnoreCase(""))){
+                    throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
                 }
+            }
+            
+            if(commandLine.hasOption()) {
+
+            }
+
+            // 입력한 것이 아무것도 없다면
             if(commandLine.getArgs().length == 0) {
                 throw new InvalidURLException();
             }
+
+
+            //--------------------------------------------------------------------------------------------
+            // 입력한 것 중 공백 기준으로 첫번째 문자열 = url로 넣는다.
             url = commandLine.getArgs()[0];
         
             // //로 자르고 그다음은 /로 자르고 그다음 :로 자른다
             url.split("://")[1].split("/");
             String [] splitURL = url.split("://");
             if(splitURL.length != 2) {
-        
+                
             }
         
-            //
-            String [] field = splitURL.split("/");
+            // ://로 나눈 후 뒷부분을 /로 나눠준다.
+            String [] field = splitURL[1].split("/");
             if(field[0].contains(":")) {
-                //있으면 나누고 
+                //있으면 나눠서 앞부분은 host에 넣고 뒷부분은 port에 넣는다
                 host = field[0].split(":")[0];
                 port = Integer.parseInt(field[0].split(":")[1]);
             }
-            field[0].split(":");
+            field[0].split(":");    //...?
 
         return parser.parse(options, args);
     }
@@ -95,18 +108,15 @@ public class SimpleSucrl {
         SimpleSucrl scurl = new SimpleSucrl();
         
         try {
-            // 
             
             scurl.setOption();
             scurl.run();
 
-
-        } catch (ParseException e) {
-            scurl.showHelp();
         } catch (InvalidMethodException e) {
             scurl.showHelp();
         } catch (InvalidURLException e) {
             scurl.showHelp();
+            System.err.println("<scheme>://<host>:<port>[<path>][?<query>]");
         }
     }
 }
