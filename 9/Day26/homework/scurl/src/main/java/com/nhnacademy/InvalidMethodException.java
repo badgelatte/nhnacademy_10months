@@ -6,6 +6,7 @@ public class InvalidMethodException extends RuntimeException{
     }
 
     public InvalidMethodException(String message) {
-        message = new String();
+        // message = new String();
+        System.out.println(message);
     }
 }

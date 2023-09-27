@@ -5,9 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Method;
 import java.net.Socket;
-import java.net.SocketException;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -18,6 +16,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 public class SimpleSucrl_Me {
+    StringBuilder builder = new StringBuilder();
     Options options;
     String url = "";
     String host = "localhost";
@@ -29,6 +28,8 @@ public class SimpleSucrl_Me {
     String html;
     String username = "";
     String password = "";
+
+    String header;
 
     boolean start = false;
 
@@ -62,9 +63,12 @@ public class SimpleSucrl_Me {
     //만약 서버만 적어서 보내면
     public void run() {
         // stringbuilder - 문자열을 다 합쳐줌
-        StringBuilder builder = new StringBuilder();
+        // StringBuilder builder = new StringBuilder();
         // format - 문자열 형식을 설정하는 메서드 -> %s %s %s 문자열 그대로 출력
         builder.append(String.format("%s /%s %s \n", method, path, version));
+        if(header != null) {
+            builder.append(String.format("%s \n", header));
+        }
         builder.append(String.format("Host: %s:%s\n", host, port));
         builder.append("\r\n");
 
@@ -74,22 +78,24 @@ public class SimpleSucrl_Me {
         
         try (
             Socket socket= new Socket(host, port);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())); 
         ) {
 
             // 전송한 builder 보여주기
             writer.write(builder.toString());
-            System.out.println(builder.toString());
             writer.flush();
 
             // 요청한 답변 출력하기
+            if(start) {
+                System.out.println("> " + builder.toString());
+            }
             while ((line = reader.readLine())!= null) {
                 if(line.length() == 0) {
                     start = true;
                 }
                 if(start) {
-                    System.out.println(line);
+                    System.out.println("< " + line);
                 }
                 
             }
@@ -121,20 +127,18 @@ public class SimpleSucrl_Me {
                     throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
                 }
                 String[] args = commandLine.getArgs();
-                // System.out.println(args[1]);
                 url = args[0];
             }
             
             // verbose, 요청, 응답 헤더 출력
             if(commandLine.hasOption("v")) {
-                try {
-                    start = true;
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }
+                start = true;
+
             }
 
-            if(commandLine.hasOption("d")) {
+            if(commandLine.hasOption("H")) {
+                header = commandLine.getOptionValue("H");
+
             }
 
             // 입력한 것이 아무것도 없다면
@@ -204,7 +208,7 @@ public class SimpleSucrl_Me {
                 
         } catch (ParseException e) {
             scurl.showHelp();
-        }catch (InvalidMethodException e) {
+        } catch (InvalidMethodException e) {
             scurl.showHelp();
         } catch (InvalidURLException e) {
             scurl.showHelp();

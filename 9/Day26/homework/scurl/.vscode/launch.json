@@ -10,12 +10,7 @@
             "request": "launch",
             "mainClass": "com.nhnacademy.SimpleSucrl_Me",
             "projectName": "scurl",
-            "args" : [
-                "-v",
-                "-X",
-                "GET",
-                "http://httpbin.org/get"
-            ]
+            "args": ["-v", "-H", "X-Customer-Header: NA", "http://httpbin.org/get"]
         },
         {
             "type": "java",
@@ -23,9 +18,7 @@
             "request": "launch",
             "mainClass": "com.nhnacademy.SimpleSucrl",
             "projectName": "scurl",
-            "args": [
-                "-a"
-            ]
+            "args": ["-a"]
         },
         {
             "type": "java",
@@ -39,9 +32,7 @@
             "request": "launch",
             "mainClass": "com.nhnacademy.Scurl",
             "projectName": "scurl",
-            "args": [
-                "-v"
-            ]
+            "args": ["-v"]
         }
     ]
 }
