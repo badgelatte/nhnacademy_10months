@@ -30,8 +30,11 @@ public class SimpleSucrl_Me {
     String password = "";
 
     String header;
+    String data;
 
     boolean start = false;
+    boolean mpost = false;
+
 
 
     // String message = ""; // 이거 맞냐?
@@ -70,7 +73,12 @@ public class SimpleSucrl_Me {
             builder.append(String.format("%s \n", header));
         }
         builder.append(String.format("Host: %s:%s\n", host, port));
-        builder.append("\r\n");
+        builder.append("\n");
+        
+        if(data != null) {
+            builder.append(String.format("%s \n", data));
+            builder.append("\n");
+        }
 
         // nc test-vm.com 3000
         // GET /welcome.html HTTP/1.1
@@ -99,7 +107,6 @@ public class SimpleSucrl_Me {
                 }
                 
             }
-            // send();
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -123,11 +130,20 @@ public class SimpleSucrl_Me {
             if(commandLine.hasOption("X")) {
                 method = commandLine.getOptionValue("X");
     
+                if(method.equals("POST")) {
+                    mpost = true;
+                }
                 if(!((method.equalsIgnoreCase("GET")) || (method.equalsIgnoreCase("POST")) || (method.equalsIgnoreCase("PUT")))){
-                    throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
+                    // throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
                 }
                 String[] args = commandLine.getArgs();
                 url = args[0];
+            }
+            
+            if(commandLine.hasOption("d")) {
+                if(mpost) {
+                    data = commandLine.getOptionValue("d");
+                }
             }
             
             // verbose, 요청, 응답 헤더 출력

@@ -10,7 +10,16 @@
             "request": "launch",
             "mainClass": "com.nhnacademy.SimpleSucrl_Me",
             "projectName": "scurl",
-            "args": ["-v", "-H", "X-Customer-Header: NA", "http://httpbin.org/get"]
+            "args": [
+                "-v",
+                "-X",
+                "POST",
+                "-d",
+                "{\"hello\":\"world\"}",
+                "-H",
+                "Content-Length: 17",
+                "http://httpbin.org/post"
+            ]
         },
         {
             "type": "java",
