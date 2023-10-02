@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "InputThread",
+            "request": "launch",
+            "mainClass": "nc.InputThread",
+            "projectName": "practice"
+        },
+        {
+            "type": "java",
+            "name": "Quiz01",
+            "request": "launch",
+            "mainClass": "nc.Quiz01",
+            "projectName": "practice"
+        },
+        {
+            "type": "java",
+            "name": "Quiz04",
+            "request": "launch",
+            "mainClass": "nc.Quiz04",
+            "projectName": "practice"
+        },
+        {
+            "type": "java",
+            "name": "Quiz04_Me",
+            "request": "launch",
+            "mainClass": "nc.Quiz04_Me",
+            "projectName": "practice"
+        },
+        {
+            "type": "java",
+            "name": "Snc",
+            "request": "launch",
+            "mainClass": "nc.Snc",
+            "projectName": "practice"
+        },
+        {
+            "type": "java",
+            "name": "Snc1",
+            "request": "launch",
+            "mainClass": "nc.Snc1",
+            "projectName": "practice"
+        },
+        {
+            "type": "java",
+            "name": "socketInOut",
+            "request": "launch",
+            "mainClass": "nc.socketInOut",
+            "projectName": "practice"
+        }
+    ]
+}
