@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -35,14 +37,14 @@ public class SimpleCurl {
     boolean start = false;
     boolean mpost = false;
 
-
-
     // String message = ""; // 이거 맞냐?
 
     BufferedWriter writer;
     String line;
 
     String method = "GET";  // 아무것도 안하면 GET 출력
+
+    List<String> dataList = new ArrayList<>();
 
     public SimpleCurl() {
         options = new Options();        
@@ -71,13 +73,16 @@ public class SimpleCurl {
         builder.append(String.format("%s /%s %s \n", method, path, version));
         if(header != null) {
             builder.append(String.format("%s \n", header));
+            if(data!= null) {
+                builder.append(String.format("Content-Length: %s\n", data.length()));
+            }
         }
         builder.append(String.format("Host: %s:%s\n", host, port));
-        builder.append("\n");
+        builder.append("\r\n");
         
         if(data != null) {
             builder.append(String.format("%s \n", data));
-            builder.append("\n");
+            builder.append("\r\n");
         }
 
         // nc test-vm.com 3000
@@ -168,7 +173,6 @@ public class SimpleCurl {
     }
 
     public void argsOrganize(String url) {
-        
         // <scheme>://<username>:<password>@<host>:<port>/<path>?<query>#<fragment>
         // https://nhnent.dooray.com/project/to?userWorkflowClass=registered,working
         // //로 자르고 그다음은 /로 자르고 그다음 :로 자른다
