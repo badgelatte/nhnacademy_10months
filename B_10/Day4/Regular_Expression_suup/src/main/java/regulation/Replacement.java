@@ -3,9 +3,9 @@ package regulation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Main {
+public class Replacement {
     public static void main(String[] args) {
-        System.out.println(runTest("hi", "hihi"));
+        // System.out.println(runTest("hi", "hihi"));
         System.out.println(runTest("(hi)+", "hihi"));
     }
 
