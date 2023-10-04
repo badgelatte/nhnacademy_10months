@@ -6,6 +6,23 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SimpleCurls",
+            "request": "launch",
+            "mainClass": "com.nhnacademy.aiot.SimpleCurls",
+            "projectName": "simplecurl",
+            "args": [
+                "-v",
+                "-X",
+                "POST",
+                "-d",
+                "{\"hello\": \"world\"}",
+                "-H",
+                "Content-Type: application/json",
+                "http://httpbin.org/post?msg=hi"
+            ]
+        },
+        {
+            "type": "java",
             "name": "Scurl",
             "request": "launch",
             "mainClass": "com.nhnacademy.aiot.makeonemore.Scurl",
@@ -41,7 +58,6 @@
                 "Content-Type: application/json",
                 "http://httpbin.org/post"
             ]
-            // "args": ["-v", "-H", "X-Custom-Header: NA", "http://httpbin.org/get"]
         }
     ]
 }

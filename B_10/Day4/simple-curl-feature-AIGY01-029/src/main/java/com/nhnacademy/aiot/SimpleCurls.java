@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -17,7 +19,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-public class SimpleCurl {
+public class SimpleCurls {
     StringBuilder builder = new StringBuilder();
     Options options;
     String url = "";
@@ -37,16 +39,17 @@ public class SimpleCurl {
     boolean start = false;
     boolean mpost = false;
 
-    // String message = ""; // 이거 맞냐?
-
     BufferedWriter writer;
     String line;
 
     String method = "GET";  // 아무것도 안하면 GET 출력
 
+    Pattern pattern;
+    Matcher matcher;
+
     List<String> dataList = new ArrayList<>();
 
-    public SimpleCurl() {
+    public SimpleCurls() {
         options = new Options();        
         
         options.addOption("v",  false, "verbose, 요청, 응답 헤더를 출력한다.");
@@ -124,52 +127,49 @@ public class SimpleCurl {
     }
 
     public void setOption(CommandLine commandLine) throws ParseException{
+        // option에 ?를 가지고 있다면
+        if(commandLine.hasOption("?")){
+                showHelp();
+                System.exit(0);
+        }
 
-            // option에 ?를 가지고 있다면
-            if(commandLine.hasOption("?")){
-                    showHelp();
-                    System.exit(0);
-            }
-            // option에 X를 가지고 있다면 
-            if(commandLine.hasOption("X")) {
-                method = commandLine.getOptionValue("X");
-    
-                if(method.equals("POST")) {
-                    mpost = true;
-                }
-                if(!((method.equalsIgnoreCase("GET")) || (method.equalsIgnoreCase("POST")) || (method.equalsIgnoreCase("PUT")))){
-                    // throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
-                }
-                String[] args = commandLine.getArgs();
-                url = args[0];
-            }
-            
-            if(commandLine.hasOption("d")) {
-                if(mpost) {
-                    data = commandLine.getOptionValue("d");
-                    dataList.add(data);
-                }
-            }
-            
-            // verbose, 요청, 응답 헤더 출력
-            if(commandLine.hasOption("v")) {
-                start = true;
+        // option에 X를 가지고 있다면 
+        if(commandLine.hasOption("X")) {
+            method = commandLine.getOptionValue("X");
 
+            if(method.equals("POST")) {
+                mpost = true;
             }
-
-            if(commandLine.hasOption("H")) {
-                header = commandLine.getOptionValue("H");
-
+            if(!((method.equalsIgnoreCase("GET")) || (method.equalsIgnoreCase("POST")) || (method.equalsIgnoreCase("PUT")))){
+                // throw new InvalidMethodException("Method 지정 잘못되었습니다.[GET, PUT, POST] :" + method);
             }
-
-            // 입력한 것이 아무것도 없다면
-            if(commandLine.getArgs().length == 0) {
-                throw new InvalidURLException();
-            }
-
             String[] args = commandLine.getArgs();
             url = args[0];
+        }
+        
+        if(commandLine.hasOption("d")) {
+            if(mpost) {
+                data = commandLine.getOptionValue("d");
+                dataList.add(data);
+            }
+        }
+        
+        // verbose, 요청, 응답 헤더 출력
+        if(commandLine.hasOption("v")) {
+            start = true;
+        }
 
+        if(commandLine.hasOption("H")) {
+            header = commandLine.getOptionValue("H");
+        }
+
+        // 입력한 것이 아무것도 없다면
+        if(commandLine.getArgs().length == 0) {
+            throw new InvalidURLException();
+        }
+
+        String[] args = commandLine.getArgs();
+        url = args[0];
     }
 
     public void argsOrganize(String url) {
@@ -207,8 +207,13 @@ public class SimpleCurl {
             host = field[0];
             path = field[1];
         }
-        if(field[1].contains("?")) {
-            String[] splitField = field[1].split("?");
+
+        String a = "\\?";
+        pattern = Pattern.compile(a);
+        matcher = pattern.matcher(field[1]);
+        if(matcher.find()) {
+            matcher.replaceAll("!");
+            String[] splitField = field[1].split(a);
             path = splitField[0];
             query = splitField[1];
         }
@@ -216,7 +221,7 @@ public class SimpleCurl {
 
 
     public static void main(String[] args){
-        SimpleCurl scurl = new SimpleCurl();
+        SimpleCurls scurl = new SimpleCurls();
         // 공용 클래스 DefaultParser는 Object를 확장하여 CommandLineParser를 구현합니다
         CommandLineParser parser = new DefaultParser();
         try {
