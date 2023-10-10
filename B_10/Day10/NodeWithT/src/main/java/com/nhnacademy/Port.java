@@ -1,9 +1,13 @@
 package com.nhnacademy;
 
+import java.util.Queue;
+
 public abstract class Port {
     static int count;
     String id;
     String name;
+    
+    Queue<Message> queue;
 
     protected Port() {
         this(String.valueOf(System.currentTimeMillis()) + (++count));

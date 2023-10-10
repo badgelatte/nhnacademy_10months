@@ -15,7 +15,7 @@ public class TestMessage extends Message {
         TestMessage message = new TestMessage();
 
         assertNotNull(message.getId());
-        assertNotNull(message.getId().length() > 0);
+        assertTrue(message.getId().length() > 0);
 
         List<TestMessage> messageList = new LinkedList<>();
         for (int i = 0; i < 10; i++) {
