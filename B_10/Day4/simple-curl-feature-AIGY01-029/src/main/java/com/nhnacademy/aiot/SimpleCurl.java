@@ -162,6 +162,17 @@ public class SimpleCurl {
 
             }
 
+            // 서버 응답이 30X 계열이면 다음 응답을 따라간다
+            if(commandLine.hasOption("L")) {
+                int count = 0;
+                while(count < 5){
+                    /* if() {
+                        
+                    } */
+                    count++;
+                }
+            }
+
             // 입력한 것이 아무것도 없다면
             if(commandLine.getArgs().length == 0) {
                 throw new InvalidURLException();
@@ -189,9 +200,10 @@ public class SimpleCurl {
         // spiltURL[1] = httpbin.org/get
         // 0 - httpbin.org / 1 - get
         String [] field = splitURL[1].split("/");
+        field[1] = field[1] + "/" +field[2];
         
         if(field[0].contains("@")) {
-            // 0 - <username>:<password> / 1 - <host>:<port>
+            // 0 - <username>:<password> @ 1 - <host>:<port>
             String [] login = field[0].split("@");
             username = login[0].split(":")[0];
             password = login[0].split(":")[1];
@@ -203,10 +215,13 @@ public class SimpleCurl {
             //있으면 나누고 
             host = field[0].split(":")[0];
             port = Integer.parseInt(field[0].split(":")[1]);
-        } else {
+        } 
+        
+        else {
             host = field[0];
             path = field[1];
         }
+
         if(field[1].contains("?")) {
             String[] splitField = field[1].split("?");
             path = splitField[0];

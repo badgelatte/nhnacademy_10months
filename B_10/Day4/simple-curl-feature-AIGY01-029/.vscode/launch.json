@@ -49,14 +49,17 @@
             "mainClass": "com.nhnacademy.aiot.SimpleCurl",
             "projectName": "simplecurl",
             "args": [
+                // "-v",
+                // "-X",
+                // "POST",
+                // "-d",
+                // "{\"hello\": \"world\"}",
+                // "-H",
+                // "Content-Type: application/json",
+                // "http://httpbin.org/post"
                 "-v",
-                "-X",
-                "POST",
-                "-d",
-                "{\"hello\": \"world\"}",
-                "-H",
-                "Content-Type: application/json",
-                "http://httpbin.org/post"
+                "-L",
+                "http://httpbin.org/status/302"
             ]
         }
     ]
