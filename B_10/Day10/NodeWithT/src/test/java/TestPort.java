@@ -8,8 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import com.nhnacademy.Port;
+import com.nhnacademy.Port_prior;
 
-public class TestPort extends Port{
+public class TestPort extends Port_prior{
     public TestPort() {
         super();
     }
