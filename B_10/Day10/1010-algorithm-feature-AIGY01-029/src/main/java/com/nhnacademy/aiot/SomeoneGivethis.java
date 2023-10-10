@@ -15,7 +15,7 @@ public class SomeoneGivethis {
 
     public void printOne(Runnable runnable) throws InterruptedException {
         for(int i = 0; i < count; i++) {
-            s2.acquire();   // s2의 permit 카드(or 키)를 들고 감
+            s2.acquire();   // s2의 (일회용) permit 카드(or 키)를 들고 감
             System.out.print(1);
             s1.release();   // s1에 permit 카드(or 키)를 줌
         }
@@ -27,7 +27,7 @@ public class SomeoneGivethis {
             // printOne이 s1.release할 때까지 대기
             s1.acquire();
             System.out.print(2);
-
+            // s2.release로 permit이 1개로 늘어남
             s2.release();
         }
     }
