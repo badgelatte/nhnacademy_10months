@@ -7,7 +7,7 @@ public abstract class InputOutputNode extends ActiveNode {
     protected InputOutputNode(int inputCount, int outputCount) {
         ports = new Port[inputCount];
         for (int i = 0; i < ports.length; i++) {
-            ports[i] = new Port();
+            ports[i] = new Port();  // ...? 인스턴스화할 수 없다?
         }
         peerPorts = new Port[outputCount];
     }
