@@ -32,6 +32,10 @@ public class Port {
         queue.add(message);
     }
 
+    public boolean hasMessage() {
+        return !queue.isEmpty();
+    }
+
     public Message peek() {
         return queue.peek();
         // peek - 보고 참조하고(사용하고) 지우진 않음

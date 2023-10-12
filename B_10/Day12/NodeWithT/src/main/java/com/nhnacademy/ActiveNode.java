@@ -62,15 +62,23 @@ public abstract class ActiveNode extends Node implements Runnable{
         preprocess();
 
         // 외부에서 접근할 수 있다
+        long startTime = System.currentTimeMillis();
+        long previousTime = startTime;
+
         while (isAlive()) {
-        // while (!stop()) {
-            try {
-            main();
-                Thread.sleep(interval);
-            } catch (InterruptedException e) {
-                // Thread.currentThread().interrupt();
-                stop();
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - previousTime;
+
+            if (elapsedTime < interval) {
+                try {
+                    main();
+                    Thread.sleep(interval - elapsedTime);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
             }
+
+            previousTime = startTime + (System.currentTimeMillis() - startTime) / interval * interval;
         }
 
         postprocess();

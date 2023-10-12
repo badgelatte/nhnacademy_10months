@@ -5,15 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import com.nhnacademy.InputOutputNode;
 
-public class TestInputOutputNode extends InputOutputNode{
+public class TestInputOutputNode{
 
-    public TestInputOutputNode(int inputCount, int outputCount) {
-        super(inputCount, outputCount);
-    }
+
 
     @Test
     void constructorTest(){
-        TestInputOutputNode node = new TestInputOutputNode(3, 3);
+        InputOutputNode node = new InputOutputNode(3,3){
+            
+        };
 
         assertTrue(node.getInputPortCount() >= 0);
     }
