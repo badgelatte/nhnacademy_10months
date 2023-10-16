@@ -1,0 +1,56 @@
+== Computation
+
+Computation은 잘 정의된 모든 유형의 산술(arithmetic) 또는 비 산술(non-arithmetic) 계산(calculation)입니다. 일반적인 예로는 수학 방정식(mathematical equations)과 컴퓨터 알고리즘(computer algorithm)이 있습니다.
+
+계산을 수행하는 기계 또는 전자 장치 (또는, 사람)을 컴퓨터라고 합니다. 계산에 대한 연구는 계산(computability)의 분야이며, 컴퓨터 과학(Computer Science)의 하위 분야입니다.
+
+== Introduction
+
+수학적 진술(Mathmatical Statement)는 '잘 정의(well-defined)' 되어야 한다는 개념은 1600년대 부터 수학자들의 논란이었지만 적절한 정의가 이루어지지 않았습니다. 이에 대한 정의는 1930년대에 여러 수학자들에 의해 제안되었으며, 가장 적당하다고 알려진 정의는 수학자 앨런 튜링(Alan Turing)에 의해 제안되었고, 공식화 되었습니다. 튜링은 잘 정의된(well-define) 문(Statement)이나 계산(Calculation)을 튜링 머신(Turing machine)의 초기화 파라미터 측면에서 표현될 수 있는 모든 문(Statement)로 정의했습니다. 다른 정의에는 알론조 처치(Alonzo Church)의 람다 정의 가능성(Lambda-definability), 에르브랑-괴델-클레이니(Herbrand-Godel-Kleene)의 일반 재귀성(general recursiveness), 에밀 포스트의 1-정의 가능성(1-definability) 등이 있습니다.
+
+지금은, 이런 잘 정의된 특성을 나타내는 공식적인 진술(Statement)이나 계산(calculation)은 **계산 가능(computable)**이라고 하며 진술이나 계산 자체를 Computation이라고 합니다.
+
+튜링의 "잘 정의된"의 정의는 아주 대수적 진술(algebraic statement)과 현대 컴퓨터 프로그래밍 언어로 작성된 모든 진술(statement)을 포함하며, 큰 종류의 수학적 진술(mathmatical statement)에 배분되었습니다.
+
+이 정의가 널리 활용되고 있지만, 이 정의에 따라 잘 정의된 특성이 없는 일부 수학적 개념도 있습니다. "the halting problem"이나 "the busy beaver game"등이 여기에 해당합니다. 계산 가능한 진술(computable statement)과 계산 불가능한 진술(non-computable statement)에 대한 보다 강력한 정의가 있는지 여부는 아직 논의중입니다.
+
+계산 가능한 수학적 진술의 몇 가지 예는 다음과 같습니다:
+
+* C++, Python 및 Java를 포함한 최신 프로그래밍 언어로 만들어진 특성화된 모든 문(statement)
+* 전자 컴퓨터, 계산기, 주판으로 수행되는 모든 계산
+* 찰스 바비지의 해석 기관(Analytical engine)으로 수행되는 모든 계산
+* 튜링 머신으로 수행되는 모든 계산
+* 수학 교과서에 나오는 대부분의 수학적 진술과 계산
+
+계산 불가능한 수학적 진술의 몇 가지 예는 다음과 같습니다:
+
+* 잘못 정의되어, 튜링 머신으로 명확하게 인코딩 될 수 없는 계산 또는 진술 ("Paul은 Joe보다 나를 두 배 사랑한다")
+* 잘 정의된 것 처럼 보이지만 문제를 해결할 수 있는 튜링 기계가 존재하지 않는다는 것을 증명할 수 있는 문제 진술("The halding problem" 등)
+
+=== Computation의 물리적 과정
+
+Computation은 컴퓨터라고 불리는 폐쇄된 물리적 시스템 내부에서 일어나는 순수한 물리적인 프로세스라고 볼 수 있습니다. 튜링의 1937년 증명, <On Computable Numbers, with an Application to the Enthschidungsproblem>에서, 계산 가능한 진술과 일반적으로 '컴퓨터'라고 불리는 특정 물리 시스템은 형식적으로 동등함을 증명했습니다. 이런 물리적 시스템에는 튜링 머신, 엄격한 규칙을 따르는 수학자, 디지털 컴퓨터, 기계 컴퓨터, 아날로그 컴퓨터 등이 있습니다.
+
+== Computation의 대체 설명
+
+=== Mapping account
+
+Computation에 대한 다른 설명은 힐러리 풀먼과 동료 연구자들의 작업에 있습니다.. 피터 고프리-스미스는 이것을 "간단한 매핑 계정(simple mapping account)"라고 불렀습니다. 구알티에로 피치니니의 설명에서, 물리적 시스템의 진술(Statement)과 계산(Calculation) 사이에 매핑이 있을 때 "[시스템의] 미시적 상태가 Computational 상태간의 상태 전환을 반영하면" 물리적 시스템이 특정 computation을 수행할 수 있다고 말합니다.
+
+=== Sementic account
+
+제리 포더와 같은 철학자들은 의미론적(sementic) 내용이 Computation의 필수 조건이라는 제한을 두고 다양한 computation account를 제안했습니다. (이는 물리적 시스템과 컴퓨팅 시스템의 차이는 계산의 피 연산자가 무언가를 나타낸다는 것입니다). 이 개념은 범계산주의(pancomputationalism)의 매핑 설명, 즉, 모든 것을 계산한다고 말할 수 있는 논리적 추상화를 방지하려고 합니다.
+
+=== Mechanistic account
+
+구알티에로 파치니니는 기계 철학을 바탕으로 계산에 대한 설명을 제안합니다. 물리적 컴퓨팅 시스템은설계산 물리적 계산을 수행하거나 규칙에 따라 "medium-independent"으로 조직하는 메커니즘 유형으로 명시되어 있습니다. "Medium-independence"는 속성이 여러 실현자와 여러 매커니즘에 의히 인스턴스화 될 수 있고 메커니즘의 입력과 출력도 다중으로 실현 가능해야 함을 요구합니다. 간단히 말하면, medium-independence는 전압(일반적인 디지털 컴퓨터와 같이) 이외의 속성을 가진 물리적 변수의 사용을 허용합니다. 이는 뇌나 양자 컴퓨터에서 발생하는 것과 같은 다른 유형의 계산을 고려할 때 필수적입니다. 이런 의미에서 규칙은 물리적 컴퓨팅 시스템의 입력, 출력 및 내부 상태간의 매핑을 제공합니다.
+
+== 수학적 모델
+
+Computation 이론에서는 다양한 수학적 computation 모델이 개발되었습니다. 컴퓨터의 일반적인 수학적 모델은 다음과 같습니다.
+
+* 튜링 머신, Pushdown automaton, finite state automaton, PRAM을 포함하는 상태 모델
+* Lambda calculus를 포함하는 Functional model
+* Logical Programming을 포함하는 논리 모델
+* Actor model과 process calculation을 포함하는 동시성 모델
+
