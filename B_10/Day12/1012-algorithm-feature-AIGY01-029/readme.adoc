@@ -1,0 +1,59 @@
+= Print Zero Even Odd
+
+== 설명
+* Thread-A는 0(zero)만 출력합니다.
+* Thread-B는 짝수(even)만 출력합니다.
+* Thread-C는 홀수(odd) 만 출력합니다.
+
+[java]
+----
+
+public class ZeroEvenOdd {
+
+    private int n;
+    public ZeroEvenOdd(int n) {
+
+    }
+
+    public void zero(IntConsumer printNumber) throws InterruptedException {
+
+    }
+
+    public void even(IntConsumer printNumber) throws InterruptedException {
+
+    }
+
+    public void odd(IntConsumer printNumber) throws InterruptedException {
+
+    }
+
+}
+
+----
+
+== 문제
+
+* Thread-A,Thread-B, Thread-C는 비동기적으로 실행되고 있습니다. Thread-A는 zero() 호출하고 ,  Thread-B는 even()을 호출하고, Thread-C는 odd()를 호출합니다.
+
+* 제약조건 : 1 <= n <= 100
+
+* Test Code가 통과해야 합니다.
+
+
+===  n = 1
+* 출력 : 01
+
+=== n = 2
+* 출력 : 0102
+
+=== n = 3
+* 출력 : 010203
+
+=== n = 4
+* 출력 : 01020304
+
+=== n = 5
+* 출력 : 0102030405
+
+== 공부거리
+* StringBuilder와 StringBuffer의 차의점은?
