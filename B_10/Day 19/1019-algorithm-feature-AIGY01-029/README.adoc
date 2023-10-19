@@ -1,0 +1,51 @@
+= 배열을 이용한 Stack 구현
+
+* 배열을 이용하여 Stack을 구현합니다.
+
+== MyStack.java
+
+[,java]
+----
+public class MyStack implements Iterable {
+    private int top;
+    private final int[] arr;
+
+    private final int capacity;
+
+    public MyStack(int capacity) {
+        top = -1;
+        this.capacity = capacity;
+        arr = new int[capacity];
+    }
+
+    public void push(int data) {
+        // TODO 1.stack에 data를 넣습니다.
+    }
+
+    public int pop() {
+        // TODO 2.데이터를 반환하고 반환된 데이터는 stack에서 제거됩니다.
+        return 0;
+    }
+
+    @Override
+    public Iterator iterator() {
+        // TODO 3.Iterator를 구현합니다.
+        return null;
+    }
+}
+----
+
+== Test
+
+- 테스트 코드가 통과하도록 구현합니다.
+
+---
+include::src/test/java/com/nhnacademy/aiot/general/MyStackTest.java[]
+
+== 공부거리
+
+* **Iterator**
+- https://www.baeldung.com/java-iterator
+
+* **Stack**
+- https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Stack.html
