@@ -1,0 +1,95 @@
+= General
+
+= Stack Using ArrayList
+
+== IStack
+
+[source,java]
+----
+public interface IStack<E> {
+    //Stack의 아래에서부터 데이터를 저장
+    void push(E item);
+    //Stack 맨 위의 값을 삭제
+    E pop();
+    //stack의 맨 위의 값을 가져옴
+    E peek();
+    //Stack에서 해당 객체가 몇 번째에 있는지 반환합니다.
+    int search(Object o);
+    //Stack이 비어있는지 확인합니다. 비어있으면 true를 반환
+    boolean empty();
+}
+----
+
+== MyStack.java
+
+[source,java]
+----
+
+public class MyStack<E> implements IStack<E> , Iterable<E> {
+    //todo IStack, Iterable interface를 구현합니다.
+}
+----
+
+== Test Code가 동작하도록 MyStack을 구현합니다.
+
+[source,java]
+----
+include::src/test/java/com/nhnacademy/MyStackTest.java[]
+----
+
+= Basic
+---
+
+= Array Contains a Given Value
+
+== ArrayUtils.java
+
+[source,java]
+----
+public final class ArrayUtils {
+
+    public static boolean contains(Object[] objects, Object find){
+        //todo objects array에서 find가 존재하면 true 존재하지 않다면 false를 반환합니다.
+        return false;
+    }
+
+}
+----
+
+== User.java
+
+[source,java]
+----
+public class User {
+
+    private final String userId;
+    private final String userName;
+
+    public User(String userId, String userName){
+        this.userId = userId;
+        this.userName = userName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    //todo user 객체의 비교가 될 수 있도록 구현합니다.
+}
+----
+
+== Test Code
+
+* Test Code가 통과하도록 구현합니다.
+
+[source,java]
+----
+include::src/test/java/com/nhnacademy/ArrayUtilsTest.java[]
+----
+
+== 공부거리
+* https://www.baeldung.com/java-equals-hashcode-contracts[Java equals() and hashCode()]
