@@ -83,7 +83,7 @@ class MyStackTest {
     stack.push("google");
     stack.push("daum");
 
-    Assertions.assertEquals(stack.search("nhnacademy"),0);
+    Assertions.assertEquals(stack.search("daum"),2);
 
   }
 

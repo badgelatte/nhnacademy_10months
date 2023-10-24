@@ -8,7 +8,7 @@ public interface IStack<E> {
   //stack의 맨 위의 값을 가져옴
   E peek();
   //Stack에서 해당 객체가 몇 번째에 있는지 반환합니다.
-  int search(Object o);
+  int search(E o);
   //Stack이 비어있는지 확인합니다. 비어있으면 true를 반환
   boolean empty();
 }
