@@ -1,0 +1,36 @@
+= Array Equals
+
+== ArrayUtils.java
+
+[source, java]
+----
+public final class ArrayUtils {
+
+    public static boolean equals(Object[] objects1 , Object[] objects2 ){
+        //todo 두 배열을 배열을 비교해여 일치하면 true , 일치하지 않다면 false를 반환 합니다.
+
+        return true;
+    }
+
+}
+----
+
+== User.java
+
+[source,java]
+----
+public class User {
+
+    private final String userId;
+    private final String userName;
+
+}
+----
+
+== Test Code
+* Test Code가 통과하도록 구현합니다.
+
+[source,java]
+----
+include::src/test/java/com/nhnacademy/ArrayUtilsTest.java[]
+----
