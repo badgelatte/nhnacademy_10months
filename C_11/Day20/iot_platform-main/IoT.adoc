@@ -1,0 +1,22 @@
+* IoT
+** link:https://aws.amazon.com/ko/what-is/iot/[사물 인터넷(IoT)이란 무엇입니까? - aws]
+** link:https://www.oracle.com/kr/internet-of-things/what-is-iot/[IoT란 무엇인가? - Oracle]
+* IoT Platform
+** link:https://www.kaaiot.com/blog/what-is-iot-platform[What is an IoT Platform?]
+** link:./IoT_Platform.adoc[IoT Platform]
+
+* 활용
+** link:https://www.nongsaro.go.kr/portal/ps/psz/psza/contentMain.ps?menuId=PS65467[Smart Farm]
+** link:https://www.infineon.com/cms/kr/discoveries/smart-buildings/[Smart Building]
+** link:https://www.smart-hub.co.kr/System/Smartfactory?gclid=CjwKCAiAgeeqBhBAEiwAoDDhn8FnzbQLD7YnPF3FDuGx27aukmK8Jrh9Bhf6oE8CBJjKmOveHgkALBoC4BMQAvD_BwE[Smart Factory]
+** link:http://www.k-smartfactory.org/dokuwiki/doku.php[K-SmartFactory]
+
+* 공개 소프트웨어를 이용한 IoT 플랫폼 구축하기
+** link:./Building_an_IoT_Platform_Using_Open_Source_Software.adoc[Building an IoT Platform Using Open Source Software]
+** link:./Mainflux.adoc[Mainflux]
+** link:./Thingsboard.adoc[Thingsboard]
+** link:./tig.adoc[TIG]
+* 운영 환경 구성하기
+** link:https://docs.docker.com/engine/install/ubuntu/[Install Docker Engine on Ubuntu]
+** link:https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04[How to install and use docker compose on Ubuntu 22.04]
+
