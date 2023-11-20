@@ -1,0 +1,16 @@
+var/lib/influxdb/
+var/lib/mosquitto/
+var/lib/node-red/
+setup/generic/tig/etc/telegraf/telegraf.d/etc.inputs.mqtt.outputs.influxdb.conf
+setup/generic/tig/etc/telegraf/telegraf.d/system.conf
+var/lib/mosquitto/
+var/lib/grafana/
+*.backup
+*.orig
+node_modules
+*.log
+.prettierrc.js
+.Trash*/
+.vscode/
+*.code-workspace
+.DS_Store
