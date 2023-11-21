@@ -1,9 +1,0 @@
-#!/bin/bash
-
-source config.sh
-
-while true
-do
-        rand -50 50
-        sleep $delay
-done | pub --id 온도 --topic $topic --stdin-line --keepalive $timeout $*

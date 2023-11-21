@@ -1,2 +1,0 @@
-#!/usr/bin/env sh
-exec mosquitto mosquitto_passwd $*

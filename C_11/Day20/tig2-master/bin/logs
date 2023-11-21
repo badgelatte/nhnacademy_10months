@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-
-args=$*
-if [ $# -eq 0 ] ; then
-  args=
-fi
-
-exec tig logs --follow --tail=10 $args

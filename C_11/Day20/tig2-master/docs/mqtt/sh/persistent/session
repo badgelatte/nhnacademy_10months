@@ -1,8 +1,0 @@
-
-#!/bin/bash
-
-source config.sh
-
-clean_session \
-  -E
-  --topic $topic

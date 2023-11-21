@@ -1,5 +1,0 @@
-#!/bin/bash
-
-source config.sh 
-
-set --id 온도계 --topic $status --message "좋아"

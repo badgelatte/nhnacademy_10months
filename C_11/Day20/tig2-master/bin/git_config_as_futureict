@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-git config "$@" user.name "Future ICT"
-git config "$@" user.email "futureict@futureict.co.kr"

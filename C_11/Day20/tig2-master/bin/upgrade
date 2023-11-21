@@ -1,2 +1,0 @@
-#!/usr/bin/env sh
-exec tig up -d --no-deps --build $*
