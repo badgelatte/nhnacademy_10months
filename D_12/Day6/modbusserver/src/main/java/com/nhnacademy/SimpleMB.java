@@ -26,7 +26,7 @@ public class SimpleMB {
     }
 
     // response 만드는 용
-    public static byte[] makeReadHoldingRegistersRequest(int address, int[] registers){
+    public static byte[] makeReadHoldingRegistersResponse(int address, int[] registers){
         byte [] frame = new byte[1+ 1+ registers.length*2];    // Get 같은 경우 정해져 잇다
 
         frame[0] = 0x03;
@@ -38,6 +38,36 @@ public class SimpleMB {
             frame[2 + i * 2] = (byte) ((registers[i] >> 8) & 0xFF);
             frame[2 + i * 2 + 1] = (byte) (registers[i] & 0xFF);
         }
+
+        return frame;
+    }
+
+    public static byte[] makeReadInputRegistersResponse(int address, int[] registers) {
+        byte [] frame = new byte[1+ 1+ registers.length*2];
+        System.out.println(registers.length);
+        frame[0] = 0x04;    // Function code
+
+        frame[1] = (byte)(registers.length*2);  // Byte count = 2 * N(갯수)
+
+        // Input Registers = n * 2 bytes -> data를 2byte로 바꿔서 넣어줘야한다
+        for (int i = 0; i < registers.length; i++) {
+            frame[2+i*2] = (byte) ((registers[i] >> 8) & 0xFF); 
+            //?? 여기 왜 0으로 만들어줘야하는거야? 만약 수가 frame 앞도 써야하는거면 어뜩할라고? ex. 304넣으면 어뜩할라고?
+            
+            
+            
+            frame[2+i*2+1] = (byte) (registers[i] & 0xFF);
+        }
+
+        return frame;
+    }
+
+    public static byte[] makeWriteSingleRegister(int address, int[] registers) {
+        byte [] frame = new byte[1 + 2 + 2];
+
+        frame[0] = 0x06;    // Function code
+
+        // frame[1] = aaddress
 
         return frame;
     }

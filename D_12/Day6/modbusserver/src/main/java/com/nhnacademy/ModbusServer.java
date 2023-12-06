@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
 
-public class ModbusServer{
+public class ModbusServer extends Thread{
     public static void main(String[] args) {
         int[] holdingRegisters = new int[100];
 
@@ -18,6 +18,7 @@ public class ModbusServer{
 
         byte unitId = 1;
         try (ServerSocket serverSocket = new ServerSocket(11502)) {   // 서버 11502port로 열기
+            // while(!Thread.currentThread().isInterrupted())
             try(Socket socket = serverSocket.accept()){               // 연결하려는 서버 허락하기
                 BufferedInputStream inputStream = new BufferedInputStream(socket.getInputStream());
                 BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
@@ -51,20 +52,45 @@ public class ModbusServer{
                                         int quantity = (inputBuffer[10] << 8) | inputBuffer[11];
                                         System.out.println("quantity : " + quantity);
 
-
+                                        // address + quantity = PDU의 Data
                                         if (address + quantity < holdingRegisters.length) {
                                             System.out.println("Address : " + address +", Quantity: " + quantity);
 
                                             outputStream.write(SimpleMB.addMBAP(transactionId, unitId, 
-                                                    SimpleMB.makeReadHoldingRegistersRequest(address, 
+                                                    SimpleMB.makeReadHoldingRegistersResponse(address, 
                                                     Arrays.copyOfRange(holdingRegisters, 0, quantity))));
                                                 outputStream.flush();
                                         }
                                         break;
                                     
                                     case 4:
-                                        
-                                    
+                                        address = (inputBuffer[8] << 8) | inputBuffer[9];       // address = 2bytes이기 때문에 이렇게 만든다
+                                        // 범위가 0x007D라고 inputBuffer[10]에 있는 걸 버리는 게 맞을까?
+                                        quantity = 0 << 8 | inputBuffer[11];    // 125(=0x007D)까지 입력가능
+
+                                        if (address + quantity < holdingRegisters.length) {
+                                            System.out.println("Address : " + address +", Quantity: " + quantity);
+
+                                            outputStream.write(SimpleMB.addMBAP(transactionId, unitId, 
+                                                    SimpleMB.makeReadInputRegistersResponse(address, 
+                                                    Arrays.copyOfRange(holdingRegisters, 0, quantity))));
+                                                outputStream.flush();
+                                        }
+                                        break;
+
+                                    case 6:
+                                        address = (inputBuffer[8] << 8) | inputBuffer[9];       // address = 2bytes이기 때문에 이렇게 만든다
+                                        quantity = (inputBuffer[10] << 8) | inputBuffer[11];    // 125(=0x007D)까지 입력가능
+                                        // address+ quantity = PDU의 data로 holdingRegister가 들어가는 곳이다
+                                        if (address + quantity < holdingRegisters.length) {
+                                            System.out.println("Address : " + address +", Quantity: " + quantity);
+
+                                            outputStream.write(SimpleMB.addMBAP(transactionId, unitId, 
+                                                    SimpleMB.makeWriteSingleRegister(address, 
+                                                    Arrays.copyOfRange(holdingRegisters, 0, quantity))));
+                                                outputStream.flush();
+                                        }
+                                        break;
                                     default:
                                 }
                             } else{
