@@ -53,23 +53,49 @@ public class SimpleMB {
         for (int i = 0; i < registers.length; i++) {
             frame[2+i*2] = (byte) ((registers[i] >> 8) & 0xFF); 
             //?? 여기 왜 0으로 만들어줘야하는거야? 만약 수가 frame 앞도 써야하는거면 어뜩할라고? ex. 304넣으면 어뜩할라고?
-            
-            
-            
+            // 1 0011 0000 >> 8 -> 0000 0001이 되서 frame[3],frame[4] 봤을때 비로소 원래 넣고 싶어하던 수가 된다
+
             frame[2+i*2+1] = (byte) (registers[i] & 0xFF);
         }
 
         return frame;
     }
 
-    public static byte[] makeWriteSingleRegister(int address, int[] registers) {
+    public static byte[] makeWriteSingleRegisterResponse(int address, int register) {
         byte [] frame = new byte[1 + 2 + 2];
+        ByteBuffer b = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);
 
         frame[0] = 0x06;    // Function code
 
-        // frame[1] = aaddress
+        b.putInt(address);
+        frame[1] = b.get(2);     // aaddress
+        frame[2] = b.get(3);
+
+        b.clear();
+        b.putInt(register);
+        frame[3] = b.get(2);
+        frame[4] = b.get(3);
 
         return frame;
+    }
+
+    public static byte[] makeWriteMutiRegistersResponse(int address, int quantity) {
+        byte [] frame = new byte[1 + 2 + 2 ];
+        ByteBuffer b = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);
+
+        frame[0] = 0x10;
+
+        b.putInt(address);
+        frame[1] = b.get(2);
+        frame[2] = b.get(3);
+
+        b.clear();
+        b.putInt(quantity);
+        frame[3] = b.get(2);
+        frame[4] = b.get(3);
+
+        return frame;
+
     }
 
     public static byte[] addMBAP(int transactionId, int unitId, byte[] pdu) {

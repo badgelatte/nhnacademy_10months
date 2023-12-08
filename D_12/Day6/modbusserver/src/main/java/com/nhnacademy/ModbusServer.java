@@ -11,6 +11,7 @@ public class ModbusServer extends Thread{
     public static void main(String[] args) {
         int[] holdingRegisters = new int[100];
 
+        // injection
         // 0,1,2,3,4,5,6,7,8,9 값을 modbus에 보낸다
         for (int i = 0; i < holdingRegisters.length; i++) {
             holdingRegisters[i] = i;
@@ -25,6 +26,7 @@ public class ModbusServer extends Thread{
                 while(socket.isConnected()){        // socket이 연결되어 있다면
                     byte[] inputBuffer = new byte[1024];
                 
+                    // socket을 통해 request를 받는다
                     int receivedLength = inputStream.read(inputBuffer,0,inputBuffer.length);    
                     // inputStream을 0~inputBuffer 크기까지 읽어서 inputBuffer에 넣는다
                     // read의 return 값은 버퍼로 읽은 total bytes 수
@@ -53,20 +55,21 @@ public class ModbusServer extends Thread{
                                         System.out.println("quantity : " + quantity);
 
                                         // address + quantity = PDU의 Data
+                                        // address + quantity: 시작 주소부터 갯수만큼 주겠다
                                         if (address + quantity < holdingRegisters.length) {
                                             System.out.println("Address : " + address +", Quantity: " + quantity);
 
                                             outputStream.write(SimpleMB.addMBAP(transactionId, unitId, 
                                                     SimpleMB.makeReadHoldingRegistersResponse(address, 
                                                     Arrays.copyOfRange(holdingRegisters, 0, quantity))));
-                                                outputStream.flush();
+                                            outputStream.flush();
                                         }
                                         break;
                                     
                                     case 4:
                                         address = (inputBuffer[8] << 8) | inputBuffer[9];       // address = 2bytes이기 때문에 이렇게 만든다
                                         // 범위가 0x007D라고 inputBuffer[10]에 있는 걸 버리는 게 맞을까?
-                                        quantity = 0 << 8 | inputBuffer[11];    // 125(=0x007D)까지 입력가능
+                                        quantity =(inputBuffer[10] << 8) | inputBuffer[11];    // 125(=0x007D)까지 입력가능
 
                                         if (address + quantity < holdingRegisters.length) {
                                             System.out.println("Address : " + address +", Quantity: " + quantity);
@@ -74,7 +77,7 @@ public class ModbusServer extends Thread{
                                             outputStream.write(SimpleMB.addMBAP(transactionId, unitId, 
                                                     SimpleMB.makeReadInputRegistersResponse(address, 
                                                     Arrays.copyOfRange(holdingRegisters, 0, quantity))));
-                                                outputStream.flush();
+                                            outputStream.flush();
                                         }
                                         break;
 
@@ -86,11 +89,25 @@ public class ModbusServer extends Thread{
                                             System.out.println("Address : " + address +", Quantity: " + quantity);
 
                                             outputStream.write(SimpleMB.addMBAP(transactionId, unitId, 
-                                                    SimpleMB.makeWriteSingleRegister(address, 
-                                                    Arrays.copyOfRange(holdingRegisters, 0, quantity))));
-                                                outputStream.flush();
+                                                    SimpleMB.makeWriteSingleRegisterResponse(address, quantity)));
+                                            outputStream.flush();
                                         }
                                         break;
+
+                                    case 16:
+                                        address = (inputBuffer[8] << 8) | inputBuffer[9];
+                                        quantity = (inputBuffer[10] << 8) | inputBuffer[11];
+                                        int byteCount = inputBuffer[12];
+                                        
+                                        // Registers Value
+                                        byte[] value = Arrays.copyOfRange(inputBuffer, 13, inputBuffer.length-1);  
+
+                                        if(address + quantity < holdingRegisters.length) {
+                                            System.out.println("AdressL " + address + ", Quantity: " + quantity);
+
+                                            outputStream.write(SimpleMB.addMBAP(transactionId, unitId, SimpleMB.makeWriteMutiRegistersResponse(address, quantity)));
+                                            outputStream.flush();
+                                        }
                                     default:
                                 }
                             } else{
