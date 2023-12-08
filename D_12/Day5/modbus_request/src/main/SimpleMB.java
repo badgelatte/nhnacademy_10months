@@ -5,7 +5,7 @@ import java.nio.ByteOrder;
 
 public class SimpleMB {
     public static byte[] makeReadHoldingRegistersRequest(int address, int quantity){
-        byte [] frame = new byte[5];    // Get 같은 경우 정해져 잇다
+        byte [] frame = new byte[5];    // Get 같은 거처럼 protocol이 정해져 잇다
 
         ByteBuffer b = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);  // big endian을 위해 만듦 -> 젤 큰게 마지막에 있다
         b.putInt(address);
