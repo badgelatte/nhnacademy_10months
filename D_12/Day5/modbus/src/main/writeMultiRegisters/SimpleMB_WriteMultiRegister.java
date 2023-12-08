@@ -10,7 +10,7 @@ public class SimpleMB_WriteMultiRegister {
 
         // allocate(?) = 메모리 ?개를 던져줌, 메모리는 주로 1byte를 준다
         ByteBuffer b = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);  // big endian을 위해 만듦 -> 젤 큰게 마지막에 있다
-        b.putInt(address);  // address = 1~6535까지만 들어간다 = 2 byte로 이루어져있다
+        b.putInt(address);  // address = 1~65535까지만 들어간다 = 2 byte로 이루어져있다
         
         // PDU의 FunctionCode
         frame[0] = 0x10;                // FunctionCode
