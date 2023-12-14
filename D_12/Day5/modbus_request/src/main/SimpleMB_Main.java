@@ -15,6 +15,7 @@ public class SimpleMB_Main  {
             BufferedInputStream inputStream = new BufferedInputStream(socket.getInputStream())) {// 172.18.0.4
                 // byte[] request = {0,1,0,0,0,6,1,3,0,0,0,5}; // fuction , address, counter
                 int unitId = 1;
+                
                 int transactionId = 0;
 
                 for (int i = 0; i < 10; i++) {
