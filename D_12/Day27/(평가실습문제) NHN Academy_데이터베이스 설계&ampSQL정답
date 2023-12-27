@@ -1,0 +1,127 @@
+-- 이거 왜 안되는건데??????
+-- ﻿CREATE TABLE Person_Relation (
+-- 	`Relation_ID`	int	primary key,
+-- 	`Relation_Name`	varchar(4)	NOT NULL
+-- );
+CREATE TABLE `Person_Relation` (
+    `Relation_ID` INT primary key,
+    `Relation_Name` VARCHAR(4) NOT NULL
+);
+
+CREATE TABLE `Address` (
+	`Address_ID`	int	primary key,
+	`ZipCode`	int	NOT NULL,
+	`Providon`	varchar(7)	NOT NULL,
+	`City`	varchar(5)	NOT NULL,
+	`Addr1`	longtext	NOT NULL,
+	`Addr2`	longtext	NULL
+);
+
+CREATE TABLE `AddressBook` (
+	`AddressBook_ID`	int	primary key,
+	`Move_In_Date`	VARCHAR(255)	NULL,
+	Address_ID int not null,
+    foreign key (Address_ID) references Address(Address_ID)
+);
+
+CREATE TABLE `Person` (
+	`Person_ID`	int	primary key,
+	`Regident_Num`	varchar(300)	NOT NULL,
+	`Name`	varchar(16)	NOT NULL,
+	`Gender`	tinyint	NOT NULL,
+	`State`	tinyint	NOT NULL,
+    `AddressBook_ID` int not null,
+    foreign key (`AddressBook_ID`) REFERENCES `AddressBook` (`AddressBook_ID`)
+);
+
+CREATE TABLE `Family_Relation` (
+	`Person_ID`	int	primary key,
+	`Family_ID`	int	NOT NULL,
+	`Relation_ID`	int	NOT NULL,
+    foreign key (Person_ID) references Person(Person_ID),
+    foreign key (Relation_ID) references Person_Relation(Relation_ID)
+);
+
+CREATE TABLE `ReporterType` (
+	`ReporterType_ID`	int primary key,
+	`Reporter_Type`	varchar(20)	NOT NULL
+);
+
+CREATE TABLE `Reporter` (
+	`Reporter_ID`int auto_increment primary key,
+	`Phone_Num`	int	NOT NULL,
+	`Email`	varchar(50)	NULL,
+    Person_ID int not null,
+    ReporterType_ID int not null,
+    foreign key (Person_ID) references Person(Person_ID),
+    foreign key (ReporterType_ID) references ReporterType(ReporterType_ID)
+);
+
+CREATE TABLE `Born` (
+	`Born_ID`	int primary key,
+	`Birth_Date`	Datetime	NOT NULL,
+	`Report_Date`	Date	NOT NULL,
+	`Address`	VARCHAR(255) NOT NULL,
+	Person_ID	int not	NULL,
+    BornLocation_ID	int not	NULL,
+    foreign key (Person_ID) references Person(Person_ID),
+    foreign key (BornLocation_ID) references BornLocation_Type(BornLocation_ID)
+);
+
+CREATE TABLE `Birth_Qualification` (
+	`Relation_ID`	int	primary key,
+	`Relation_Name`	varchar(15)	NOT NULL,
+	`ReporterType_ID`	int	NOT NULL,
+    foreign key (ReporterType_ID) references ReporterType(ReporterType_ID)
+);
+
+CREATE TABLE `Death_Qualification` (
+	`Relation_ID`	int	primary key,
+	`Relation_Name`	varchar(15)	NOT NULL,
+	`ReporterType_ID`	int	NOT NULL,
+    foreign key (ReporterType_ID) references ReporterType(ReporterType_ID)
+);
+
+CREATE TABLE `Certificate` (
+	`Certificate_Num`	int	primary key,
+	`Report_Day`	Date	NOT NULL,
+	`ReporterName`	varchar(50)	NOT NULL,
+    Certification_ID	int	NOT NULL,
+    foreign key (Certification_ID) references Certification_Type(Certification_ID)
+);
+
+CREATE TABLE `Dead` (
+	`Dead_ID`	int	primary key,
+	`Dead_Date`	Datetime	NOT NULL,
+	`Report_Date`	Date	NOT NULL,
+	`Address`	longtext	NOT NULL,
+    Person_ID	int	NOT NULL,
+    DeadLocation_ID	int	NOT NULL,
+    foreign key (Person_ID) references Person(Person_ID),
+    foreign key (DeadLocation_ID) references DeadLocationType(DeadLocation_ID)
+);
+
+CREATE TABLE `BornLocation_Type` (
+	`BornLocation_ID` int primary key,
+	`BornLocation_Name`	varchar(50) not null
+);
+
+CREATE TABLE `DeadLocationType` (
+	`DeadLocation_ID`	int	primary key,
+	`DeadLocation_Name`	varchar(50)	NOT NULL
+);
+
+CREATE TABLE `Certification_Type` (
+	`Certification_ID`	int	primary key,
+	`Certification_Type`	varchar(20)	NOT NULL
+);
+
+CREATE TABLE `Householder` (
+	`HouseHolder_ID`	int	primary key,
+	`HouseHolder_Name`	varchar(50)	NOT NULL,
+	`Reason`	varchar(255)	NOT NULL,
+    `Person_ID` int not null,
+    foreign key (`Person_ID`) references `Person`(`Person_ID`)
+);
+
+
