@@ -5,8 +5,9 @@
 -- );
 CREATE TABLE `Person_Relation` (
     `Relation_ID` INT primary key,
-    `Relation_Name` VARCHAR(4) NOT NULL
+    `Relation_Name` VARCHAR(10) NOT NULL
 );
+-- alter table Person_Relation modify Relation_Name varchar(10);
 
 CREATE TABLE `Address` (
 	`Address_ID`	int	primary key,
@@ -121,7 +122,55 @@ CREATE TABLE `Householder` (
 	`HouseHolder_Name`	varchar(50)	NOT NULL,
 	`Reason`	varchar(255)	NOT NULL,
     `Person_ID` int not null,
-    foreign key (`Person_ID`) references `Person`(`Person_ID`)
+    `Relation_ID` int not null,
+    foreign key (`Person_ID`) references `Person`(`Person_ID`),
+    foreign key (`Relation_ID`) references `Person_Relation`(`Relation_ID`)
 );
 
+insert into ReporterType values (1, '출생');
+insert into ReporterType values (2, '사망');
 
+insert into Person_Relation values (1, '본인');
+insert into Person_Relation values (2, '부');
+insert into Person_Relation values (3, '모');
+insert into Person_Relation values (4, '배우자');
+insert into Person_Relation values (5, '자녀');
+insert into Person_Relation values (6, '동거인');
+-- delete from Person_Relation where Relation_ID >= 1;
+
+SELECT * FROM project3_person.Person_Relation;
+
+insert into Certification_Type values (1,'가족관계증명서');
+insert into Certification_Type values (2,'주민등록등본');
+
+insert into BornLocation_Type values(1,'자택');
+insert into BornLocation_Type values(2,'병원');
+insert into BornLocation_Type values(3,'기타');
+
+insert into DeadLocationType values(1, '주택');
+insert into DeadLocationType values(2, '의료기관');
+insert into DeadLocationType values(3, '사회복지시설(양로원, 고아원 등)');
+insert into DeadLocationType values(4, '산업장');
+insert into DeadLocationType values(5, '공공시설(학교, 운동장 등)');
+insert into DeadLocationType values(6, '도로');
+insert into DeadLocationType values(7, '상업/서비스시설(상점, 호텔 등)');
+insert into DeadLocationType values(8, '농장(논밭, 축사, 양식장 등)');
+insert into DeadLocationType values(9, '병원 이송 중 사망');
+insert into DeadLocationType values(10, '기타');
+
+insert into Birth_Qualification values (1,'부',1);
+insert into Birth_Qualification values (2,'모',1);
+insert into Birth_Qualification values (3,'호주',1);
+insert into Birth_Qualification values (4,'동거친족',1);
+insert into Birth_Qualification values (5,'기타',1);
+
+insert into Death_Qualification values(1,'부',2);
+insert into Death_Qualification values(2,'모',2);
+insert into Death_Qualification values(3,'동거자',2);
+insert into Death_Qualification values(4,'기타',2);
+
+select * from Birth_Qualification as b, Death_Qualification as d;
+select re.ReporterType_ID, re.Reporter_Type, b.Relation_ID, b.Relation_Name from Birth_Qualification as b natural join ReporterType as re;
+select re.ReporterType_ID, re.Reporter_Type, d.Relation_ID, d.Relation_Name from Death_Qualification as d natural join ReporterType as re;
+select * from Death_Qualification;
+select * from ReporterType;
