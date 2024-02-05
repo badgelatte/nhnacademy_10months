@@ -1,0 +1,31 @@
+= 실습01 - ViewControllerRegistry
+
+== 아래 예제에서
+
+----
+git checkout board4
+----
+
+* 다음 URL에 대한 처리를 ViewController를 이용하도록 수정해보자
+** `/user/register` 에 해당하는 내용을
+*** ViewController를 이용해 `/user2/register` URL 경로에서
+**** 동일한 jsp를 이용하도록 수정
+** `/post/register` 에 해당하는 내용을
+*** ViewController를 이용해 `/post2/register` URL 경로에서
+**** 동일한 jsp를 이용하도록 수정
+
+== WebConfig.java
+
+[source,java]
+----
+@Override
+public void addViewControllers(ViewControllerRegistry registry) {
+    registry.addViewController("/user2/register").setViewName("userRegister");
+    registry.addRedirectViewController("/post2/register","/post/register");
+}
+----
+
+== Test
+
+* http://localhost:8080/user2/register
+* http://localhost:8080/post2/register

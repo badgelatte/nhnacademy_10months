@@ -1,0 +1,9 @@
+= 실습-2
+
+=== 앞선 *게시물 등록, 조회, 수정 form 만들기* 예제에서
+
+* `UserAlreadyExistsException`
+* `UserNotFoundException`
+* `PostNotFoundException`
+
+위 예외들에 대한 예외 처리를 `@ControllerAdvice`를 이용해서 처리해보자.

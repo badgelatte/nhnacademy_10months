@@ -1,0 +1,11 @@
+= Demo 및 실습
+
+----
+git checkout board3
+----
+
+== `UserRegisterRequest` 에 아래 조건에 맞는 Annotation을 적용하고 Validation Check를 해보자
+
+* 비밀번호: 8글자 이상 20글자 이하
+* 나이: 최소값 0
+* 이름: 공백 제거 후 문자열의 길이가 0보다 커야 함

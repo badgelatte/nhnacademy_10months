@@ -1,0 +1,64 @@
+= CookieTestServlet
+
+* 기억하시죠?
+* hosts 파일에 도메인 설정하고 : */etc/hosts*
+
+----
+127.0.0.1 1.a.com
+127.0.0.1 2.a.com
+127.0.0.1 a.com
+127.0.0.1 b.com
+
+----
+
+* 도메인과 path에 따라 쿠키 설정이 달라짐을 테스트했던…
+[source,java]
+----
+public class CookieTestServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+        String requestUri = req.getRequestURI();
+
+        if (requestUri.endsWith("/read")) {
+            readCookie(req, resp);
+        } else if(requestUri.endsWith("/write")) {
+            writeCookie(req, resp);
+        } else {
+            show(req, resp);
+        }
+    }
+
+    // ...
+}
+
+----
+
+== Spring MVC 버전으로 만들어봅시다
+
+----
+git checkout cookie-test
+
+----
+
+* writeCookie
+
+----
+/cookie-test/**/write
+
+----
+
+* readCookie
+
+----
+/cookie-test/**/read
+
+----
+
+* show
+
+----
+/cooki-test
+----
+
+== 테스트 과정에서 b.com은 cookie를 할당하지 않음으로 400 Bard Request ..

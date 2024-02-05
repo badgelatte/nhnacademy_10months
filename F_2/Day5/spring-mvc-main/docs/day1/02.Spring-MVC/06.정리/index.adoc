@@ -1,0 +1,19 @@
+= Spring MVC 정리
+
+image:https://docs.spring.io/spring-framework/docs/4.3.x/spring-framework-reference/html/images/mvc.png[image]
+
+== Front Controller
+
+* `DispatcherServlet`
+
+== model: Spring Bean
+
+* POJO (Spring Core 학습했던 Bean)
+
+== View
+
+* JSP
+
+== Controller
+
+* Controller ( 03.Controller 이어서 학습 … )

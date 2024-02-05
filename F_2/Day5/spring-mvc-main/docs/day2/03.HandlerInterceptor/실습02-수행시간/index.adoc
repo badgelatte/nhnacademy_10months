@@ -1,0 +1,42 @@
+= 실습 - Controller 수행시간 측정
+
+* Controller의 수행 시간을 측정하는 interceptor 추가 하기
+
+== TimeCheckInterceptor
+
+[source,java]
+----
+@Slf4j
+public class TimeCheckInterceptor implements HandlerInterceptor {
+    private static ThreadLocal<Long> runTime = new ThreadLocal<>();
+
+    //Controller 호출(전)
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        runTime.set(System.currentTimeMillis());
+        return true;
+    }
+
+    //Controller 호출(후)
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        long start = runTime.get();
+        long result = System.currentTimeMillis() - start;
+        log.info("runtime:{}",result);
+        runTime.remove();
+    }
+
+}
+
+----
+
+== WebConfig
+
+[source,java]
+----
+@Override
+public void addInterceptors(InterceptorRegistry registry) {
+    //interceptor 등록
+    registry.addInterceptor(new TimeCheckInterceptor());
+}
+----

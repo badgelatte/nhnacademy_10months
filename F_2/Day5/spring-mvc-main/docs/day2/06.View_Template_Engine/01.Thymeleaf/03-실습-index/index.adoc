@@ -1,0 +1,18 @@
+= 실습 - index 변경
+
+== Demo
+
+----
+git checkout thymeleaf2
+
+----
+
+== 실습
+
+* `index.jsp` 를 thymeleaf 로 바꿔보시오.
+** 현재 선택된 locale 에 bold (`&lt;b&gt;`) 처리를 하려면?
+*** Ex.)
+[source,html]
+----
+${#locale.toString() == 'ko'}
+----

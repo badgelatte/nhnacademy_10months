@@ -1,0 +1,152 @@
+= Thymeleaf 문법
+
+== Thymeleaf 문법 (변수 vs 메세지)
+
+=== ${variable}
+
+* 변수
+[source,html]
+----
+<span th:text="${greeting}" />
+
+----
+
+=== #{messageKey}
+
+* 다국어 메세지
+[source,html]
+----
+<span th:text="#{greeting}" />
+
+----
+
+== Thymeleaf 문법
+
+* 기본적으로 HTML5 속성(attribute)을 이용
+
+=== th:text
+
+* 텍스트 출력 (HTML escape 됨)
+
+[source,html]
+----
+<span th:text="'M<b>V</b>C'" />
+
+----
+
+=&gt;
+
+[source,html]
+----
+<span>M&lt;b&gt;V&lt;/b&gt;C</span>
+
+----
+
+=== th:utext
+
+* 텍스트 출력 (HTML 태그가 그대로 적용)
+
+[source,html]
+----
+<span th:utext="'M<b>V</b>C'" />
+
+----
+
+=&gt;
+
+[source,html]
+----
+<span>M<b>V</b>C</span>
+
+----
+
+=== th:each
+
+* 반복문
+
+[source,html]
+----
+<table>
+  <tr>
+    <th>NAME</th>
+    <th>PRICE</th>
+    <th>IN STOCK</th>
+  </tr>
+  <tr th:each="prod : ${prods}">
+    <td th:text="${prod.name}">Onions</td>
+    <td th:text="${prod.price}">2.41</td>
+  </tr>
+</table>
+
+----
+
+=== `th:if`, `th:unless`
+
+* 조건문
+
+[source,html]
+----
+<span th:if="${#lists.size(list) > 2}">more than 2</span>
+<span th:if="${#lists.size(list) == 2}">two</span>
+
+----
+
+=== `th:swifth`, `th:case`
+
+[source,html]
+----
+<div th:switch="${user.role}">
+  <p th:case="'admin'">User is an administrator</p>
+  <p th:case="#{roles.manager}">User is a manager</p>
+  <p th:case="*">User is some other thing</p>
+</div>
+
+----
+
+=== th:with
+
+* 로컬 변수 선언
+
+[source,html]
+----
+<div th:with="firstPer=${persons[0]}">
+  <p>
+    The name of the first person is <span th:text="${firstPer.name}">Julius Caesar</span>.
+  </p>
+</div>
+
+----
+
+== Thymeleaf 문법
+
+=== Expression Basic Objects
+
+* `#locale`
+* `#request`
+* `#response`
+* `#session`
+* `#servletContext`
+
+=== Expression Utility Objects
+
+* strings
+** `#strings` : 문자열 객체를 위한 utility 메서드
+
+[source,html]
+----
+${#strings.isEmpty(name)}
+${#strings.contains(name,'ez')} 
+${#strings.startsWith(name,'Don')}
+----
+
+* lists
+** `#lists`: list 객체를 위한 utility 메서드
+
+[source,html]
+----
+${#lists.size(list)}
+${#lists.isEmpty(list)}
+----
+
+* 보다 자세한 내용은 아래 문서 참고
+ https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html

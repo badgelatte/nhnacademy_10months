@@ -1,0 +1,62 @@
+= @RestController
+
+== @RestController = @Controller + @ResponseBody
+
+* Res-API 개발할 떄 ..
+* View Resolver를 사용하지 않고, HttpMessageConverter에 변환됩니다.
+** file upload download .. byte stream
+** json
+** xml
+** …
+
+== 실습
+
+----
+git checkout board4
+----
+
+=== jackson 라이브러리 추가
+
+* `pom.xml`
+
+[source,xml]
+----
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.13.2.1</version>
+</dependency>
+
+----
+
+=== RestController 추가
+
+* `@RestController` = `@Controller` + `@ResponseBody`
+
+[source,java]
+----
+@RestController
+public class UserRestController {
+    private final UserRepository userRepository;
+
+    public UserRestController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping("/users/{userId}")
+    public User getUser(@PathVariable("userId") String userId) {
+        return userRepository.getUser(userId);
+    }
+
+}
+
+----
+
+=== Test
+
+* http://localhost:8080/users/admin
+
+[,json]
+----
+{"id":"admin","password":"12345","age":0,"name":"admin"}
+----

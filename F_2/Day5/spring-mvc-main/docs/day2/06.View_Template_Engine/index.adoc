@@ -1,0 +1,19 @@
+= ViewResolver
+
+== ViewResolver
+
+* Spring MVC에서는 view 이름을 문자열로 관리
+* 문자열 기반의 view 이름을 토대로 실제 View 구현을 결정하는 역할
+
+== ViewResolver 의 종류 - View Template Engine 에 따라
+
+* InternalResourceViewResolver - JSP 사용
+* VelocityViewResolver - velocity https://velocity.apache.org/
+* FreemarkerViewResolver - freemarker https://freemarker.apache.org/
+* ThymeleafViewResolver - thymeleaf https://www.thymeleaf.org/
+* Mustache : https://github.com/spullara/mustache.java
+* Groovy Templates : https://docs.groovy-lang.org/docs/next/html/documentation/template-engines.html
+
+== ThymeleafViewResolver를 가장 많이 사용함. - Spring에서 권장함.
+
+* jsp 사용했던 jstl과 비슷한 형태로 사용할 수 있음.

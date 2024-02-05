@@ -1,0 +1,59 @@
+= @Value
+
+* org.springframework.beans.factory.annotation.Value
+* 어떤 값을 표현하는 어노테이션
+* 필드, 메서드 파라미터, 생성자 파라미터에 사용
+
+== Spring EL(Expression Language) 표현 식
+
+[source,java]
+----
+@Value("#{systemProperties.myProp}")
+
+----
+
+* 리터럴 표현식 (Literal Expression)
+* Boolean과 관계연산자 (Boolean and Relational Operator)
+* 정규 표현식 (Regular Expression)
+* 클래스 표현식 (Class Expression)
+* 프로퍼티, 배열, 리스트, 맵에 대한 접근 지원 (Accessing properties, arrays, lists, maps)
+* 메서드 호출 (Method Invocation)
+* 관계연산자 (Relational Operator)
+* 할당 (Assignment)
+* 생성자 호출 (Calling Constructors)
+* Bean 참조 (Bean References)
+* 배열 생성 (Array Contruction)
+* 인라인 리스트/맵 (Inline List/Map)
+* 삼항 연산자 (Ternary Operator)
+* 변수 (Variables)
+* 사용자 정의 함수 (User defined functions)
+* Collections Projection
+* Collections Selection
+* Templated expression
+
+== Property Placeholder
+
+[source,java]
+----
+@Value("${my.app.myProp}")
+----
+
+== cf.) `@lombok.Value`
+
+* 불변 개체(immutable entity)를 표현
+* 다음 annotation을 다 합친 것과 같은 의미
+** `@Getter` (no `@Setter`)
+** `@FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)`
+** `@AllArgsConstructor`
+** `@ToString`
+** `@EqualsAndHashCode`
+[source,java]
+----
+@Value
+public class UserRegisterRequest {
+    String id;
+    String password;
+    int age;
+    String name;
+}
+----

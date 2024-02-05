@@ -1,0 +1,16 @@
+= 실습4-게시판
+
+== 게시물 등록, 조회, 수정 form 만들기
+
+----
+git checkout board
+----
+
+== Test
+
+* 등록 form
+** http://localhost:8080/post/register
+* 조회
+** http://localhost:8080/post/1
+* 수정 form
+** http://localhost:8080/post/1/modify

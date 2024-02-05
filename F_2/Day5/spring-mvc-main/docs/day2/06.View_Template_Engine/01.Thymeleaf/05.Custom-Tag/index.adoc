@@ -1,0 +1,45 @@
+= CustomTagDialet
+
+== student-step7-thymeleaf 를 참고.
+
+* todo 10 ~ 16
+
+* 사용방법
+
+----
+<td th:text="${#nhnacademy.gender(item.gender)}"></td>
+----
+
+* CustomTagDialet
+
+[source,java]
+----
+public class CustomTagDialet extends AbstractDialect implements IExpressionObjectDialect {
+
+    public CustomTagDialet() {
+        super("nhnacademy");
+    }
+
+    @Override
+    public IExpressionObjectFactory getExpressionObjectFactory() {
+        return new SpringStandardExpressionObjectFactory(){
+            @Override
+            public Set<String> getAllExpressionObjectNames() {
+                return Collections.singleton("nhnacademy");
+            }
+
+            @Override
+            public Object buildObject(IExpressionContext context, String expressionObjectName) {
+                 super.buildObject(context, expressionObjectName);
+                 //todo#15 미리 만들어 뒀떤 TagUtils 객체;
+                 return new TagUtils();
+            }
+
+            @Override
+            public boolean isCacheable(String expressionObjectName) {
+                return true;
+            }
+        };
+    }
+}
+----

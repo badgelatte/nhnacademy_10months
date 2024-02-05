@@ -1,0 +1,11 @@
+= 실습01
+
+== `@Value` 사용 예 확인
+
+----
+git checkout value
+----
+
+== Test
+
+* http://localhost:8080/value-test

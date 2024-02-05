@@ -1,0 +1,24 @@
+= ViewController / RedirectViewController
+
+== 설정
+
+[source,java]
+----
+public class WebConfig implements WebMvcConfigurer {
+    // ...
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("index");
+        registry.addRedirectViewController("/this-is-home", "/");
+    }
+}
+----
+
+== HandlerMapping / HandlerAdapter
+
+* 어떤 URL일 때 어떤 view로 rendering 하라(또는 redirct 하라)는 정보를 `Map` 에 저장해서 사용
+** *HandlerMapping* → `SimpleUrlHandlerMapping` 사용
+* ViewController, RedirectViewController는 모두 `ParameterizableViewController` 라는 구현 클래스를 사용
+** `ParameterizableViewController`는 `AbstractController`라는 추상 클래스를 상속받아 구현
+*** *HandlerAdapter* → `SimpleControllerHandlerAdapter` 사용

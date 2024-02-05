@@ -1,0 +1,27 @@
+= HandlerMapping - 5가지 전략
+
+== 서버로 들어온 요청을 어느 핸들러로 전달할 지 결정하는 역할
+
+== 기본 전략
+
+* *RequestMappingHandlerMapping*
+
+** *@RequestMapping* + HandlerMapping
+*** 지금 우리가 사용하고 있는 기본 구조..
+*** @RequestMapping은 메소드 단위로 URL을 맵핑해 줄 수 있어 @Controller 개수를 줄일 수 있음
+*** URL, HTTP Method (GET/POST/PUT/DELETE …) , Parameter , Header 맵핑이 가능함
+** 우선순위 : *0*
+* *BeanNameUrlHandlerMapping*
+
+** *Bean Name* + Url + HandlerMapping
+** 우선순위 : *1*
+
+== 나머지 전략
+
+* *ControllerBeanNameHandlerMapping  ( deprecated - spring 4.3)*
+** (Bean Name or Bean Id ) + Url + HandlerMapping
+* *ControllerClassNameHandlerMapping (deprecated - spring 4.3 -&gt; spring 5 removed )*
+** className + Url + HandlerMapping
+*** ex) LoginController -&gt; /login
+* *SimpleUrlHandlerMapping*
+** Simple Url + HandlerMapping

@@ -1,0 +1,41 @@
+= 실습 - SimpleUrlHandlerMapping
+
+* 가장 단순하고 직관적임.
+
+== WebConfig
+
+[source,java]
+----
+@Bean
+public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+    SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+    Map<String, Object> urlMap = new HashMap<>();
+    urlMap.put("/welcome", welcome());
+    simpleUrlHandlerMapping.setUrlMap(urlMap);
+    return simpleUrlHandlerMapping;
+}
+
+@Bean
+public WelcomeController welcome() {
+    return new WelcomeController();
+}
+
+----
+
+== WelcomeController
+
+* viewName : index -&gt; /WEB-INF/view/index.jsp
+[source,java]
+----
+public class WelcomeController implements Controller {
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mav = new ModelAndView("index");
+        return mav;
+    }
+}
+----
+
+== Test
+
+* http://localhost:8080/welcome

@@ -1,0 +1,36 @@
+= 실습 - BeanNameUrlHandlerMapping
+
+== TestLoginFormController
+
+[source,java]
+----
+public class BeanNameLoginFormController  implements Controller {
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mav = new ModelAndView("loginForm");
+        return mav;
+    }
+}
+
+----
+
+== WebConfig ( Controller 등록 )
+
+* *bean name="/login-form"*
+
+[source,java]
+----
+@Bean(name = "/login-form")
+public BeanNameLoginFormController beanNameLoginFormController(){
+    return new BeanNameLoginFormController();
+}
+----
+
+== Test
+
+* http://localhost:8080/login-form
+
+=== BeanNameUrlHandlerMapping 전략을 사용해서 Controller찾는다면?
+
+* 가장 단순한 구조
+* `Servlet + FrontController Pattern` 에서 처럼 늘어나는 command … 동일한 현상이 발생함.

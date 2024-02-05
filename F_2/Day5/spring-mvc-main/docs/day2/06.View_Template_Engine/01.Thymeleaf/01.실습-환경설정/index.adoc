@@ -1,0 +1,70 @@
+= Thymeleaf
+
+== Demo
+
+----
+git checkout thymeleaf
+
+----
+
+== Test
+
+* http://localhost:8080/thymeleaf
+
+[source,java]
+----
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackageClasses = {com.nhnacademy.student.controller.ControllerBase.class})
+public class WebConfig implements WebMvcConfigurer, ApplicationContextAware, MessageSourceAware {
+
+    private ApplicationContext applicationContext;
+    private MessageSource messageSource;
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
+    @Bean
+    public ThymeleafViewResolver thymeleafViewResolver(){
+        ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
+        thymeleafViewResolver.setTemplateEngine(springTemplateEngine());
+        thymeleafViewResolver.setCharacterEncoding("UTF-8");
+        thymeleafViewResolver.setOrder(1);
+        thymeleafViewResolver.setViewNames(new String[]{"*"});
+        return thymeleafViewResolver;
+    }
+
+    public SpringTemplateEngine springTemplateEngine(){
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(springResourceTemplateResolver());
+        templateEngine.setTemplateEngineMessageSource(messageSource);
+        return templateEngine;
+    }
+
+    public SpringResourceTemplateResolver springResourceTemplateResolver(){
+        SpringResourceTemplateResolver springResourceTemplateResolver = new SpringResourceTemplateResolver();
+        springResourceTemplateResolver.setApplicationContext(applicationContext);
+        springResourceTemplateResolver.setCharacterEncoding("UTF-8");
+        springResourceTemplateResolver.setPrefix("/WEB-INF/views/");
+        springResourceTemplateResolver.setSuffix(".html");
+        springResourceTemplateResolver.setTemplateMode(TemplateMode.HTML);
+        return springResourceTemplateResolver;
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+       // registry.jsp("/WEB-INF/views/",".jsp");
+
+        registry.viewResolver(thymeleafViewResolver());
+    }
+    
+    // ... 
+}
+----

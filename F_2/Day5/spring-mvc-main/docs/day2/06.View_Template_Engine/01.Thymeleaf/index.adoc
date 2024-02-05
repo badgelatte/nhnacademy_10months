@@ -1,0 +1,23 @@
+= Thymeleaf
+
+== Thymeleaf
+
+* HTML5 기반의 view template engine
+
+https://www.thymeleaf.org/
+
+* manual
+ https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html#dialects-the-standard-dialect
+
+== Dependency
+
+* `pom.xml`
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.thymeleaf</groupId>
+    <artifactId>thymeleaf-spring5</artifactId>
+    <version>3.0.11.RELEASE</version>
+</dependency>
+----

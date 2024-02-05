@@ -1,0 +1,9 @@
+= 실습
+
+== Controller method argument에서 `@Value` 사용
+
+* TODO 넘버를 따라서 내용 확인하고 요구사항 구현하기
+
+----
+git checkout value2
+----

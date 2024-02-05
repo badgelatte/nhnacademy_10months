@@ -1,0 +1,22 @@
+= 실습 - @ResponseBody
+
+== UserResetController.java
+
+[source,java]
+----
+//@RestController => @Controller 변경 
+@Controller
+public class UserRestController {
+    private final UserRepository userRepository;
+
+    public UserRestController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    //@ResponseBody 추가
+    @ResponseBody
+    @GetMapping("/users/{userId}")
+    public User getUser(@PathVariable("userId")String userId){
+        return userRepository.getUser(userId);
+    }
+}
+----

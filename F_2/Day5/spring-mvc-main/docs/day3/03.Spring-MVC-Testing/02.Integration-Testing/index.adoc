@@ -1,0 +1,36 @@
+= DefaultMockMvcBuilder
+
+== Junit Runner 설정
+
+* 스프링 테스트 컨텍스트 프레임워크의 JUnit 기능 확장
+
+[source,java]
+----
+@ExtendWith(SpringExtension.class)
+----
+
+== WebApplicationContext 사용 설정
+
+* default web root: `src/main/webapp`
+
+[source,java]
+----
+@WebAppConfiguration
+----
+
+== ApplicationContext 로딩
+
+* `@ContextHierarchy` / `@ContextConfiguration`
+
+[source,java]
+----
+@ContextHierarchy({
+    @ContextConfiguration(classes = { RootConfig.class }),
+    @ContextConfiguration(classes = WebConfig.class)
+})
+----
+
+== @Transactional
+
+* 트랜잭션 내에서 테스트 수행하고 테스트 종류 후 자동 롤백
+* cf.) `@Rollback`

@@ -1,0 +1,65 @@
+= File Upload
+
+== 기억하시죠?
+
+* Servlet 에서 Servlet 3.0 API를 이용한 File Upload
+
+== Servlet 3.0 API (Servlet Version)
+
+[source,java]
+----
+@MultipartConfig(
+    location = "/tmp/",
+    maxFileSize = -1L,
+    maxRequestSize = -1L,
+    fileSizeThreshold = 1024
+)
+@Slf4j
+public class FileUploadServlet extends HttpServlet {
+    private static final String CONTENT_DISPOSITION = "Content-Disposition";
+    private static final String UPLOAD_DIR = "/Users/user/Downloads";
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+        for (Part part : req.getParts()) {
+            String contentDisposition = part.getHeader(CONTENT_DISPOSITION);
+
+            if (contentDisposition.contains("filename=")) {
+                String fileName = extractFileName(contentDisposition);
+
+                if (part.getSize() > 0) {
+                    part.write(UPLOAD_DIR + File.separator + fileName);
+                    part.delete();
+                }
+            } else {
+                String formValue = req.getParameter(part.getName());
+                log.error("{}={}", part.getName(), formValue);
+            }
+        }
+    }
+
+    private String extractFileName(String contentDisposition) {
+        for (String token : contentDisposition.split(";")) {
+            if (token.trim().startsWith("filename")) {
+                String fileName = token.substring(token.indexOf("=") + 1).trim().replace("\"", "");
+                int index = fileName.lastIndexOf(File.separator);
+                return fileName.substring(index + 1);
+            }
+        }
+
+        return null;
+    }
+}
+----
+
+== Spring MVC에서의 File Upload
+
+=== `MultipartResolver` 를 이용
+
+* 멀티파트 요청을 처리하는 구현을 결정하는 역할
+
+=== `MultipartResolver` 종류
+
+* `StandardServletMultipartResolver`
+* `CommonsMultipartResolver`

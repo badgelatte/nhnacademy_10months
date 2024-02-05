@@ -1,0 +1,146 @@
+= Spring MVC Testing
+
+== Dependency
+
+=== spring-test
+
+* `pom.xml`
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <scope>test</scope>
+</dependency>
+
+----
+
+=== Junit5
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <version>RELEASE</version>
+    <scope>test</scope>
+</dependency>
+
+----
+
+=== el
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>jakarta.el</artifactId>
+    <version>3.0.4</version>
+</dependency>
+
+----
+
+=== hamcrest
+
+* 다양한 조건의 Match rule 을 손쉽게 작성하고 테스트 할 수 있는 library로 jUnit 이나 Mokoto 와 연계하여 사용할 수 있다.
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest-all</artifactId>
+    <version>1.3</version>
+    <scope>test</scope>
+</dependency>
+
+----
+
+=== mockito
+
+[source,xml]
+----
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>5.3.0</version>
+    <scope>test</scope>
+</dependency>
+
+----
+
+== MockMvc
+
+=== MockMvc
+
+* Spring MVC 테스트의 주요 진입점(main entry point)
+* Web Application을 서버에 배포하지 않고 테스트할 수 있는 MVC환경을 구성하여 요청,전송 등 응답기능을 제공해주는 Utility class.
+
+=== MockMvc.perform()
+
+[source,java]
+----
+ResultActions perform(RequestBuilder requestBuilder) throws Exception
+----
+
+* `MockMvcRequestBuilders` : RequestBuilder용 정적 팩토리 메서드들 제공
+** get()
+** post()
+** put()
+** delete()
+** fileUpload()
+** …
+
+== MockMvcBuilder
+
+=== StandaloneMockMvcBuilder
+
+* ApplicationContext 없이 Spring MVC 유닛 테스트(unit test) 수행
+[source,java]
+----
+MockMvcBuilders.standaloneSetup(Object... controllers)
+----
+
+=== DefaultMockMvcBuilder
+
+* ApplicationContext 를 가지고 Spring MVC 통합 테스트(integration test) 수행
+[source,java]
+----
+MockMvcBuilders.webAppContextSetup(WebApplicationContext context)
+----
+
+== StandaloneMockMvcBuilder
+
+* setControllerAdvice()
+* setValidator()
+* setConversionService()
+* addInterceptors()
+* setContentNegotiationManager()
+* setCustomArgumentResolvers()
+* setCustomReturnValueHandlers()
+* setHandlerExceptionResolvers()
+* setViewResolvers()
+* setLocaleResolver()
+* …
+
+== Ex.) `StandaloneMockMvcBuilder`
+
+[source,java]
+----
+public class HomeControllerTest {
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    void setUp() {
+        mockMvc = MockMvcBuilders.standaloneSetup(new HomeController())
+                                 .build();
+    }
+
+    @Test
+    void test() {
+        mockMvc.perform(get("/"))
+               .andExpect(status().isOk())
+               .andExpect(view().name("index"));
+    }
+}
+----

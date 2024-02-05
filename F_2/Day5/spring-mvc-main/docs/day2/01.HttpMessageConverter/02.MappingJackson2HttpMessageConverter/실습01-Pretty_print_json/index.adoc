@@ -1,0 +1,135 @@
+== 실습 - Pretty print JSON output
+
+[source,json]
+----
+{
+   "id": "admin",
+   "password": "12345",
+   "age": 0,
+   "name": "admin"
+}
+
+----
+
+== MappingJackson2HttpMessageConverter 교체하기
+
+=== ObjectMapper bean 등록
+
+* RootConfig.java
+
+[source,java]
+----
+@Configuration
+@ComponentScan(basePackageClasses = Base.class,
+    excludeFilters = { @ComponentScan.Filter(Controller.class)})
+public class RootConfig {
+    @Bean
+    public UserRepository userRepository() {
+        UserRepository userRepository = new UserRepositoryImpl();
+        userRepository.addUser("admin", "12345");
+
+        return userRepository;
+    }
+
+    @Bean
+    public ObjectMapper ObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        //pretty print json
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+        //value -> null 무시
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        //LocalDate, LocalDateTime support jsr310
+        objectMapper.registerModule(new JavaTimeModule());
+        //timestamp 출력을 disable. -> 문자열형태로 출력
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return objectMapper;
+    }
+}
+
+----
+
+=== WebConfig.java
+
+* implements WebMvcConfigurer 의존성 주입 유리함.
+* extends WebMvcConfigurationSupport 형태로 구성했다면.. 의존성 주입에 불리함(자유롭지 못함)
+** @Autowired 등을 이용해서 reflection api를 이용해서 주입받아야함. (지양해야함)
+
+[source,java]
+----
+@EnableWebMvc
+@Configuration
+@ComponentScan(basePackageClasses = ControllerBase.class)
+public class WebConfig implements WebMvcConfigurer {
+    private final ObjectMapper objectMapper;
+
+    public WebConfig(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/WEB-INF/view/", ".jsp");
+    }
+
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // 기본으로 등록되는 MappingJackson2HttpMessageConverter 제거함
+        converters.removeIf(o->o instanceof MappingJackson2HttpMessageConverter);
+        // bean으로 등록해놓은 objectMapper를 주입하여MappingJackson2HttpMessageConverter 생성
+        HttpMessageConverter converter =  new MappingJackson2HttpMessageConverter(objectMapper);
+        //추가
+        converters.add(converter);
+    }
+}
+----
+
+=== 주의 .. converters를 재정의 함으로써 기존에 등록되어있는 HttpMessageConverter 무시됨.
+
+* 반드시 extendMessageConverters() 재정의해서 추가해야함.
+
+[source,java]
+----
+@Override
+public void configureMessageConverters(List<HttpMessageConverter<?>> converters){}
+----
+
+== Test
+
+* http://localhost:8080/users/admin
+[source,json]
+----
+{
+  "id" : "admin",
+  "password" : "12345",
+  "age" : 0,
+  "name" : "admin"
+}
+----
+
+== User.java
+
+[source,java]
+----
+@Getter
+@Setter
+private String nickName;
+
+@Getter
+@Setter
+private LocalDateTime createdAt = LocalDateTime.now();
+----
+
+=== createdAt : LocalDateTime -&gt; String 변경되어 출력됨
+
+=== nickName : null -&gt; json 출력에서 제외
+
+[source,json]
+----
+{
+  "id" : "admin",
+  "password" : "12345",
+  "age" : 0,
+  "name" : "admin",
+  "createdAt" : "2023-03-19T01:50:20.316488"
+}
+----

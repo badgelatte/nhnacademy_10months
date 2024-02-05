@@ -1,0 +1,21 @@
+= 실습1-로그인
+
+* TODO 넘버를 따라서 요구사항 구현하기
+
+* branch
+
+----
+git checkout login
+----
+
+* POST /login
+** parameters
+*** id
+*** pwd
+
+* 고려하여 doLogin method를 구현하세요
+
+* Login Test
+
+* ID : admin
+* pwd : 12345

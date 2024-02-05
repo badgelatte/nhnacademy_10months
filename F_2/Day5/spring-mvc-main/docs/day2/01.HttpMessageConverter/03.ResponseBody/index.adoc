@@ -1,0 +1,5 @@
+= @ResponseBody
+
+* handler method의 return value를 `HttpMessageConverter`를 통해 직렬화해서 response body로 전달
+* `@RestController` = `@Controller` + `@ResponseBody`
+* 일반 `@Controller` 클래스에도 method 레벨에서 `@ResponseBody` 가능

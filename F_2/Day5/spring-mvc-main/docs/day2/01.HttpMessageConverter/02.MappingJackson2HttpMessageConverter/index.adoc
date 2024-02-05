@@ -1,0 +1,45 @@
+= MappingJackson2HttpMessageConverter
+
+----
+Implementation of org.springframework.http.converter.HttpMessageConverter that can read and write JSON using Jackson 2.x's  ObjectMapper.
+This converter can be used to bind to typed beans, or untyped HashMap instances.
+By default, this converter supports application/json and application/*+json with UTF-8 character set. This can be overridden by setting the supportedMediaTypes property.
+The default constructor uses the default configuration provided by Jackson2ObjectMapperBuilder.
+Compatible with Jackson 2.9 to 2.12, as of Spring 5.3.
+----
+
+* ObjectMapper parameter로 주입받아 생성.
+* *ObjectMapper가 실제로 json &lt;– –&gt; Object 사이에서 변환해주는 역할을 함.*
+* UTF-8 지원, `application/json` 및 `application/*+json` 지원
+* spring 5.3 부터 jackson 2.9 ~ 2.12와 호환 됨.
+
+[source,java]
+----
+public class MappingJackson2HttpMessageConverter extends AbstractJackson2HttpMessageConverter {
+    @Nullable
+    private String jsonPrefix;
+
+    public MappingJackson2HttpMessageConverter() {
+        this(Jackson2ObjectMapperBuilder.json().build());
+    }
+
+    public MappingJackson2HttpMessageConverter(ObjectMapper objectMapper) {
+        super(objectMapper, new MediaType[]{MediaType.APPLICATION_JSON, new MediaType("application", "*+json")});
+    }
+
+    public void setJsonPrefix(String jsonPrefix) {
+        this.jsonPrefix = jsonPrefix;
+    }
+
+    public void setPrefixJson(boolean prefixJson) {
+        this.jsonPrefix = prefixJson ? ")]}', " : null;
+    }
+
+    protected void writePrefix(JsonGenerator generator, Object object) throws IOException {
+        if (this.jsonPrefix != null) {
+            generator.writeRaw(this.jsonPrefix);
+        }
+    }
+}
+----
+

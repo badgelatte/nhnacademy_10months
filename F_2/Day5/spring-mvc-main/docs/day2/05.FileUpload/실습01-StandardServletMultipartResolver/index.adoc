@@ -1,0 +1,37 @@
+= Servlet 3.0 API (Spring MVC Version)
+
+== MultipartResolver
+
+* `StandardServletMultipartResolver`
+
+== Demo
+
+* TODO 넘버를 따라서 구현 내용 확인하기
+
+----
+git checkout upload1
+----
+
+----
+location – 파일이 저장될 디렉토리 위치 
+maxFileSize – 업로드된 파일에 허용되는 최대 크기 
+maxRequestSize – multipart/form-data 요청에 허용되는 최대 크기 
+fileSizeThreshold – 파일이 디스크에 기록되는 크기 임계값
+----
+
+== Test
+
+=== FileUploadController 경로변경
+
+[source,java]
+----
+private static final String UPLOAD_DIR = "/Users/user/Downloads/";
+----
+
+* upload 경로 변경하기 : project root/upload directory 만들어서 경로지정하기 ( 경로는 본인의 프로젝트 경로에 맞게 설정)
+[source,java]
+----
+private static finalUPLOAD_DIR = /Users/visualp/IdeaProjects/academy-spring-mvc/upload/
+----
+
+* http://localhost:8080/upload

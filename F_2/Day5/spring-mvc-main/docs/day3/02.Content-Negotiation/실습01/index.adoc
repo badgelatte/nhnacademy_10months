@@ -1,0 +1,12 @@
+= 실습
+
+----
+git checkout contentnegotiation
+----
+
+== Test
+
+* JSON ( default )
+** http://localhost:8080/members/admin?format=json
+* XML
+** http://localhost:8080/members/admin?format=xml

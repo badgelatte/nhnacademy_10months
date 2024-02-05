@@ -1,0 +1,85 @@
+= 실습 - LoginController Unit Testing
+
+=== `LoginController` 에 대한 Unit Test 작성하기
+
+* `Run Test with Coverage` 실행해서
+** `LoginController` 클래스에 대한 테스트 커버리지 최대한 높여보기
+[source,JAVA]
+----
+import com.nhnacademy.springmvc.domain.User;
+import com.nhnacademy.springmvc.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+
+import javax.servlet.http.Cookie;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+class LoginControllerTest {
+
+    private MockMvc mockMvc;
+    private UserRepository userRepository;
+
+    private MockHttpSession session;
+
+    @BeforeEach
+    void setup(){
+        userRepository = mock(UserRepository.class);
+        mockMvc = MockMvcBuilders.standaloneSetup(new LoginController(userRepository)).build();
+        session = new MockHttpSession();
+    }
+
+    @Test
+    @DisplayName("로그인-페이지")
+    void loginPage() throws Exception{
+        mockMvc.perform(get("/login"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("loginForm"));
+    }
+
+    @Test
+    @DisplayName("로그인-페이지-쿠키 존재하면")
+    void loginPage_cookie() throws Exception{
+
+    }
+
+    @Test
+    @DisplayName("로그인-success")
+    void loginSuccess() throws Exception {
+
+    }
+
+    @Test
+    @DisplayName("로그인-fail")
+    void loginFail() throws Exception {
+
+    }
+
+    @Test
+    @DisplayName(("login-fail-missing-pwd-parameter"))
+    void loginFail_missing_parameter1() throws Exception{
+
+    }
+
+    @Test
+    @DisplayName(("login-fail-missing-id-parameter"))
+    void loginFail_missing_parameter2() throws Exception{
+
+    }
+}
+----

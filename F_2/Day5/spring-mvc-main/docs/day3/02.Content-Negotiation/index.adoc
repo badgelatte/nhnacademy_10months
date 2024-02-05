@@ -1,0 +1,41 @@
+= Content Negotiation
+
+== `/user/{userId}` vs `/users/{userId}`
+
+=== /user/{userId}
+
+* Content-type: application/xml
+
+=== /users/{userId}
+
+* Content-type: application/json
+
+=== 내용은?
+
+* 동일
+
+== Content Negotiation
+
+* 동일한 내용을 어떤 포맷으로 응답할 것인지 결정하는 전략
+** 특정 parameter 값을 보고 결정할 것인지
+** Accept Header 를 보고 결정할 것인지
+* HttpMessgaeConverter 에서 적용
+
+== Content Negotiation 설정
+
+[source,java]
+----
+public class WebConfig implements WebMvcConfigurer {
+    // ...
+
+    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.favorParameter(true)
+                  .parameterName("format")
+                  .ignoreAcceptHeader(true)
+                  .defaultContentType(MediaType.APPLICATION_JSON)
+                  .mediaType("json", MediaType.APPLICATION_JSON)
+                  .mediaType("xml", MediaType.APPLICATION_XML);
+    }
+}
+----

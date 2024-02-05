@@ -1,0 +1,159 @@
+= todo - REST API 개발
+
+== MemoryRepository 기반으로 개발합니다.
+* Map을 이용해서 데이터를 관리 합니다.
+
+[source,java]
+----
+// event 저장을 위한 map 사용
+private final ConcurrentMap<String, List<Event>> eventMap = new ConcurrentHashMap<>();
+//id 채번을 위한 AtomicLong 사용
+private final AtomicLong autoIdx = new AtomicLong();
+
+----
+
+== REST API Specification
+
+* https://github.com/nhnacademy-bootcamp/web-frontend/blob/main/04.%EC%8B%A4%EC%8A%B5/03.Todo/06.REST%20API/index.adoc
+* 위 api 명세서 대로 구현합니다.
+* format=xml , format=json 둘다 제공합니다.
+
+* ex) 조회 api 호출시
+
+** format=xml | json
+
+[source,httprequest]
+----
+###조회
+GET http://localhost:8080/api/calendar/events/1?format=json
+Accept: application/json
+X-USER-ID: marco
+----
+
+* json
+** 모든 api 결과는 pretty 하게 표현되어야 합니다.
+
+[source,json]
+----
+{
+  "id": 1,
+  "subject": "Spring framework 학습",
+  "eventAt": "2023-02-15",
+  "createdAt": "2023-04-13T02:32:37.057007"
+}
+----
+
+* xml
+** 모든 api 결과는 pretty 하게 표현되어야 합니다.
+
+[source,xml]
+----
+<Event>
+    <id>1</id>
+    <subject>Spring framework 학습</subject>
+    <eventAt>2023-02-15</eventAt>
+    <createdAt>2023-04-13T02:29:33.929675</createdAt>
+</Event>
+----
+
+=== api 명세서 상의 예외처리 하기
+
+* api 명세서에 정의되어 있는 상황에 대한 모든 예외처리 합니다.
+
+=== application 구동시
+
+* 2024-02-01, 2024-05-05 5개씩 event가 등록되어야 합니다.
+
+=== html/css/javascript에서 제공해드린 todo 리스트 api 버전을 이용
+
+* https://github.com/nhnacademy-bootcamp/web-frontend/blob/main/04.%EC%8B%A4%EC%8A%B5/03.Todo/06.REST%20API/index.adoc[ToDo API Specification] 를 참고하여 서버를 구현합니다.
+
+** 첨부파일 다운받아서 /webapp/WEB-INF/views/index.html 위치합니다.
+** 나머지 js, css 들은 /webapp/resources/ 하위에 위치합니다.
+** apiStore.js 파일의 SERVER_URL을 다음과 같이 설정합니다.
+
+----
+    const SERVER_URL="http://localhost:8080";
+----
+
+=== 테스트 코드 작성
+
+* WebApplicationContext 기반의 TC를 작성합니다.
+* 모든 API에 대해서 테스트 되어야 합니다.
+* 모든 예외에 대해서 테스트 되어야 합니다.
+
+=== test.http 테스트 sample
+
+* 아래 파일을 참고합니다.
+* intellij에 test.http 파일을 만들어서 테스트 할 수 있습니다.
+
+----
+###등록
+POST http://localhost:8080/api/calendar/events
+Content-Type: application/json
+X-USER-ID: marco
+
+{
+  "subject" : "Spring framework 학습",
+  "eventAt": "2023-02-15"
+}
+
+###조회
+GET http://localhost:8080/api/calendar/events/1?format=xml
+Accept: application/json
+X-USER-ID: marco
+
+###삭제
+DELETE http://localhost:8080/api/calendar/events/8
+Content-Type: application/json
+X-USER-ID: marco
+
+###삭제
+DELETE http://localhost:8080/api/calendar/events/daily/2022-02-15
+Content-Type: application/json
+X-USER-ID: marco
+
+###일일등록 카운트
+GET http://localhost:8080/api/calendar/daily-register-count?date=2023-02-15
+Accept: application/json
+X-USER-ID: marco
+
+###월별조회
+GET http://localhost:8080/api/calendar/events/?year=2023&month=2
+Accept: application/json
+X-USER-ID: marco
+
+###일별조회
+GET http://localhost:8080/api/calendar/events?year=2023&month=02&day=15
+Accept: application/json
+X-USER-ID: marco
+
+###예외 400
+GET http://localhost:8080/api/calendar/events
+Accept: application/json
+X-USER-ID: marco
+
+###예외 401
+GET http://localhost:8080/api/calendar/events/1
+Accept: application/json
+
+###예외 403
+GET http://localhost:8080/api/calendar/events/1
+Accept: application/json
+X-USER-ID: abc
+
+###예외 404
+GET http://localhost:8080/api/calendar/events/1000000
+Accept: application/json
+X-USER-ID: marco
+
+###예외 405
+PATCH http://localhost:8080/api/calendar/events/1
+Accept: application/json
+X-USER-ID: marco
+
+###예외 500
+GET http://localhost:8080/api/calendar/events/a
+Accept: application/json
+X-USER-ID: marco
+----

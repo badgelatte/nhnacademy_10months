@@ -1,0 +1,11 @@
+= @RequestBody
+
+* Request body를 읽어와서 `HttpMessageConverter` 를 통해 deserialize해서 객체로 전달받기 위한 용도
+[source,java]
+----
+@PostMapping("/api/members")
+@ResponseStatus(HttpStatus.CREATED)
+public void createMember(@RequestBody Member member) {
+    // ...
+}
+----

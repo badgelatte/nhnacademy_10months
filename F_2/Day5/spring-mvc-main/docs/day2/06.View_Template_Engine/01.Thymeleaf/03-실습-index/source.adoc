@@ -1,0 +1,31 @@
+= Source
+
+[source,html]
+----
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8" />
+    <title>index</title>
+    <style>
+        .bold{
+            font-weight: bold;
+            font-size:20pt;
+        }
+        .normal{
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<h2 th:text="${greeting}"></h2>
+
+<br />
+<p><span>locale:</span><span th:text="${#locale.toString().toLowerCase()}" ></span></p>
+<a href="?locale=ko" th:classappend="${#locale.toString().toLowerCase().contains('ko') ? 'bold' : 'normal' }"  >ko</a><br />
+<a href="?locale=en" th:classappend="${#locale.toString().toLowerCase().contains('en') ? 'bold' : 'normal' }"  >en</a><br />
+<p th:text="${#messages.msg('greeting')}"></p>
+<br />
+</body>
+</html>
+----

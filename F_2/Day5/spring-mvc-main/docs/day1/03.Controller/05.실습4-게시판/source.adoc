@@ -1,0 +1,39 @@
+= Source
+
+== TODO #1
+
+[source,java]
+----
+// TODO #1: 게시물 등록 처리 구현
+@PostMapping
+public ModelAndView registerPost(String title, String content) {    Post post = postRepository.register(title,content);
+    ModelAndView mav = new ModelAndView();
+    mav.setViewName("redirect:/post/" + post.getId());
+    return mav;
+}
+----
+
+== TODO #2
+
+[source,java]
+----
+// TODO #2: 게시물 조회 구현
+@GetMapping("/{postId}")
+public String viewPost(Model model, @PathVariable(name = "postId") long id) {
+    model.addAttribute("post",postRepository.getPost(id));
+    return "postView";
+}
+----
+
+== TODO #3
+
+[source,java]
+----
+// TODO #3: 게시물 수정 form 구현
+@GetMapping("/{postId}/modify")
+public String postModifyForm(Model model, @PathVariable("postId") long id) {
+    // ...
+    model.addAttribute("post", postRepository.getPost(id));
+    return "postModify";
+}
+----
