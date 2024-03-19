@@ -3,30 +3,14 @@
     <head>
         <script defer>
             window.addEventListener("DOMContentLoaded",function(){
-                
-                const pArray = document.getElementsByTagName("p");
-
-                for(let i=0; i< pArray.length; i++){
-                    // console.log("p tag : ", pArray[i]);
-                }
-
-                const titleClassArray = document.getElementsByClassName("title");
-
-                for(let i=0; i< titleClassArray.length; i++){
-                    // console.log("title class : ", titleClassArray[i]);
-                }
-                // document.querySelectorAll("p");
-                // 원래 이렇게 쓰지만 이렇게도 접근 가능함
-                const titleInMain = document.querySelectorAll("main > .title");
-                // alert(titleInMain.length);
-                // 이제 for문으로 출력해보자
-                for(let i = 0; i < titleInMain.length ; i++) {
-                    console.log(titleInMain[i]);
-                }
-
-                const content = document.getElementById("content");
-                content.getElementsByClassName(".title");
+                // const myButton = document.querySelector("#myButton");// id는 #을 사용한다
+                //     myButton.addEventListener("click",function(){
+                //         alertMessage("click");
+                //     });
             });
+            function alertMessage(msg) {
+                alert(msg);
+            }
         </script>
     </head>
     <body>
@@ -39,5 +23,6 @@
             <h1 class="title" >hello javascript6</h1>
         </main>
         <p class="title">hello javascript7</p>
+        <button type="button" id="myButton" onclick="alertMessage('click')" >myButton</button>
     </body>
 </html>
