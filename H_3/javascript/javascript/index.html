@@ -3,10 +3,10 @@
     <head>
         <script defer>
             window.addEventListener("DOMContentLoaded",function(){
-                const myButton = document.querySelector("#myButton");// id는 #을 사용한다
-                    myButton.addEventListener("click",function(){
-                        alertMessage("click");
-                    });
+                // const myButton = document.querySelector("#myButton");// id는 #을 사용한다
+                //     myButton.addEventListener("click",function(){
+                //         alertMessage("click");
+                //     });
             });
             function alertMessage(msg) {
                 alert(msg);
@@ -23,7 +23,6 @@
             <h1 class="title" >hello javascript6</h1>
         </main>
         <p class="title">hello javascript7</p>
-        <button type="button" id="myButton" >myButton</button>
-        <!-- 직접 이벤트 할당할 수 있음 근데 지금은 script 쓸거임 -->
+        <button type="button" id="myButton" onclick="alertMessage('click')" >myButton</button>
     </body>
 </html>
