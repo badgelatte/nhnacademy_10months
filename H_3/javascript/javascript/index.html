@@ -17,7 +17,7 @@
             //new Object();
             const newPerson2 = Object.assign({},newPerson);
 
-            console.log(stringify(newPerson));
+            console.log(JSON.stringify(newPerson));
             const jsonStr = JSON.stringify(newPerson);
             const newPerson3 = JSON.parse(jsonStr);
             console.log("newPerson3"+newPerson3);
