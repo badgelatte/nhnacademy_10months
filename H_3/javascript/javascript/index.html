@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- 1번 -->
-        <!-- <script>
-            alert("hello javascript!");
-        </script> -->
-        <!-- 2번 -->
-        <!-- <script src="./script.js"></script> -->
-        <script src="./script.js" defer></script>
+        <script>
+            let counter = {
+                count : 100,
+                increase : function(){
+                    this.count++;
+                }
+            }
+
+            alert("int-count:"+counter.count);
+            counter.increase();
+            alert("count1:"+counter.count);
+            alert("count2:"+counter['count']);
+        </script>
     </head>
     <body>
         <h1>hello javascript</h1>
