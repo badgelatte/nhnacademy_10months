@@ -1,34 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            function Person(name, age){
-                this.name = name;
-                this.age = age;
-            }
+        <script defer>
+            window.addEventListener("DOMContentLoaded",function(){
+                const h1 = document.createElement("h1");
+                h1.id="mySubject";
+                h1.textContent="mySubject"
+                document.body.appendChild(h1);
 
-            const newPerson = new Person("marco", 30);
-            console.log(newPerson);
+                const h1Ref = document.getElementById("mySubject");
+                // alert(h1Ref);
 
-            for(key in  new Person) {
-                console.log(newPerson);
-            }
+                const ageTable = document.getElementById("ageTable");
+                // alert(ageTable);
 
-            //new Object();
-            const newPerson2 = Object.assign({},newPerson);
+                const ageTableBody = document.getElementById("ageTableBody");
+                console.log(ageTableBody);
 
-            console.log(JSON.stringify(newPerson));
-            const jsonStr = JSON.stringify(newPerson);
-            const newPerson3 = JSON.parse(jsonStr);
-            console.log("newPerson3"+newPerson3);
+                for(let age=10; age<=100; age+=10) {
+                    const tr = document.createElement("tr");    // tr이라는 element를 만듦
+                    const td = document.createElement("td");
+                    
+                    td.textContent=age;
+                    tr.appendChild(td); // tr 밑에 td 있음 - appendChild
+                    ageTableBody.append(tr); // ageTableBody 밑에 tr 있음
+                }
+            });
         </script>
     </head>
     <body>
-        <h1>hello javascript</h1>
-        <form>
-            회원 아이디 : <input type="text" id="userId">
-            <br/>
-            <button type="button" id="loginBtn">login</button>
-        </form>
+        <table id="ageTable">
+            <thead>
+                <tr>
+                    <th>나이</th>
+                </tr>
+            </thead>
+            <tbody id="ageTableBody">
+            </tbody>
+        </table>
+
+        <tbody id="aaa"></tbody>
+        <div id="bbb"></div>
     </body>
 </html>
