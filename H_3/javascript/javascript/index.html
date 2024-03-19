@@ -3,23 +3,27 @@
     <head>
         <script defer>
             window.addEventListener("DOMContentLoaded",function(){
-                const h1Array = document.getElementsByTagName("H1");
-                alert(h1Array.length);
+                
                 const pArray = document.getElementsByTagName("p");
-                alert(pArray.length);
 
                 for(let i=0; i< pArray.length; i++){
-                    console.log(pArray[i]);
+                    console.log("p tag : ", pArray[i]);
+                }
+
+                const titleClassArray = document.getElementsByClassName("title");
+
+                for(let i=0; i< titleClassArray.length; i++){
+                    console.log("title class : ", titleClassArray[i]);
                 }
             });
         </script>
     </head>
     <body>
-        <p>hello javascript1</p>
-        <p>hello javascript2</p>
-        <p>hello javascript3</p>
+        <p class="title">hello javascript1</p>
+        <p class="title">hello javascript2</p>
+        <p class="title">hello javascript3</p>
         <p>hello javascript4</p>
         <p>hello javascript5</p>
-        <h1>hellojavascript6</h1>
+        <h1 class="title">hellojavascript6</h1>
     </body>
 </html>
