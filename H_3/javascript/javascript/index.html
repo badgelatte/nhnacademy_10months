@@ -2,17 +2,25 @@
 <html>
     <head>
         <script>
-            let counter = {
-                count : 100,
-                increase : function(){
-                    this.count++;
-                }
+            function Person(name, age){
+                this.name = name;
+                this.age = age;
             }
 
-            alert("int-count:"+counter.count);
-            counter.increase();
-            alert("count1:"+counter.count);
-            alert("count2:"+counter['count']);
+            const newPerson = new Person("marco", 30);
+            console.log(newPerson);
+
+            for(key in  new Person) {
+                console.log(newPerson);
+            }
+
+            //new Object();
+            const newPerson2 = Object.assign({},newPerson);
+
+            console.log(stringify(newPerson));
+            const jsonStr = JSON.stringify(newPerson);
+            const newPerson3 = JSON.parse(jsonStr);
+            console.log("newPerson3"+newPerson3);
         </script>
     </head>
     <body>
