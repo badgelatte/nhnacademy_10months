@@ -3,43 +3,23 @@
     <head>
         <script defer>
             window.addEventListener("DOMContentLoaded",function(){
-                const h1 = document.createElement("h1");
-                h1.id="mySubject";
-                h1.textContent="mySubject"
-                document.body.appendChild(h1);
+                const h1Array = document.getElementsByTagName("H1");
+                alert(h1Array.length);
+                const pArray = document.getElementsByTagName("p");
+                alert(pArray.length);
 
-                const h1Ref = document.getElementById("mySubject");
-                // alert(h1Ref);
-
-                const ageTable = document.getElementById("ageTable");
-                // alert(ageTable);
-
-                const ageTableBody = document.getElementById("ageTableBody");
-                console.log(ageTableBody);
-
-                for(let age=10; age<=100; age+=10) {
-                    const tr = document.createElement("tr");    // tr이라는 element를 만듦
-                    const td = document.createElement("td");
-                    
-                    td.textContent=age;
-                    tr.appendChild(td); // tr 밑에 td 있음 - appendChild
-                    ageTableBody.append(tr); // ageTableBody 밑에 tr 있음
+                for(let i=0; i< pArray.length; i++){
+                    console.log(pArray[i]);
                 }
             });
         </script>
     </head>
     <body>
-        <table id="ageTable">
-            <thead>
-                <tr>
-                    <th>나이</th>
-                </tr>
-            </thead>
-            <tbody id="ageTableBody">
-            </tbody>
-        </table>
-
-        <tbody id="aaa"></tbody>
-        <div id="bbb"></div>
+        <p>hello javascript1</p>
+        <p>hello javascript2</p>
+        <p>hello javascript3</p>
+        <p>hello javascript4</p>
+        <p>hello javascript5</p>
+        <h1>hellojavascript6</h1>
     </body>
 </html>
