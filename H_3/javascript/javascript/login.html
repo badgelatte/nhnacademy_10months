@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script defer>
+            window.addEventListener("DOMContentLoaded",function(){
+                const registerBtn = document.querySelector("#registerBtn");// id는 #을 사용한다
+                    registerBtn.addEventListener("click",function(){
+                        const userId = document.querySelector('#userId');
+                        if(userId.value=="") {
+                            alert("아이디를 입력해주세요!");
+                            userId.focus();
+                            return;
+                        }
+
+                        const myform = document.getElementById("myform");
+                        myform.submit();
+                    });
+                /* const myform = document.getElementById("myform");
+                // 전송될때 이 함수가 실행되도록한다
+                // 그래서 
+                myform.addEventListener("submit", function(event) { // event 안넘어가게 하려면 event를 파라미터에 넣고
+                    const userId = document.querySelector('#userId');
+                    if(userId.value=="") {
+                        alert("아이디를 입력해주세요!");
+                        userId.focus();
+                        // 여기는 return 해도 안 멈춤 여기다 구현하면 실행 시켜주겠다는거지 멈춰주겠다는거는 아님
+                        // 전송되던 event를 끊어주고 싶으면 return을 쓸게 아니라 event.preventDefault를 해줘야함
+                        event.preventDefault(); // 이거도 추가하면 넘어가는거 취소 시켜줌                            return;
+                    }
+                }); */
+            });
+            
+        </script>
+    </head>
+    <body>
+        <h1>회원가입</h1>
+        <form method="post" id="myform" action="http://httpbin.org/post">
+            <input type="text" name="userId" id="userId">
+            <br/>
+            <input type="password" name="userPassword" id="userPassword">
+            <br/>
+            <button type="button" id="registerBtn">회원가입</button>
+        </form>
+    </body>
+</html>
