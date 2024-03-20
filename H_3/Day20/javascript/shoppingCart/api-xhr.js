@@ -33,32 +33,30 @@ window.addEventListener("DOMContentLoaded",function(){
         // const userPassword = document.querySelector("#userPassword").value;
         const userId = loginForm['userId'].value;
         const userPassword = loginForm['userPassword'].value;
-        const loginSuccess = function(userInfo){
-            // login success 처리..
-                    console.log("userInfo", JSON.stringify(userInfo));
-                    //display:block -> display:none;
-                    // block이 보여주는 거고 none이 아무것도 안 보여주는거
-                    const loginWrapper = document.querySelector('#login-wrapper');
-                    loginWrapper.setAttribute("style", "display:none;");
-
-                    //display:none -> display:block;
-                    const loginSuccess = document.querySelector("#login-success");
-                    loginSuccess.setAttribute("style", "display:block;");
-
-                    // 로그인 성공 후 값 표시
-                    // div - ul - li 속 id값을 넣으면 된다 
-                    const loginUserId = document.getElementById("login-userId");
-                    const loginUserName = document.getElementById("login-userName");
-                    const loginCartId = document.getElementById("login-cartId");
-
-                    // span 안에 값 넣기 설정
-                    loginUserId.innerText = userInfo.userId;
-                    loginUserName.innerText = userInfo.userName;
-                    loginCartId.innerText = userInfo.cartId;
-        };
         
         //login api 호출
-        doLogin(userId,userPassword, loginSuccess);
+        doLogin(userId,userPassword, function(userInfo){
+            // login success 처리..
+            console.log("userInfo", JSON.stringify(userInfo));
+            //display:block -> display:none;
+            // block이 보여주는 거고 none이 아무것도 안 보여주는거
+            const loginWrapper = document.querySelector('#login-wrapper');
+            loginWrapper.setAttribute("style", "display:none;");
+
+            //display:none -> display:block;
+            const loginSuccess = document.querySelector("#login-success");
+            loginSuccess.setAttribute("style", "display:block;");
+            
+            // 로그인 성공 후 값 표시
+            // div - ul - li 속 id값을 넣으면 된다 
+            const loginUserId = document.getElementById("login-userId");
+            const loginUserName = document.getElementById("login-userName");                    const loginCartId = document.getElementById("login-cartId");
+            
+            // span 안에 값 넣기 설정
+            loginUserId.innerText = userInfo.userId;
+            loginUserName.innerText = userInfo.userName;
+            loginCartId.innerText = userInfo.cartId;
+        });
     });
 
     // 로그인 호출 -> 서버 호출 + ui 처리까지 하고 있다
