@@ -61,9 +61,11 @@ window.addEventListener("DOMContentLoaded",function(){
             // 다음 then에서 사용할 수 있도록 return 시켜준다
             return userInfo;
 
-        }).catch((error)=>{
+        }).catch((error)=>{ // 여기의 catch는 doLogin에 대한 catch이다
             alert(error);
-        }).then((userInfo)=>{
+            // then 메소드를 통해 체이닝 할 수 있다
+        }).then((userInfo)=>{   // catch 오고 then으로 올 수 있는데 대신 undefined로 값이 들어감
+                                // catch하고 안 멈추고 계속 진행하기 때문에 throw를 던져줘야하는데 대신 그거를 잡을 catch 또 만들어야한다
             return getCartItems(userInfo.userId, userInfo.cartId);   
             // 장바구니 정보
         }).then((items)=> { // 성공하면 then이라는 애를 불러옴 근데 실패하면 error 발생하고 이걸 catch로 잡아라
@@ -93,10 +95,13 @@ window.addEventListener("DOMContentLoaded",function(){
                     tr.append(td1, td2, td3, td4, td5);
                     tbody.append(tr);
                 }
+        })
+        .catch((error) =>{ // 예외 처리
+            alert(error);
         });
     });
 
-    function getCartItems(userId, cartId, viewItems) {
+    function getCartItems(userId, cartId) {
         const executor = function(resolve, reject) {
             // 이렇게 작성시 굳이 +를 붙여가며 사용하지 않아도 된다
         const xhr = new XMLHttpRequest();
@@ -120,7 +125,7 @@ window.addEventListener("DOMContentLoaded",function(){
         
             xhr.addEventListener("error", function(){
                 // throw new Error("error"); -> 이렇게 잡기 어렵다
-                // error 처리 ui 만들어야한다
+                // error 처리 ui(user interface) 만들어야한다
             });
         
             // 초기화
@@ -138,7 +143,8 @@ window.addEventListener("DOMContentLoaded",function(){
     }
 
     // 로그인 호출 -> 서버 호출 + ui 처리까지 하고 있다
-    function doLogin(userId, userPassword, loginSuccess ) {
+    function doLogin(userId, userPassword ) {
+        // executor라는 이름있는 함수로 정의
         const executor = function(resolve, reject){
             const xhr = new XMLHttpRequest();
             const requestUrl = SERVER_URL + "/api/users/login";
@@ -175,3 +181,9 @@ window.addEventListener("DOMContentLoaded",function(){
         
     }
 });
+
+// executor 함수는 resolve, reject를 가지고 resolve는 성공할때, reject는 실패할때로
+// resolve를 사용하면 then으로 빠지고
+// reject를 사용하면 catch로 빠진다
+
+// catch는 바로 위에 있는 then에 대한 reject만 catch한다
