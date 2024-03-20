@@ -37,7 +37,8 @@ window.addEventListener("DOMContentLoaded",function(){
         //login api 호출
         doLogin(userId,userPassword);
     });
-    
+
+    // 로그인 호출 -> 서버 호출 + ui 처리까지 하고 있다ㄴ
     function doLogin(userId, userPassword) {
         const xhr = new XMLHttpRequest();
         const requestUrl = SERVER_URL + "/api/users/login";
@@ -60,8 +61,27 @@ window.addEventListener("DOMContentLoaded",function(){
                     // 초기화 때 json으로 받는다해서 변경해줘야한다
                     const userInfo = this.response;
                     
+                    // login success 처리..
                     console.log("userInfo", JSON.stringify(userInfo));
-                    
+                    //display:block -> display:none;
+                    // block이 보여주는 거고 none이 아무것도 안 보여주는거
+                    const loginWrapper = document.querySelector('#login-wrapper');
+                    loginWrapper.setAttribute("style", "display:none;");
+
+                    //display:none -> display:block;
+                    const loginSuccess = document.querySelector("#login-success");
+                    loginSuccess.setAttribute("style", "display:block;");
+
+                    // 로그인 성공 후 값 표시
+                    // div - ul - li 속 id값을 넣으면 된다 
+                    const loginUserId = document.getElementById("login-userId");
+                    const loginUserName = document.getElementById("login-userName");
+                    const loginCartId = document.getElementById("login-cartId");
+
+                    // span 안에 값 넣기 설정
+                    loginUserId.innerText = userInfo.userId;
+                    loginUserName.innerText = userInfo.userName;
+                    loginCartId.innerText = userInfo.cartId;
                 }
             });
             
