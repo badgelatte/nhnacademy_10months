@@ -160,7 +160,7 @@ window.addEventListener("DOMContentLoaded",function(){
         }
 
         return await response.json();
-        // await를 붙이면 실제 return 되는건 dmdekq wkcpfmf json을 만들어서 보내버림
+        // await를 붙이면 실제 return 되는건 응답 자체를 json을 만들어서 보내버림
         // 게다가 비동기 방식이 끝날때까지 기다림
 
         // executor라는 이름있는 함수로 정의
