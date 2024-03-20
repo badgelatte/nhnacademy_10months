@@ -56,33 +56,31 @@ window.addEventListener("DOMContentLoaded",function(){
             return ;
         }
 
-        // promise가 성공하면 
-        doLogin(userId, userPassword).then((userInfo)=> {
+        // // promise가 성공하면 
+        // doLogin(userId, userPassword).then((userInfo)=> {
             
 
-            // 다음 then에서 사용할 수 있도록 return 시켜준다
-            return userInfo;
+        //     // 다음 then에서 사용할 수 있도록 return 시켜준다
+        //     return userInfo;
 
-        }).catch((error)=>{ // 여기의 catch는 doLogin에 대한 catch이다
-            alert(error);
-            // then 메소드를 통해 체이닝 할 수 있다
-        }).then((userInfo)=>{   // catch 오고 then으로 올 수 있는데 대신 undefined로 값이 들어감
-                                // catch하고 안 멈추고 계속 진행하기 때문에 throw를 던져줘야하는데 대신 그거를 잡을 catch 또 만들어야한다
-            return getCartItems(userInfo.userId, userInfo.cartId);   
-            // 장바구니 정보
-        }).then((items)=> { // 성공하면 then이라는 애를 불러옴 근데 실패하면 error 발생하고 이걸 catch로 잡아라
+        // }).catch((error)=>{ // 여기의 catch는 doLogin에 대한 catch이다
+        //     alert(error);
+        //     // then 메소드를 통해 체이닝 할 수 있다
+        // }).then((userInfo)=>{   // catch 오고 then으로 올 수 있는데 대신 undefined로 값이 들어감
+        //                         // catch하고 안 멈추고 계속 진행하기 때문에 throw를 던져줘야하는데 대신 그거를 잡을 catch 또 만들어야한다
+        //     return getCartItems(userInfo.userId, userInfo.cartId);   
+        //     // 장바구니 정보
+        // }).then((items)=> { // 성공하면 then이라는 애를 불러옴 근데 실패하면 error 발생하고 이걸 catch로 잡아라
             
-        })
-        .catch((error) =>{ // 예외 처리
-            alert(error);
-        });
+        // })
+        // .catch((error) =>{ // 예외 처리
+        //     alert(error);
+        // });
     });
 
     async function getCartItems(userId, cartId) {
-        const xhr = new XMLHttpRequest();
         const requestUrl = `${SERVER_URL}/api/nhnmart/shopping-cart/${cartId}`;
             
-        
         const options = {
             method : "GET",
             headers : {
@@ -136,12 +134,10 @@ window.addEventListener("DOMContentLoaded",function(){
         }
         const promise  = new Promise(executor);
         return promise; */
-
     }
 
     // 로그인 호출 -> 서버 호출 + ui 처리까지 하고 있다
     async function doLogin(userId, userPassword ) {
-        const xhr = new XMLHttpRequest();
         const requestUrl = SERVER_URL + "/api/users/login";
 
         const user = {
@@ -261,3 +257,6 @@ function displayItems(items) {
             tbody.append(tr);
         }
 }
+
+// async 붙이면 아무리 object return 하더라도 응답의 promise로 응답한다
+// 계속 넘어가면서 3 death, 4 death 이런거 만들지 말라는거지 collback이 안좋다 이런게 아니다
