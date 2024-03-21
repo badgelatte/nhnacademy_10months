@@ -2,7 +2,7 @@
 // 밖에 있는 displaySearchResult 같은 경우 쓸 수가 없다
 const flightScheduleApi = (function(){
     'use strict';
-    const SERVICE_KEY = "szUb3GP6ynYeWUTJtSIEtlqBTEitiF6gkVbWIfVUX%2BsgO3%2FD%2F1nxS1J%2Fp575Shu5QalOY7HG6n0zYTFT0pii6A%3D%3D";
+    const SERVICE_KEY = "szUb3GP6ynYeWUTJtSIEtlqBTEitiF6gkVbWIfVUX+sgO3/D/1nxS1J/p575Shu5QalOY7HG6n0zYTFT0pii6A==";
 
     //운행스케줄 api
     const api = new Object();
@@ -14,7 +14,7 @@ const flightScheduleApi = (function(){
     
     async function getAirlineList(){
         let url = 'http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getAirmanList'; /*URL*/
-        let queryParams = '?' + encodeURIComponent('serviceKey') + '='+SERVICE_KEY; /*Service Key*/
+        let queryParams = '?' + encodeURIComponent('serviceKey') + '='+encodeURIComponent(SERVICE_KEY); /*Service Key*/
         queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('json'); /**/
         url+=queryParams;
         //TODO#1 항공사 리스트 구하기
@@ -36,7 +36,7 @@ const flightScheduleApi = (function(){
 
     api.getAirportList = async function(){
         let url = "http://apis.data.go.kr/1613000/DmstcFlightNvgInfoService/getArprtList";
-        let queryParams = '?' + encodeURIComponent('serviceKey') + '='+SERVICE_KEY; /*Service Key*/
+        let queryParams = '?' + encodeURIComponent('serviceKey') + '='+encodeURIComponent(SERVICE_KEY); /*Service Key*/
             queryParams += '&' + encodeURIComponent('_type') + '=' + encodeURIComponent('json'); /**/
             url+=queryParams;
 
@@ -237,11 +237,11 @@ function searchResult(items){
         const td8 = document.createElement("td");
         tr.append(td1, td2, td3, td4, td5, td6, td7, td8);
         // td1.innerText = items[i].vihicleId;
-        // td2.innerText = items[i].arrAirportNm;
+        // td2.innerText = items[i].airlineNm;
         // td3.innerText = items[i].depPlandTime;
         // td4.innerText = items[i].arrPlandTime;
-        // td5.innerText = items[i].prestigeCharge;
-        // td6.innerText = items[i].economyCharge;
+        // td5.innerText = items[i].economyCharge;
+        // td6.innerText = items[i].prestigeCharge;
         // td7.innerText = items[i].depAirportNm;
         // td8.innerText = items[i].arrAirportNm;
         td1.innerText = items[i].vihicleId;
